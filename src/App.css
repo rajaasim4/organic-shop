@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .aside-link-hover:hover {
+    background: linear-gradient(180deg, #22c157, #1a614f);
+    color: white;
+  }
+}
