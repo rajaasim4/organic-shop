@@ -1,7 +1,7 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md"
 const SideBar = () => {
     return (
-        <div className="h-full pt-6">
+        <div className="h-full pt-1">
             <ul className="flex flex-col justify-evenly">
                 <SideBarCategory categoryName="Vegetables" />
                 <SideBarCategory categoryName="Fruits" />
