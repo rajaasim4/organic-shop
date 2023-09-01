@@ -11,7 +11,7 @@ const Testinomials = () => {
                 Testimonial
             </button>
             <h1 className="text-5xl font-light text-center my-8">Our Client Say</h1>
-            <div className="  ">
+            <div className="">
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={4}
@@ -51,33 +51,8 @@ const Testinomials = () => {
                     <SwiperSlide className="text-center flex justify-center items-center">
                         <TestimonialCard />            </SwiperSlide>
                 </Swiper>
-                {/* <Swiper
-                    spaceBetween={40}
-                    slidesPerView={4}
-
-                    pagination={{
-                        clickable: true,
-                    }}
-
-                    // autoplay={{ delay: 2000 }}
-                    modules={[Autoplay, Navigation]}
-                    className="mySwiper min-h-[450px] w-full flex justify-center bg-fuchsia-300 "
-                >
-                    <SwiperSlide className="text-center flex justify-center items-center"><TestimonialCard />
-                    </SwiperSlide>
-                    <SwiperSlide className="text-center flex justify-center items-center"><TestimonialCard />
-                    </SwiperSlide>
-                    <SwiperSlide className="text-center flex justify-center items-center"><TestimonialCard />
-                    </SwiperSlide>
-                    <SwiperSlide className="text-center flex justify-center items-center"><TestimonialCard />
-                    </SwiperSlide>
-                    <SwiperSlide className="text-center flex justify-center items-center"><TestimonialCard />
-                    </SwiperSlide>
-                    <SwiperSlide className="text-center flex justify-center items-center"><TestimonialCard />
-                    </SwiperSlide>
-
-                </Swiper> */}
             </div>
+            <div className="h-28"></div>
         </Helmet >
     )
 }

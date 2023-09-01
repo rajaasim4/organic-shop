@@ -1,17 +1,20 @@
+
 import logo from "../../assets/Images/footer-logo.png"
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa"
+
 const Footer = () => {
   return (
     <>
-      <footer className="py-0  bg-primary_dark_green pt-20">
-        <div className="w-95 mx-auto">
+      <footer className="py-0  bg-primary_dark_green ">
+
+        <div className="w-95 mx-auto ">
           <h3 className="text-center text-2xl text-white">GET DISCOUNT</h3>
           <h1 className="text-center text-4xl text-white font-semibold my-4">Subscribe to our Newsletter</h1>
           <div className="bg-primary_green h-14 rounded-md flex w-6/12 mt-5 mx-auto">
             <input type="text" className="w-full h-full pl-3 bg-transparent outline-none text-white placeholder:text-white" placeholder="Please Insert Your email Address" />
             <button className="bg-btn_bg w-32 text-xl h-14 text-white rounded-r-md hover:bg-black duration-300">Subscribe</button>
           </div>
-          <div className="py-20 grid grid-cols-4 ">
+          <div className="py-10 grid grid-cols-4 ">
             <div className="col-span-2">
               <img src={logo} alt="" />
               <p className="text-white w-9/12 mt-4">wonderful serenity has taken possession of entire soul, like these sweet mornings of spring which I enjoy with my whole heart. wonderful serenity has takenwonderful serenity has taken possession of entire soul.</p>

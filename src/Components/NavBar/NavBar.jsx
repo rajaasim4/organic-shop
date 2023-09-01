@@ -14,10 +14,10 @@ const NavBar = () => {
             Free Shipping From $50 Purchase Now
           </h4>
         </div>
-        <div className="min-h-[170px]  bg-nav_bg flex items-center">
+        <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6">
           <div className="mx-auto w-95 flex justify-between items-center">
             <div className="">
-              <img src={Logo} alt="" />
+              <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full" />
             </div>
             <div className="w-5/12">
               <div className="bg-primary_bg h-14 rounded-xl overflow-hidden flex justify-between">
@@ -31,7 +31,7 @@ const NavBar = () => {
                     name=""
                     id=""
                     className="h-full w-full bg-transparent cursor-pointer  text-white outline-none "
-                    value="All Categories"
+                    defaultValue="All Categories"
                   >
                     <option value="All Categories">All Categories</option>
                   </select>
@@ -44,7 +44,7 @@ const NavBar = () => {
             </div>
             <div className="flex items-center gap-x-4">
               <div className="">
-                <a href="" className="flex items-center gap-x-3">
+                <a href="" className="flex items-center gap-x-3 duration-300 hover:scale-110">
                   Login
                   <span className="text-[#007d56] text-xl">
                     <AiOutlineUser />
@@ -73,7 +73,7 @@ const NavBar = () => {
         </div>
         <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-20 h-20 flex justify-center items-center -translate-y-10 ">
           <div className="flex justify-between items-center w-full">
-            <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-md hover:bg-black duration-300">Shop By Category</button>
+            <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300">Shop By Category</button>
             <div className="w-4/12 ">
 
               <ul className="flex w-full  justify-evenly font-semibold">
