@@ -13,7 +13,7 @@ const Brands = () => {
 
 
                     {/* -translate-y-52 */}
-                    <div className="rounded-xl w-full min-h-[250px] absolute bottom-10 translate-y-40  flex items-center px-5 justify-evenly bg-white mt-8 gap-y-5 gap-x-3 flex-wrap shadow-md">
+                    <div className="rounded-xl w-full min-h-[250px] absolute bottom-5 translate-y-40  flex items-center px-5 justify-evenly bg-white mt-8 gap-y-5 gap-x-3 flex-wrap shadow-md">
                         <div className="">
                             <img src={Brand1} alt="" className="duration-300 hover:scale-125 cursor-pointer" />
                         </div>
