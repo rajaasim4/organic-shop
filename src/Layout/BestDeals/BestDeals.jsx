@@ -1,13 +1,16 @@
+import ProductCard from "../../Components/ProductCard/ProductCard"
+import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
 
 const BestDeals = () => {
     return (
         <div className="py-20">
             <div className="w-95 mx-auto">
-                <button className="rounded-xl text-white w-32 h-10 bg-primary_green cursor-auto mx-auto block">
-                    100% Natural
-                </button>
+                <div className="flex justify-center">
+                    <HeadingBtn title="100% Natural" />
+
+                </div>
                 <h1 className="text-5xl font-light text-center my-8">Today’s Best Deals</h1>
-                <div className="flex mt-16">
+                <div className="flex mt-16 items-center">
                     <div className="w-1/2 bg-best_deals_bg bg-cover bg-center p-10 h-[570px] rounded-2xl flex items-end">
                         <div className="flex flex-col gap-y-6 ">
 
@@ -19,7 +22,10 @@ const BestDeals = () => {
                             <button className="hover:bg-slate-800 duration-300 bg-btn_bg w-32 h-12 rounded-xl text-white text-xl">Shop Now</button>
                         </div>
                     </div>
-                    <div className="w-1/2"></div>
+                    <div className="w-1/2 flex justify-evenly flex-wrap">
+                        <ProductCard />
+                        <ProductCard />
+                    </div>
                 </div>
             </div>
         </div>

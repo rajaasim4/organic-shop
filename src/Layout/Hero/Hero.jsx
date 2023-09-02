@@ -1,9 +1,11 @@
+import Helmet from "../../Components/Helmet/Helmet"
 import SideBar from "../../Components/SideBar/SideBar"
 
 const Hero = () => {
     return (
-        <div className=" py-10">
-            <div className="w-95 mx-auto flex gap-x-8 justify-between">
+
+        <Helmet>
+            <div className="flex gap-x-8 justify-between ">
 
                 <div className="w-[500px] py-4 bg-white px-2 rounded-2xl shadow-xl ">
                     <SideBar />
@@ -31,8 +33,9 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
+        </Helmet>
 
-        </div>
+
     )
 }
 

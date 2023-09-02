@@ -6,14 +6,15 @@ const Footer = () => {
   return (
     <>
       <footer className="py-0  bg-primary_dark_green ">
-
         <div className="w-95 mx-auto ">
+
           <h3 className="text-center text-2xl text-white">GET DISCOUNT</h3>
           <h1 className="text-center text-4xl text-white font-semibold my-4">Subscribe to our Newsletter</h1>
           <div className="bg-primary_green h-14 rounded-md flex w-6/12 mt-5 mx-auto">
             <input type="text" className="w-full h-full pl-3 bg-transparent outline-none text-white placeholder:text-white" placeholder="Please Insert Your email Address" />
             <button className="bg-btn_bg w-32 text-xl h-14 text-white rounded-r-md hover:bg-black duration-300">Subscribe</button>
           </div>
+
           <div className="py-10 grid grid-cols-4 ">
             <div className="col-span-2">
               <img src={logo} alt="" />
@@ -33,6 +34,7 @@ const Footer = () => {
                 </button>
               </div>
             </div>
+
             <div className="col-span-1">
               <h3 className="text-white text-2xl">Category</h3>
               <ul className="flex flex-col gap-y-2 text-lg text-white mt-8 ">
@@ -62,28 +64,28 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+
             <div className="col-span-1"> <h3 className="text-white text-2xl">Contact</h3>
               <address className="text-white font-normal font-sans mt-8 flex flex-col gap-y-3">
                 <span>
-
                   +123 4567 890
                 </span>
 
                 <span>
-
                   Patricia C. Amedee 41 Waldeck Grapevine Nashville, TX 76
                 </span>
 
                 <span>
-
                   info@yourdomain.com
                 </span>
               </address>
             </div>
           </div>
+
           <div className="py-2 ">
             <p className="text-center text-white text-lg"> &copy; Copyright {new Date().getFullYear()}.All rights are reserved by Organic Shop</p>
           </div>
+
         </div>
       </footer>
     </>

@@ -19,6 +19,7 @@ export default {
       colors: {
         primary_green: "#22c157",
         primary_dark_green: "#007d56",
+        light_gray: "#10101075",
       },
       backgroundColor: {
         primary_bg: "#007d56",
@@ -26,6 +27,7 @@ export default {
         primary_red: "#ff4e2d",
       },
       backgroundImage: {
+        gradient_bg: "linear-gradient(180deg, #22c157, #1a614f)",
         nav_bg:
           "linear-gradient(135deg,rgb(238,238,238) 50%,rgb(238,238,238) 50%)",
         shipping_bg: "url('./assets/Images/nav-shipping-bg.jpg')",
