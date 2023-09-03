@@ -4,7 +4,7 @@ import Helmet from "../../Components/Helmet/Helmet"
 const Hero = () => {
     return (
         <Helmet>
-            <div className="flex justify-center pb-24 items-center">
+            <div className="flex justify-center pb-44 items-center gap-5">
                 <div className="w-1/2 flex flex-col items-start">
                     <HeadingBtn title="Please Get in Touch" />
 
@@ -28,7 +28,7 @@ const Hero = () => {
                 <div className="w-1/2 flex justify-center  items-center">
                     <div className="w-[420px] h-[450px] bg-gradient_bg rounded-lg flex flex-col items-center py-8 justify-evenly">
                         <h3 className="text-white text-4xl border-b-[1px] border-white py-3">New York</h3>
-                        {/* <div className="border-b-2 border-white h-[2px] w-8/12"></div> */}
+
                         <address className="text-white text-2xl text-center not-italic flex flex-col gap-y-3">
                             <span>
 

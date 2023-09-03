@@ -85,7 +85,7 @@ const NavBar = () => {
           </div>
 
         </div>
-        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-20 h-20 flex justify-center items-center -translate-y-10 ">
+        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 flex justify-center items-center -translate-y-10 relative">
           <div className="flex justify-between items-center w-full">
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300">Shop By Category</button>
             <div className="w-4/12 ">
@@ -101,7 +101,7 @@ const NavBar = () => {
                   <Link to="/About" className="text-base font-sans duration-200 hover:text-[#aaa]">About</Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-base font-sans duration-200 hover:text-[#aaa]">Contact</Link>
+                  <Link to="/Contact" className="text-base font-sans duration-200 hover:text-[#aaa]">Contact</Link>
                 </li>
               </ul>
             </div>
