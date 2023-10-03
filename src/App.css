@@ -12,6 +12,7 @@
     background: linear-gradient(180deg, #22c157, #1a614f);
     color: white;
   }
+  /* Hiding the Small Card on the Map  */
   .gm-style .place-card-large {
     display: none;
   }

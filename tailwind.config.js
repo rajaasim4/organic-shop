@@ -28,6 +28,8 @@ export default {
       },
       backgroundImage: {
         gradient_bg: "linear-gradient(180deg, #22c157, #1a614f)",
+        gradient_lines:
+          "linear-gradient(270deg, rgba(255,255,255,0) 17%, #22c157 100%);",
         nav_bg:
           "linear-gradient(135deg,rgb(238,238,238) 50%,rgb(238,238,238) 50%)",
         shipping_bg: "url('./assets/Images/nav-shipping-bg.jpg')",

@@ -2,34 +2,40 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa"
+import { BiMenuAltRight } from "react-icons/bi"
+import { IoCloseSharp } from "react-icons/io5"
 import Logo from "../../assets/Images/Logo.png";
 import { Link } from "react-router-dom"
+import { useState } from "react";
 // import SearchCategory from "../SearchCategory/SearchCategory";
 const NavBar = () => {
+  //Toggle Navbar
+
+  const [show, setShow] = useState(false);
   return (
     <>
 
       <nav>
         <div className="w-full h-14 bg-shipping_bg flex justify-center items-center">
-          <h4 className="text-white text-lg font-normal">
+          <h4 className="text-white text-lg font-normal sm:text-base">
             Free Shipping From $50 Purchase Now
           </h4>
         </div>
 
-        <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6">
-          <div className="mx-auto w-95 flex justify-between items-center">
+        <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6 slg:min-h-[230px] slg:items-start slg:pt-9 slg:py-3 slg:pb-14 relative">
+          <div className="mx-auto w-95 flex justify-between items-center   gap-y-6 slg:h-max">
             <div className="">
-              <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full" />
+              <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" />
             </div>
 
-            <div className="w-5/12">
+            <div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2">
               <div className="bg-primary_bg h-14 rounded-xl overflow-hidden flex justify-between">
                 <input
                   type="text"
-                  className="w-1/2 pl-4 h-full bg-transparent text-white placeholder:text-white outline-none"
+                  className="w-1/2 pl-4 h-full bg-transparent text-white placeholder:text-white outline-none sm:hidden"
                   placeholder="Search..."
                 />
-                <div className="w-1/2 px-4 border-l-[1px] relative">
+                <div className="w-1/2 sm:w-full px-4 border-l-[1px] relative14 ">
                   <select
                     name=""
                     id=""
@@ -72,7 +78,7 @@ const NavBar = () => {
                     </div>
                     <LiaShoppingBagSolid />
                   </span>
-                  <a href="" className="text-sm flex flex-col items-start">
+                  <a href="" className="text-sm flex flex-col items-start sm:hidden">
                     Shopping Basket
                     <br />
                     <span className="text-[#007d56] text-lg font-medium">
@@ -85,17 +91,17 @@ const NavBar = () => {
           </div>
 
         </div>
-        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 flex justify-center items-center -translate-y-10 relative">
-          <div className="flex justify-between items-center w-full">
-            <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300">Shop By Category</button>
-            <div className="w-4/12 ">
+        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9">
+          <div className="flex justify-between items-center w-full  xsm:flex-col  xsm:gap-y-3 xsm:items-start">
+            <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
+            <div className={` ${show ? "md:w-4/5" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center bg-primary_dark_green md:items-center rounded-r-2xl md:overflow-hidden`}>
 
-              <ul className="flex w-full  justify-evenly font-semibold">
+              <ul className="flex w-full justify-evenly font-semibold md:h-3/5 md:flex-col md:w-6/12 md:items-center md:text-white">
                 <li>
                   <Link to="/" className="text-base font-sans duration-200 hover:text-[#aaa]">Home</Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-base font-sans duration-200 hover:text-[#aaa]">Shop</Link>
+                  <Link to="/Shop" className="text-base font-sans duration-200 hover:text-[#aaa]">Shop</Link>
                 </li>
                 <li>
                   <Link to="/About" className="text-base font-sans duration-200 hover:text-[#aaa]">About</Link>
@@ -106,7 +112,7 @@ const NavBar = () => {
               </ul>
             </div>
 
-            <div className="w-2/12 ">
+            <div className="w-2/12 md:mr-16 xsm:hidden">
               <div className="flex  justify-evenly gap-5 ">
                 <span className="cursor-pointer  text-xl hover:scale-125 duration-300 hover:text-[#fb7645]">
                   <FaFacebookF />
@@ -121,6 +127,15 @@ const NavBar = () => {
                   <FaInstagram />
                 </span>
               </div>
+            </div>
+            <div className="hidden md:block absolute top-1/2 right-3 -translate-y-1/2">
+              <button className=" text-2xl mt-1  hover:scale-125 duration-300 outline-none" onClick={() => setShow(!show)}>
+                {show ?
+                  <IoCloseSharp />
+                  :
+                  <BiMenuAltRight />
+                }
+              </button>
             </div>
           </div>
         </div>

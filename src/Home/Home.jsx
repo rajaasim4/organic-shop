@@ -13,16 +13,14 @@ const Home = () => {
     <>
 
 
-      {/* <NavBar /> */}
-      <Hero />
-      <Shipping />
-      <NoPlastic />
-      <BestDeals />
+      {/* <Hero /> */}
+      {/* <Shipping /> */}
+      {/* <NoPlastic /> */}
+      {/* <BestDeals /> */}
       <FeaturedProducts />
-      <Sale />
-      <Testinomials />
-      <Brands />
-      {/* <Footer /> */}
+      {/* <Sale /> */}
+      {/* <Testinomials /> */}
+      {/* <Brands /> */}
 
 
     </>

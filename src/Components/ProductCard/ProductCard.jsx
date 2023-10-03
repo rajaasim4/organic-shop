@@ -4,8 +4,8 @@ import { BsCart3 } from "react-icons/bs"
 import { Link } from "react-router-dom"
 const ProductCard = () => {
     return (
-        <div className="w-[323px] h-[498px] group shadow-md hover:shadow-xl duration-300 cursor-pointer rounded-xl">
-            <div className="w-[315px] h-[323px] bg-[#fff9f9] rounded-lg relative">
+        <div className=" w-[340px] h-[498px] sm:w-full border-[1px] border-gray-300 bg-[#fffcfc] group shadow-md hover:shadow-xl duration-300 cursor-pointer rounded-xl">
+            <div className="w-[315px] h-[323px] bg-[#fff]  rounded-lg relative flex justify-center items-center mx-auto">
                 <img src={Onions} className="w-full h-full rounded-lg" alt="Product Image" />
                 <button className="absolute bottom-3 right-3 h-10 w-10 rounded-lg bg-gradient_bg  place-items-center hidden group-hover:grid duration-300 "
                     title="Add to Cart"
