@@ -11,13 +11,12 @@ const Router = () => {
       <div className="bg-[#FBFBFB]">
 
         {/* <NavBar /> */}
-
         <Routes>
 
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Shop" element={<Shop />} /> */}
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/About" element={<About />} />
+          {/* <Route path="/Contact" element={<Contact />} /> */}
+          {/* <Route path="/Shop" element={<Shop />} /> */}
 
         </Routes>
         {/* <Footer /> */}

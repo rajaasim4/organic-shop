@@ -22,15 +22,18 @@ const Testinomials = () => {
 
                     rewind={true}
                     modules={[Autoplay, Navigation,]}
-                    // breakpoints={{
-                    //     0: { slidesPerView: 1 },
-                    //     950: {
-                    //         slidesPerView: 2,
-                    //     },
-                    //     1410: {
-                    //         slidesPerView: 4,
-                    //     },
-                    // }}
+                    breakpoints={{
+                        0: { slidesPerView: 1 },
+                        600: {
+                            slidesPerView: 2,
+                        },
+                        1000: {
+                            slidesPerView: 3
+                        },
+                        1410: {
+                            slidesPerView: 4,
+                        },
+                    }}
                     className="w-full  min-h-[450px] "
                 >
                     <SwiperSlide className="text-center flex justify-center items-center">

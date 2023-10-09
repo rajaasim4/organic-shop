@@ -6,7 +6,7 @@ const TestimonialCard = () => {
         <>
 
 
-            <div className="h-[400px] w-full relative rounded-2xl   flex items-end">
+            <div className="h-[400px] sm:w-11/12 sm:mx-auto w-full relative rounded-2xl   flex items-end">
                 <img src={a} alt="" className="absolute top-0 left-1/2 -translate-x-1/2" />
                 <div className="flex flex-col items-center  pt-16 bg-white shadow-md h-[340px] rounded-2xl ">
                     <p className="w-10/12 text-center text-[#4b4b4b] leading-relaxed mt-2">

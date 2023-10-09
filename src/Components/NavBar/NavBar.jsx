@@ -94,7 +94,7 @@ const NavBar = () => {
         <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9">
           <div className="flex justify-between items-center w-full  xsm:flex-col  xsm:gap-y-3 xsm:items-start">
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
-            <div className={` ${show ? "md:w-4/5" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center bg-primary_dark_green md:items-center rounded-r-2xl md:overflow-hidden`}>
+            <div className={` ${show ? "md:w-4/5" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-2xl md:overflow-hidden`}>
 
               <ul className="flex w-full justify-evenly font-semibold md:h-3/5 md:flex-col md:w-6/12 md:items-center md:text-white">
                 <li>
