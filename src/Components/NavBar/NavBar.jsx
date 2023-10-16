@@ -62,12 +62,12 @@ const NavBar = () => {
 
             <div className="flex items-center gap-x-4">
               <div className="">
-                <a href="" className="flex items-center gap-x-3 duration-300 hover:scale-110">
+                <Link to="/Login" className="flex items-center gap-x-3 duration-300 hover:scale-110">
                   Login
                   <span className="text-[#007d56] text-xl">
                     <AiOutlineUser />
                   </span>
-                </a>
+                </Link>
               </div>
 
               <div className="py-2 px-2 border border-gray-400 rounded-md">

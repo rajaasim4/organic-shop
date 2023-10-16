@@ -17,7 +17,7 @@ const OurTeam = () => {
                 <h1 className="text-5xl font-light text-center my-8">Meet Our Team</h1>
 
             </div>
-            <div className="pb-24 mt-10 flex justify-evenly flex-wrap gap-y-7 gap-x-5 sm:pb-60 xsm:mb-40">
+            <div className="pb-24 mt-10 flex justify-evenly flex-wrap gap-y-7 gap-x-5  sm:pb-10">
                 <TeamCard teamImg={Img1} />
                 <TeamCard teamImg={Img2} />
                 <TeamCard teamImg={Img3} />

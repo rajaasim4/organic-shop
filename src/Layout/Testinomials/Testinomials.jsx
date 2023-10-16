@@ -55,7 +55,7 @@ const Testinomials = () => {
                         <TestimonialCard />            </SwiperSlide>
                 </Swiper>
             </div>
-            <div className="h-28"></div>
+            <div className="h-28 sm:hidden"></div>
         </Helmet >
     )
 }
