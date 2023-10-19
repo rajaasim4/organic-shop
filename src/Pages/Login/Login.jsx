@@ -1,5 +1,5 @@
 import Logo from "../../assets/Images/Logo.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { IoMailOutline, IoLockClosedOutline } from "react-icons/io5"
 import LoginImg from "../../assets/Images/SVG/Login.svg"
 
@@ -9,23 +9,33 @@ import { Form, ErrorMessage, Field, Formik } from "formik"
 import { loginInitialValues, LoginValidation } from "../../utils/Schema/LoginValidationSchema"
 import { useState } from "react"
 import { OvalLoader } from "../../utils/Helpers/Loaders/Loaders"
+import { toast } from "react-toastify"
 const Login = () => {
 
     const [isloading, setIsLoading] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(false);
+
+    const navigate = useNavigate()
 
     //Handling Login Submit
     const handleLoginSubmit = (values, onSubmitProps) => {
-        alert("Logedin")
+        toast("You are Successfully Loggedin ", {
+            position: "top-right",
+            autoClose: 2300,
+        })
+        setIsDisabled(true)
         console.log(values);
 
         //Showing Loader
         setIsLoading(true)
 
         setTimeout(() => {
+            setIsDisabled(false)
             onSubmitProps.setSubmitting(false);
             onSubmitProps.resetForm();
             //Hiding the Loader
             setIsLoading(false);
+            navigate("/Home")
         }, 3000)
     }
 
@@ -62,7 +72,7 @@ const Login = () => {
                                             </div>
                                             <ErrorMessage name="email">
                                                 {(errMsg) => {
-                                                    return (<small className="text-red-400">{errMsg}</small>)
+                                                    return (<small className="text-red-400 font-semibold">{errMsg}</small>)
                                                 }}
                                             </ErrorMessage>
                                         </div>
@@ -78,7 +88,7 @@ const Login = () => {
                                             </div>
                                             <ErrorMessage name="password">
                                                 {(errMsg) => {
-                                                    return (<small className="text-red-400">{errMsg}</small>)
+                                                    return (<small className="text-red-400 font-semibold">{errMsg}</small>)
                                                 }}
                                             </ErrorMessage>
                                         </div>
@@ -91,7 +101,7 @@ const Login = () => {
                                             <Link className="hover:text-primary_dark_green duration-150">Forgot Password?</Link>
                                         </div>
 
-                                        <button className="rounded-xl text-white w-32 h-12 mt-4 mx-auto  bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300 flex justify-center items-center" type="submit" disabled={formik.onSubmitProps}>
+                                        <button disabled={formik.onSubmitProps} className={`rounded-xl text-white w-32 h-12 mt-4 mx-auto  bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300 flex justify-center items-center ${isDisabled ? "bg-[#f7855c] hover:bg-[#f7855c] cursor-not-allowed " : ""}`} type="submit" >
                                             {isloading ?
                                                 <OvalLoader width={30} height={30} />
                                                 : "Log In"}
@@ -104,7 +114,7 @@ const Login = () => {
                         </Formik>
                     </div>
 
-                    <div className="mt-7  mx-auto w-[400px] lg:text-center sm:w-11/12">
+                    <div className="mt-5  mx-auto w-[400px] lg:text-center sm:w-11/12">
 
                         <p>
                             Dont have Account Yet? <Link to={"/SignUp"} className="hover:text-primary_dark_green duration-150 ml-1">Sign Up</Link>

@@ -1,5 +1,5 @@
 import Logo from "../../assets/Images/Logo.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { IoMailOutline, IoLockClosedOutline } from "react-icons/io5"
 import SignUpImg from "../../assets/Images/SVG/SignUp.svg"
 import { AiOutlineUser, AiOutlineTablet } from "react-icons/ai"
@@ -7,16 +7,29 @@ import { AiOutlineUser, AiOutlineTablet } from "react-icons/ai"
 //Formik Imports
 import { Form, ErrorMessage, Field, Formik } from "formik"
 import { signupInitialValues, signUpValidation } from "../../utils/Schema/SignupValidationSchema"
+import { toast } from "react-toastify"
+import { useState } from "react"
 
 const SignUp = () => {
+
+    const [isDisabled, setIsDisabled] = useState(false);
+    const navigate = useNavigate()
+
+
     let handleSubmitForm = (values, onSubmitProps) => {
-        alert("Form has been Submited")
+        toast("Form has been Submited", {
+            position: "top-right",
+            autoClose: 2300,
+        })
         console.log(values)
+        setIsDisabled(true);
 
         //Clearing the Form Values After Submitting and Disabling Button for 3 Seconds
         setTimeout(() => {
+            setIsDisabled(false);
             onSubmitProps.setSubmitting(false);
             onSubmitProps.resetForm();
+            navigate("/Home")
         }, 3000);
     }
 
@@ -58,7 +71,7 @@ const SignUp = () => {
                                             <Link className="hover:text-primary_dark_green duration-150">Forgot Password?</Link>
                                         </div>
 
-                                        <button className="rounded-xl text-white w-32 h-12 mt-4 mx-auto block bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300" disabled={formik.onSubmitProps} type="submit">
+                                        <button className={`rounded-xl text-white w-32 h-12 mt-4 mx-auto block bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300 ${isDisabled ? "bg-[#f7855c] hover:bg-[#f7855c] cursor-not-allowed " : ""}`} disabled={formik.onSubmitProps} type="submit">
                                             Sign Up
                                         </button>
                                     </Form>
@@ -91,7 +104,7 @@ const SignUpFeild = (props) => {
             </div>
             <ErrorMessage name={props.name}>
                 {(errMsg) => {
-                    return (<small className="text-red-400">{errMsg}</small>)
+                    return (<small className="text-red-400 font-semibold ">{errMsg}</small>)
                 }}
             </ErrorMessage>
 

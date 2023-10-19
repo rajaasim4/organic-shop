@@ -16,6 +16,33 @@
   .gm-style .place-card-large {
     display: none;
   }
+
+  @media screen and (max-width: 768px) {
+    .CartProductDetails table thead {
+      display: none;
+    }
+    .CartProductDetails table tr,
+    tbody,
+    td {
+      display: block;
+      width: 100%;
+    }
+    .CartProductDetails table tr {
+      margin-bottom: 20px;
+    }
+    .CartProductDetails tr td {
+      text-align: -webkit-right;
+      position: relative;
+
+      margin: 3px 0px;
+    }
+    .CartProductDetails table tbody tr td::before {
+      content: attr(data-aria-label);
+      position: absolute;
+      text-align: left;
+      left: 0;
+    }
+  }
 }
 
 * {

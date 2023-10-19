@@ -5,11 +5,11 @@ import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa"
 import { BiMenuAltRight } from "react-icons/bi"
 import { IoCloseSharp } from "react-icons/io5"
 import Logo from "../../assets/Images/Logo.png";
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import { useState } from "react";
 // import SearchCategory from "../SearchCategory/SearchCategory";
 const NavBar = () => {
-  //Toggle Navbar
+  //=========Toggle Navbar==========
 
   const [show, setShow] = useState(false);
   return (
@@ -25,7 +25,9 @@ const NavBar = () => {
         <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6 slg:min-h-[230px] slg:items-start slg:pt-9 slg:py-3 slg:pb-14 relative">
           <div className="mx-auto w-95 flex justify-between items-center   gap-y-6 slg:h-max">
             <div className="">
-              <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" />
+              <Link to={"/Home"}>
+                <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" />
+              </Link>
             </div>
 
             <div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2">
@@ -98,16 +100,16 @@ const NavBar = () => {
 
               <ul className="flex w-full justify-evenly font-semibold md:h-3/5 md:flex-col md:w-6/12 md:items-center md:text-white">
                 <li>
-                  <Link to="/" className="text-base font-sans duration-200 hover:text-[#aaa]">Home</Link>
+                  <Link to={"/Home"} className="text-base font-sans duration-200 hover:text-[#aaa]">Home</Link>
                 </li>
                 <li>
-                  <Link to="/Shop" className="text-base font-sans duration-200 hover:text-[#aaa]">Shop</Link>
+                  <Link to={"/Shop"} className="text-base font-sans duration-200 hover:text-[#aaa]">Shop</Link>
                 </li>
                 <li>
-                  <Link to="/About" className="text-base font-sans duration-200 hover:text-[#aaa]">About</Link>
+                  <Link to={"/About"} className="text-base font-sans duration-200 hover:text-[#aaa]">About</Link>
                 </li>
                 <li>
-                  <Link to="/Contact" className="text-base font-sans duration-200 hover:text-[#aaa]">Contact</Link>
+                  <Link to={"/Contact"} className="text-base font-sans duration-200 hover:text-[#aaa]">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -140,6 +142,7 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
+      <Outlet />
     </>
   );
 };
