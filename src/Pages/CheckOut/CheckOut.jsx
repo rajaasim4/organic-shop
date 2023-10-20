@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CheckOutBilling from "./CheckOutBilling";
+import CheckOutBilling from "./CheckOutBilling/CheckoutBilling";
 import CheckOutOrder from "./CheckOutOrder";
 import Brands from "../../Layout/Brands/Brands"
 const CheckOut = () => {
@@ -8,10 +8,10 @@ const CheckOut = () => {
         <>
             <section className="py-10 w-full mb-20 ">
                 <div
-                    className={`w-[89%] duration-300  mx-auto xxl:w-[1700px]  ${visible ? "h-52 " : "h-16"
+                    className={`w-[89%] duration-300  mx-auto xxl:w-[1700px]   ${visible ? "h-52 " : "h-16"
                         } `}
                 >
-                    <div className="w-full  bg-primary_dark_green px-4 h-16   flex items-center">
+                    <div className="w-full  bg-primary_dark_green px-4 h-16 rounded-lg   flex items-center">
                         <p className="text-white font-medium">
                             Have a coupon?
                             <span
@@ -35,7 +35,7 @@ const CheckOut = () => {
                         </div>
                     )}
                 </div>
-                <div className="w-11/12 mx-auto flex justify-center md:flex-col xxl:w-[1700px]">
+                <div className="w-11/12 mx-auto flex justify-center md:flex-col-reverse xxl:w-[1700px]">
                     <div className="w-8/12  px-4 py-3 md:w-full">
                         <CheckOutBilling />
                     </div>

@@ -73,21 +73,23 @@ const NavBar = () => {
               </div>
 
               <div className="py-2 px-2 border border-gray-400 rounded-md">
-                <button className="flex items-center gap-x-4">
-                  <span className="text-3xl relative">
-                    <div className="absolute -top-2 text-white -right-2 bg-btn_bg text-sm rounded-full w-5 h-5 flex justify-center items-center">
-                      0
-                    </div>
-                    <LiaShoppingBagSolid />
-                  </span>
-                  <a href="" className="text-sm flex flex-col items-start sm:hidden">
-                    Shopping Basket
-                    <br />
-                    <span className="text-[#007d56] text-lg font-medium">
-                      $0.00
+                <Link to={"/Cart"}>
+                  <button className="flex items-center gap-x-4">
+                    <span className="text-3xl relative">
+                      <div className="absolute -top-2 text-white -right-2 bg-btn_bg text-sm rounded-full w-5 h-5 flex justify-center items-center">
+                        0
+                      </div>
+                      <LiaShoppingBagSolid />
                     </span>
-                  </a>
-                </button>
+                    <span className="text-sm flex flex-col items-start sm:hidden">
+                      Shopping Basket
+                      <br />
+                      <span className="text-[#007d56] text-lg font-medium">
+                        $0.00
+                      </span>
+                    </span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
