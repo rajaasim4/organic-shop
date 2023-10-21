@@ -7,21 +7,21 @@ import Sale from "../Layout/Sale/Sale";
 import Shipping from "../Layout/Shipping/Shipping";
 import Testinomials from "../Layout/Testinomials/Testinomials";
 import FeaturedProducts from "../Layout/FeaturedProducts/FeaturedProducts";
+
 const Home = () => {
+
   return (
     <>
-
-
-      <Hero />
-      <Shipping />
-      <NoPlastic />
-      <BestDeals />
-      <FeaturedProducts />
-      <Sale />
-      <Testinomials />
+      <div className="max-w-[1700px] mx-auto">
+        <Hero />
+        <Shipping />
+        <NoPlastic />
+        <BestDeals />
+        <FeaturedProducts />
+        <Sale />
+        <Testinomials />
+      </div>
       <Brands />
-
-
     </>
   );
 };

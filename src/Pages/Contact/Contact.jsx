@@ -5,8 +5,10 @@ import Map from "./Map"
 const Contact = () => {
     return (
         <>
-            <Map />
-            <Hero />
+            <div className="max-w-[1700px] mx-auto">
+                <Map />
+                <Hero />
+            </div>
             <Brands />
         </>
     )

@@ -20,17 +20,32 @@ import paypal from "../../../assets/Images/SVG/paypal.svg";
 import visa from "../../../assets/Images/SVG/visa.svg";
 import jazzcash from "../../../assets/Images/SVG/jazz-cash.svg";
 import easypaisa from "../../../assets/Images/SVG/easypaisa.svg";
+import { useDispatch } from "react-redux";
+import { getCheckOutPaymentSelection } from "../../../store/Reducers/CheckDetailsSlice";
 const CheckOutBillingDetails = () => {
+
+    const dispatch = useDispatch()
 
     const [showBilling, setShowBilling] = useState(false);
 
 
     //Selecting Payment Method
     const [paymentMethod, setPaymentMethod] = useState("");
+
+    //handle Payment Method
+
+    const handlePayment = (e) => {
+
+        //Checking Payment Selected or Not
+        dispatch(getCheckOutPaymentSelection(true))
+
+
+        setPaymentMethod(e.target.value)
+    }
     return (
 
         <div
-            className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${showBilling ? "h-max" : "h-28"
+            className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${paymentMethod === "card" && showBilling ? "h-[750px]" : showBilling ? "h-44" : "h-28"
                 }   duration-150 overflow-hidden mt-8`}
         >
             <div
@@ -47,25 +62,25 @@ const CheckOutBillingDetails = () => {
                     <h2 className="text-xl">Payment Method</h2>
                     <div className="flex items-center gap-x-5">
                         <div className="">
-                            <label htmlFor="cash">Cash on Delivery</label>
+                            <label htmlFor="cash" className="cursor-pointer">Cash on Delivery</label>
                             <input
                                 type="radio"
                                 id="cash"
                                 name="method"
-                                className="ml-2"
+                                className="ml-2 cursor-pointer"
                                 value={"cash"}
-                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                onChange={handlePayment}
                             />
                         </div>
                         <div className="">
-                            <label htmlFor="card">Via Card</label>
+                            <label htmlFor="card" className="cursor-pointer">Via Card</label>
                             <input
                                 type="radio"
                                 id="card"
                                 name="method"
-                                className="ml-2"
+                                className="ml-2 cursor-pointer"
                                 value={"card"}
-                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                onChange={handlePayment}
                             />
                         </div>
                     </div>
@@ -129,6 +144,7 @@ const CheckOutBillingDetails = () => {
                                                 placeholder="Enter Your Last Name e.g  Smith"
                                             />
                                         </div>
+                                        <button className="bg-btn_bg w-40  flex justify-center items-center text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 mt-6" type="submit">Submit</button>
                                     </Form>
                                 );
                             }}

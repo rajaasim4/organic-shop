@@ -8,9 +8,7 @@ export const CheckOutShippingSlice = createSlice({
     },
     reducers: {
         getShippingValues: (state, action) => {
-            const { firstName, lastName, email, phoneNumber, address } = action.payload;
-            state = { firstName, lastName, email, phoneNumber, address }
-            // console.log(state)
+            return { ...state, ...action.payload };
         }
     }
 })

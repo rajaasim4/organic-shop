@@ -1,29 +1,50 @@
+//Icons from React-icons 
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { LiaShoppingBagSolid } from "react-icons/lia";
-import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa"
+import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, } from "react-icons/fa"
 import { BiMenuAltRight } from "react-icons/bi"
 import { IoCloseSharp } from "react-icons/io5"
+import { IoMdClose } from "react-icons/io"
+import { HiOutlineShoppingBag } from "react-icons/hi"
+
+//Images
 import Logo from "../../assets/Images/Logo.png";
+import Empty_Cart from "../../assets/Images/SVG/EmptyCart.svg"
+
+//States
 import { Link, Outlet } from "react-router-dom"
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useClickOutSideDetector from "../../Hooks/useClickOutsideDetector"
+
 // import SearchCategory from "../SearchCategory/SearchCategory";
 const NavBar = () => {
-  //=========Toggle Navbar==========
 
+
+  //=========Toggle Navbar==========
   const [show, setShow] = useState(false);
+
+  //=========Toggle Cart ===========
+  const [showCart, setShowCart] = useState(false)
+
+  //=====Hiding Cart Clicking OutSide=====
+  let cartRef = useRef()
+  useClickOutSideDetector(cartRef, () => {
+    setShowCart(false);
+  })
   return (
     <>
 
       <nav>
+        {/* ===========Navbar Top Section =============== */}
         <div className="w-full h-14 bg-shipping_bg flex justify-center items-center">
           <h4 className="text-white text-lg font-normal sm:text-base">
             Free Shipping From $50 Purchase Now
           </h4>
         </div>
 
-        <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6 slg:min-h-[230px] slg:items-start slg:pt-9 slg:py-3 slg:pb-14 relative">
-          <div className="mx-auto w-95 flex justify-between items-center   gap-y-6 slg:h-max">
+        <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6 slg:min-h-[230px] slg:items-start slg:pt-9 slg:py-3 slg:pb-14 relative ">
+          <div className="mx-auto w-95 flex justify-between items-center   gap-y-6 slg:h-max max-w-[1700px]">
             <div className="">
               <Link to={"/Home"}>
                 <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" />
@@ -73,49 +94,81 @@ const NavBar = () => {
               </div>
 
               <div className="py-2 px-2 border border-gray-400 rounded-md">
-                <Link to={"/Cart"}>
-                  <button className="flex items-center gap-x-4">
-                    <span className="text-3xl relative">
-                      <div className="absolute -top-2 text-white -right-2 bg-btn_bg text-sm rounded-full w-5 h-5 flex justify-center items-center">
-                        0
-                      </div>
-                      <LiaShoppingBagSolid />
+
+                <button className="flex items-center gap-x-4" onClick={() => setShowCart(!showCart)}>
+                  <span className="text-3xl relative">
+                    <div className="absolute -top-2 text-white -right-2 bg-btn_bg text-sm rounded-full w-5 h-5 flex justify-center items-center">
+                      0
+                    </div>
+                    <LiaShoppingBagSolid />
+                  </span>
+                  <span className="text-sm flex flex-col items-start sm:hidden">
+                    Shopping Basket
+                    <br />
+                    <span className="text-[#007d56] text-lg font-medium">
+                      $0.00
                     </span>
-                    <span className="text-sm flex flex-col items-start sm:hidden">
-                      Shopping Basket
-                      <br />
-                      <span className="text-[#007d56] text-lg font-medium">
-                        $0.00
-                      </span>
-                    </span>
-                  </button>
-                </Link>
+                  </span>
+                </button>
+
               </div>
+
+              {/* =========== Sidebar Cart================ */}
+
+              <div className={`duration-150 
+              ${showCart ? "w-[300px]" : "w-0"}
+                h-full fixed top-0 right-0 bg-white z-50 rounded-l-2xl shadow-xl`} ref={cartRef}>
+                <div className=" py-4 px-5 flex flex-col justify-between h-full w-full">
+                  <div className="flex justify-between items-center">
+                    <h1 className="text-2xl  flex items-center">
+                      <span className="mr-3"><HiOutlineShoppingBag /></span>
+                      My Cart
+                    </h1>
+                    <span className="text-xl cursor-pointer" onClick={() => setShowCart(false)}>
+                      <IoMdClose />
+                    </span>
+                  </div>
+                  <div className="">
+                    <img src={Empty_Cart} alt="" />
+                  </div>
+                  <div className="">
+
+                    <Link
+                      onClick={() => setShowCart(false)}
+                      to={"/Cart"}
+                      className="bg-btn_bg flex items-center justify-center max-w-40 w-9/12 mx-auto text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">View Cart
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* ========Sidebar Cart Ended */}
+
             </div>
           </div>
 
         </div>
-        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9">
+        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9 max-w-[1700px] ">
           <div className="flex justify-between items-center w-full  xsm:flex-col  xsm:gap-y-3 xsm:items-start">
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
-            <div className={` ${show ? "md:w-4/5" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-2xl md:overflow-hidden`}>
+            <div className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`}>
 
-              <ul className="flex w-full justify-evenly font-semibold md:h-3/5 md:flex-col md:w-6/12 md:items-center md:text-white">
+              <ul className="flex w-full justify-evenly  md:h-3/5 md:flex-col md:w-6/12 md:items-center ">
                 <li>
-                  <Link to={"/Home"} className="text-base font-sans duration-200 hover:text-[#aaa]">Home</Link>
+                  <Link to={"/Home"} className="text-base  duration-200 hover:text-[#aaa]">Home</Link>
                 </li>
                 <li>
-                  <Link to={"/Shop"} className="text-base font-sans duration-200 hover:text-[#aaa]">Shop</Link>
+                  <Link to={"/Shop"} className="text-base  duration-200 hover:text-[#aaa]">Shop</Link>
                 </li>
                 <li>
-                  <Link to={"/About"} className="text-base font-sans duration-200 hover:text-[#aaa]">About</Link>
+                  <Link to={"/About"} className="text-base  duration-200 hover:text-[#aaa]">About</Link>
                 </li>
                 <li>
-                  <Link to={"/Contact"} className="text-base font-sans duration-200 hover:text-[#aaa]">Contact</Link>
+                  <Link to={"/Contact"} className="text-base  duration-200 hover:text-[#aaa]">Contact</Link>
                 </li>
               </ul>
             </div>
-
+            {/* =========== Social Icons================== */}
             <div className="w-2/12 md:mr-16 xsm:hidden">
               <div className="flex  justify-evenly gap-5 ">
                 <span className="cursor-pointer  text-xl hover:scale-125 duration-300 hover:text-[#fb7645]">
@@ -142,8 +195,9 @@ const NavBar = () => {
               </button>
             </div>
           </div>
+
         </div>
-      </nav>
+      </nav >
       <Outlet />
     </>
   );

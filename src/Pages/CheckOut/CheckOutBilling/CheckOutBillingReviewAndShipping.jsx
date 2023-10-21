@@ -5,29 +5,21 @@ import { FaAddressCard } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 //State
-import { useEffect, useState } from "react";
-
-import img from "../../../assets/Images/onions.jpg"
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const CheckOutBillingReviewAndShipping = () => {
-    const data = useSelector((state) => state.CheckOutShipping)
-    console.log(data)
-    useEffect(() => {
+import img from "../../../assets/Images/onions.jpg"
 
-    }, [data])
-    // const { firstName, lastName, email, phoneNumber, address } = useSelector((state) => state.CheckOutShipping)
+const CheckOutBillingReviewAndShipping = () => {
+    //Getting Data from the State
+    const data = useSelector((state) => state.CheckOutShipping)
 
     //Showing and Hidding the Elements
     const [showReviewItems, setShowReviewItems] = useState(false);
 
-
-    //For Review Items and Shipping Getting the Details
-    const [reviewShippingDetails, setReviewShippingDetails] = useState({})
     return (
         <div
-            className={`mt-9 w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${showReviewItems ? "h-max" : "h-28"
-                }   duration-150 overflow-hidden`}
+            className={`mt-9 w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${showReviewItems ? "h-max" : "h-28"} duration-150 overflow-hidden`}
         >
             <div
                 className="flex items-center justify-between cursor-pointer"
@@ -107,7 +99,7 @@ const CheckOutBillingReviewAndShipping = () => {
 
                             Name:
                         </h3>
-                        {/* <p>{firstName} {lastName}</p> */}
+                        <p>{data.firstName} {data.lastName}</p>
                     </div>
                     <div className="flex items-center gap-x-3">
 
@@ -118,7 +110,7 @@ const CheckOutBillingReviewAndShipping = () => {
 
                             Email:
                         </h3>
-                        {/* <p>{email}</p> */}
+                        <p>{data.email}</p>
                     </div>
                     <div className="flex items-center gap-x-3">
 
@@ -129,7 +121,7 @@ const CheckOutBillingReviewAndShipping = () => {
 
                             Phone Number:
                         </h3>
-                        {/* <p>{phoneNumber}</p> */}
+                        <p>{data.phoneNumber}</p>
                     </div>
                     <div className="flex items-center gap-x-3">
 
@@ -140,7 +132,7 @@ const CheckOutBillingReviewAndShipping = () => {
 
                             Address:
                         </h3>
-                        {/* <p>{address}</p> */}
+                        <p>{data.address}</p>
                     </div>
                 </div>
             </div>

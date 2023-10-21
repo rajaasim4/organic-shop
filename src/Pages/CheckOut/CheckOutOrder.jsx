@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 // import { useSelector } from "react-redux";
 const CheckOutOrder = () => {
   // const data = useSelector((state) => state.cart.cart);
@@ -13,7 +15,30 @@ const CheckOutOrder = () => {
   // let Subtotal = total;
   // let Total = parseInt(Math.ceil(Subtotal)) + 15;
 
-  const CheckOutPayment = () => { };
+
+  const { isCheckOutShippingDetialsFilled, isCheckOutPymentSelected } = useSelector((state) => state.CheckDetails)
+  const CheckOutPayment = () => {
+    if (!isCheckOutShippingDetialsFilled) {
+      toast.error("Please Fill the Shipping Details", {
+        position: "top-right",
+        autoClose: 2300,
+      })
+      return;
+    }
+    if (!isCheckOutPymentSelected) {
+      toast.error("PLease Select the Payment Method from Billing Details", {
+        position: "top-right",
+        autoClose: 2300,
+      })
+      return;
+    }
+    toast("Your Order has been Placed", {
+      position: "top-right",
+      autoClose: 2300,
+    })
+
+
+  };
   return (
     <div className="w-11/12 mx-auto shadow-lg border-gray-300 px-5 py-7 md:px-3 md:w-full ">
       <h4 className="text-2xl font-semibold mb-4">Your Order</h4>

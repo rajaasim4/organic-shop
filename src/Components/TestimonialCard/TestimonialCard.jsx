@@ -1,13 +1,12 @@
 
 import { FaStar } from "react-icons/fa"
-import a from "../../assets/Images/a.png"
-const TestimonialCard = () => {
+const TestimonialCard = (props) => {
     return (
         <>
 
 
             <div className="h-[400px] sm:w-11/12 sm:mx-auto w-full relative rounded-2xl   flex items-end">
-                <img src={a} alt="" className="absolute top-0 left-1/2 -translate-x-1/2" />
+                <img src={props.img} alt="" className="absolute top-0 left-1/2 -translate-x-1/2" />
                 <div className="flex flex-col items-center  pt-16 bg-white shadow-md h-[340px] rounded-2xl ">
                     <p className="w-10/12 text-center text-[#4b4b4b] leading-relaxed mt-2">
                         A wonderful serenity has taken possession of entire soul, like these sweet mornings of spring which I enjoy with my whole heart. wonderful serenity has taken            </p>

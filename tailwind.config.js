@@ -32,6 +32,9 @@ export default {
           "linear-gradient(270deg, rgba(255,255,255,0) 17%, #22c157 100%);",
         nav_bg:
           "linear-gradient(135deg,rgb(238,238,238) 50%,rgb(238,238,238) 50%)",
+
+        hero_right_1_bg: "url('./assets/Images/Hero-right-bg1.jpg')",
+        hero_right_2_bg: "url('./assets/Images/Hero-right-bg2.jpg')",
         shipping_bg: "url('./assets/Images/nav-shipping-bg.jpg')",
         noplastic_main: "url('./assets/Images/no_plastic_main.jpg')",
         noplastic_main_right:

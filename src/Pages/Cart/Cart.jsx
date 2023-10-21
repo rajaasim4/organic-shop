@@ -6,22 +6,24 @@ import { HiOutlineShoppingBag } from "react-icons/hi"
 const Cart = () => {
     return (
         <>
-            <Helmet>
-                <div className="flex justify-center mb-20">
-                    <h1 className="text-5xl text-center  flex items-center gap-x-4">My Cart
-                        <span className="font-normal">
-                            <HiOutlineShoppingBag />
-                            {/* <BiShoppingBag /> */}
-                        </span>
-                    </h1>
-                </div>
+            <div className="max-w-[1700px] mx-auto">
 
-                <div className="flex mb-20 gap-x-6">
-                    <CartDetails />
-                    <CartTotal />
-                </div>
+                <Helmet>
+                    <div className="flex justify-center mb-20">
+                        <h1 className="text-5xl text-center  flex items-center gap-x-4">My Cart
+                            <span className="font-normal">
+                                <HiOutlineShoppingBag />
+                            </span>
+                        </h1>
+                    </div>
 
-            </Helmet>
+                    <div className="flex mb-20 gap-x-6">
+                        <CartDetails />
+                        <CartTotal />
+                    </div>
+
+                </Helmet>
+            </div>
             <Brands />
         </>
     )

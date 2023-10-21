@@ -13,6 +13,7 @@ import { Formik, Form } from "formik";
 import CheckOutShippingSchema, { InitialValues } from '../../../utils/Schema/CheckOutShippingSchema';
 import { useDispatch } from 'react-redux';
 import { getShippingValues } from '../../../store/Reducers/CheckOutShippingSlice';
+import { getCheckOutShippingDetails } from '../../../store/Reducers/CheckDetailsSlice';
 const CheckOutBillingShipping = () => {
 
     const [showShipping, setShowShipping] = useState(false);
@@ -23,6 +24,11 @@ const CheckOutBillingShipping = () => {
 
     const handleSubmitForm = (values) => {
 
+        //Checking Form filled or not
+        dispatch(getCheckOutShippingDetails(true));
+
+
+        //Event Deipatch for Getting Review and Details Values
         dispatch(getShippingValues(values))
     }
     return (

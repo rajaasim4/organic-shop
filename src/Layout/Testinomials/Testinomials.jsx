@@ -1,8 +1,16 @@
 import Helmet from "../../Components/Helmet/Helmet"
+
+//Swiper Component
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import TestimonialCard from "../../Components/TestimonialCard/TestimonialCard";
 import { Autoplay, Navigation, } from "swiper/modules"
+
+//Images
+import Tesetimonial_img1 from "../../assets/Images/Testimonial_img1.png"
+import Tesetimonial_img2 from "../../assets/Images/Testimonial_img2.png"
+import Tesetimonial_img3 from "../../assets/Images/Testimonial_img3.png"
+import Tesetimonial_img4 from "../../assets/Images/Testimonial_img4.png"
 
 const Testinomials = () => {
     return (
@@ -23,7 +31,9 @@ const Testinomials = () => {
                     rewind={true}
                     modules={[Autoplay, Navigation,]}
                     breakpoints={{
-                        0: { slidesPerView: 1 },
+                        0: {
+                            slidesPerView: 1
+                        },
                         600: {
                             slidesPerView: 2,
                         },
@@ -37,22 +47,35 @@ const Testinomials = () => {
                     className="w-full  min-h-[450px] "
                 >
                     <SwiperSlide className="text-center flex justify-center items-center">
-                        <TestimonialCard
 
-                        />
+                        <TestimonialCard img={Tesetimonial_img1} />
+
                     </SwiperSlide>
                     <SwiperSlide className="text-center flex justify-center items-center">
-                        <TestimonialCard />
+
+                        <TestimonialCard img={Tesetimonial_img2} />
+
                     </SwiperSlide>
                     <SwiperSlide className="text-center flex justify-center items-center">
-                        <TestimonialCard />
+
+                        <TestimonialCard img={Tesetimonial_img3} />
+
                     </SwiperSlide>
                     <SwiperSlide className="text-center flex justify-center items-center">
-                        <TestimonialCard />            </SwiperSlide>
+
+                        <TestimonialCard img={Tesetimonial_img4} />
+
+                    </SwiperSlide>
                     <SwiperSlide className="text-center flex justify-center items-center">
-                        <TestimonialCard />            </SwiperSlide>
+
+                        <TestimonialCard img={Tesetimonial_img1} />
+                    </SwiperSlide>
+
                     <SwiperSlide className="text-center flex justify-center items-center">
-                        <TestimonialCard />            </SwiperSlide>
+
+                        <TestimonialCard img={Tesetimonial_img2} />
+
+                    </SwiperSlide>
                 </Swiper>
             </div>
             <div className="h-28 sm:hidden"></div>

@@ -9,8 +9,8 @@ export const InitialValues = {
 
 
 const CheckOutShippingSchema = Yup.object({
-    firstName: Yup.string().min(5).max(18).required("First Name Required Can not be empty"),
-    lastName: Yup.string().min(5).max(18).required("Last Name Required Can not be empty"),
+    firstName: Yup.string().min(3).max(18).required("First Name Required Can not be empty"),
+    lastName: Yup.string().min(2).max(18).required("Last Name Required Can not be empty"),
     email: Yup.string().required('Email Required Can not be empty').matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email'),
     address: Yup.string().required("Adress Required Can not be empty"),
     phoneNumber: Yup.string()

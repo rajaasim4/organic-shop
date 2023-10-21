@@ -21,20 +21,30 @@ const Hero = () => {
                         <button className="hover:bg-slate-800 duration-300 bg-btn_bg w-32 h-12 rounded-xl text-white text-xl">Shop Now</button>
                     </div>
                 </div>
-                <div className=" lg:col-span-3 lg:justify-end  lg:pt-4  rounded-2xl shadow-xl flex items-end justify-center px-3 pb-10 ">
+                <div className=" lg:col-span-3 lg:justify-end  lg:pt-4  flex flex-col gap-y-5 bg-transparent lg:h-[600px]">
 
-                    <div className="flex flex-col gap-y-6  ">
+                    <div className="md:h-[300px]  bg-hero_right_1_bg h-1/2 bg-cover bg-center w-full rounded-xl shadow-xl  flex items-center pl-4">
+                        <h3 className="text-3xl">
+                            Fresh
+                            <span className="font-semibold  block">
 
-                        <button className="rounded-xl text-white w-16 h-8 bg-primary_red">
-                            Sale
-                        </button>
-                        <p className="text-primary_dark_green">Save Up to Flat</p>
-                        <h2 className="font-semibold text-primary_dark_green text-4xl">Mega Sale</h2>
-                        <button className="hover:bg-slate-800 hover:shadow-[0px_9px_25px_0px_rgb(30_41_90)] shadow-[0px_9px_25px_0px_#ff4e2d] duration-300 bg-btn_bg w-32 h-12 rounded-xl text-white text-xl">Shop Now</button>
+                                Exotic Fruits
+                            </span>
+                        </h3>
+
+                    </div>
+                    <div className="md:h-[300px]  bg-hero_right_2_bg h-1/2 bg-cover bg-center w-full rounded-xl shadow-xl  flex items-center pl-4">
+                        <h3 className="text-3xl">
+                            Be Fitness
+                            <span className="font-semibold  block">
+
+                                Healthy Food
+                            </span>
+                        </h3>
                     </div>
                 </div>
             </div>
-        </Helmet>
+        </Helmet >
 
 
     )

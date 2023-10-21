@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <footer className="py-0  bg-primary_dark_green ">
-        <div className="w-95 mx-auto ">
+        <div className="w-95 mx-auto max-w-[1700px] pt-9 ">
 
           <h3 className="text-center text-2xl text-white">GET DISCOUNT</h3>
           <h1 className="text-center text-4xl text-white font-semibold my-4 sm:text-3xl">Subscribe to our Newsletter</h1>

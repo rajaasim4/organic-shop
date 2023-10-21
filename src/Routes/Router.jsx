@@ -48,14 +48,14 @@ const Router = () => {
           {/* Authentication Routes */}
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/SignUp" element={<SignUp />} />
+
+          {/* Error Page */}
           <Route exact path="*" element={<Error />} />
 
         </Routes>
 
         {/* Show footer only on specific pages */}
         {showFooter && <Footer />}
-
-        {/* <Footer /> */}
 
       </div>
     </>

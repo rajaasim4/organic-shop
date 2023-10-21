@@ -5,8 +5,11 @@ import Hero from "./Hero"
 const About = () => {
     return (
         <>
-            <Hero />
-            <OurTeam />
+            <div className="max-w-[1700px] mx-auto">
+
+                <Hero />
+                <OurTeam />
+            </div>
             <Brands />
         </>
     )
