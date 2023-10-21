@@ -19,7 +19,7 @@ import mastercard from "../../../assets/Images/SVG/mastercard.svg";
 import paypal from "../../../assets/Images/SVG/paypal.svg";
 import visa from "../../../assets/Images/SVG/visa.svg";
 import jazzcash from "../../../assets/Images/SVG/Jazz-cash.svg";
-import easypaisa from "../../../assets/Images/SVG/easypaisa.svg";
+import easypaisa from "../../../assets/Images/SVG/Easypaisa.svg";
 import { useDispatch } from "react-redux";
 import { getCheckOutPaymentSelection } from "../../../store/Reducers/CheckDetailsSlice";
 const CheckOutBillingDetails = () => {
