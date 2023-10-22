@@ -5,7 +5,7 @@ const StarRating = ({ rating }) => {
   const maxStars = 5;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating - fullStars >= 0.5;
-  console.log(rating)
+
 
   return (
     <div className="flex">
