@@ -2,7 +2,8 @@ import Helmet from "../../Components/Helmet/Helmet"
 import ProductCard from "../../Components/ProductCard/ProductCard"
 import { HiArrowSmRight, HiArrowSmLeft } from "react-icons/hi"
 import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, } from 'swiper/react';
+import { Navigation } from "swiper/modules";
 
 const FeaturedProducts = () => {
     return (
@@ -11,13 +12,13 @@ const FeaturedProducts = () => {
 
             <HeadingBtn title="100% Natural" />
             <div className="flex justify-between">
-                <h1 className="text-5xl font-light sm:text-3xl md:text-4xl xsm:text-2xl  my-8">Featured Products</h1>
+                <h1 className="text-5xl sm:text-3xl md:text-4xl xsm:text-2xl  my-8 ">Featured Products</h1>
                 <div className="flex gap-x-4 items-center ">
 
-                    <button className="bg-gradient_bg w-12 h-12 flex justify-center items-center text-white rounded-md text-2xl">
+                    <button className="bg-gradient_bg w-12 h-12 flex justify-center items-center text-white rounded-md text-2xl swiper-button-prev">
                         <HiArrowSmLeft />
                     </button>
-                    <button className="bg-gradient_bg w-12 h-12 flex justify-center items-center text-white rounded-md text-2xl">
+                    <button className="bg-gradient_bg w-12 h-12 flex justify-center items-center text-white rounded-md text-2xl swiper-button-next">
                         <HiArrowSmRight />
                     </button>
                 </div>
@@ -29,6 +30,12 @@ const FeaturedProducts = () => {
                         spaceBetween={30}
                         pagination={{
                             clickable: true,
+                        }}
+                        allowSlideNext={true}
+                        allowSlidePrev={true}
+                        navigation={{
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
                         }}
                         breakpoints={{
                             0: {
@@ -46,7 +53,7 @@ const FeaturedProducts = () => {
 
 
                         }}
-                        modules={[]}
+                        modules={[Navigation]}
                         className="mySwiper w-full h-full mx-auto"
                     >
                         <SwiperSlide className=" text-center flex justify-center items-center">
@@ -101,7 +108,7 @@ const FeaturedProducts = () => {
                 </div>
             </div>
 
-        </Helmet>
+        </Helmet >
     )
 }
 

@@ -10,7 +10,7 @@ const Hero = () => {
                 <div className=" py-4 bg-white px-2 rounded-2xl shadow-xl md:col-span-3 ">
                     <SideBar />
                 </div>
-                <div className="bg-[url('./assets/images/Hero_bg.jpg')] w-full  bg-cover bg-no-repeat h-[555px] rounded-2xl p-5 flex justify-end pr-20 pt-14 md:col-span-3">
+                <div className="bg-hero w-full  bg-cover bg-no-repeat h-[555px] rounded-2xl p-5 flex justify-end pr-20 pt-14 md:col-span-3">
                     <div className="flex flex-col gap-y-6 ">
 
                         <div className="rounded-full text-white grid place-items-center text-3xl w-20 h-20 bg-primary_red">

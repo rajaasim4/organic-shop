@@ -3,9 +3,24 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Nunito", sans-serif;
   font-family: "Source Sans 3", sans-serif;
-  src: url(./Fonts/Nunito-Regular.ttf);
+  src: url(./Fonts/Nunito/Nunito-Black.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-Bold.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-ExtraBold.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-ExtraLight.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-Italic.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-Light.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-Medium.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-Regular.ttf) format("truetype"),
+    url(./Fonts/Nunito/Nunito-SemiBold.ttf) format("truetype");
 }
+/* @font-face {
+  font-family: "Nunito", sans-serif;
+  src: url(./Fonts/Nunito/Nunito-Regular.ttf) format("truetype");
+  font-weight: 600;
+  font-style: normal;
+} */
 
 @layer components {
   .aside-link-hover:hover {
@@ -45,8 +60,7 @@
   }
 }
 
-* {
-  font-family: "Source Sans 3", sans-serif;
+body {
+  font-family: "Nunito", sans-serif;
+  /* font-family: "Source Sans 3", sans-serif; */
 }
-
-/* font-family: 'Source Sans 3', sans-serif; */

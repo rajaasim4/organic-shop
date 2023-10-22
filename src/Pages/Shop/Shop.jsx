@@ -3,6 +3,8 @@ import Helmet from "../../Components/Helmet/Helmet"
 import Brands from "../../Layout/Brands/Brands"
 import ProductCard from "../../Components/ProductCard/ProductCard"
 import { useState } from "react"
+//Products Data
+import Product from "../../Data/Product"
 const Shop = () => {
     const [showSortFilter, setShowSortFilter] = useState(false)
 
@@ -12,6 +14,7 @@ const Shop = () => {
         setSelectSortValue(e.target.value);
         setShowSortFilter((prev) => !prev);
     }
+
     return (
         <>
             <div className="max-w-[1700px] mx-auto">
@@ -24,6 +27,8 @@ const Shop = () => {
                         </div>
                         <div className="w-full ">
 
+                            {/* Handling Sorting of Products */}
+
                             <div className="min-h-[60px] mb-8  w-full flex justify-end items-center relative">
                                 <div className={`${showSortFilter ? "h-64" : "h-12"}  duration-300 overflow-hidden   w-40  absolute right-3 top-2 rounded-lg`}>
                                     <button className="bg-primary_dark_green w-full h-12 mb-2 rounded-lg bg-gradient_bg text-white" onClick={() => setShowSortFilter((prev) => !prev)}>Sort By:{selectSortValue} </button>
@@ -35,10 +40,15 @@ const Shop = () => {
                                 </div>
                             </div>
 
+                            {/* Showing All Items */}
+                            <div className="flex gap-x-5 gap-y-8 flex-wrap">
+                                {Product.map((item) => {
+                                    return (
 
-                            <div className="flex gap-5 flex-wrap">
-                                <ProductCard />
-                                <ProductCard />
+                                        <ProductCard key={item.id} {...item} />
+                                    )
+                                })}
+
                             </div>
                         </div>
                     </div>

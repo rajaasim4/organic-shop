@@ -13,6 +13,9 @@ export default {
       xsm: { max: "377px" },
     },
     extend: {
+      fontFamily: {
+        nunito: ["Nunito", "sans - serif"],
+      },
       width: {
         95: "95%",
       },
@@ -33,6 +36,7 @@ export default {
         nav_bg:
           "linear-gradient(135deg,rgb(238,238,238) 50%,rgb(238,238,238) 50%)",
 
+        hero: "url('./assets/images/Hero_bg.jpg')",
         hero_right_1_bg: "url('./assets/Images/Hero-right-bg1.jpg')",
         hero_right_2_bg: "url('./assets/Images/Hero-right-bg2.jpg')",
         shipping_bg: "url('./assets/Images/nav-shipping-bg.jpg')",

@@ -4,7 +4,7 @@ import { GiFeather, GiFruitBowl, GiMeat, GiBeerBottle, GiHoneyJar, GiMushroomGil
 import { MdOutlineKeyboardArrowRight } from "react-icons/md"
 const ShopAside = () => {
     return (
-        <div className="w-[350px] rounded-xl gap-y-4 py-10 min-h-[700px] bg-white shadow-md flex flex-col items-center">
+        <div className="w-[340px] rounded-xl gap-y-4 py-10 min-h-[700px] bg-white shadow-md flex flex-col items-center">
             <div className=" w-full px-6 flex items-center gap-x-2">
                 <h2 className="text-2xl text-left">Search</h2>
                 <span className=" w-52 h-1  bg-gradient_lines"></span>
