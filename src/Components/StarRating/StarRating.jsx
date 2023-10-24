@@ -8,8 +8,23 @@ const StarRating = ({ rating }) => {
 
 
   return (
-    <div className="flex">
-      {[...Array(fullStars)].map((star, index) => {
+    <div className="flex gap-[2px]">
+      <span>
+        <FaStar />
+      </span>
+      <span>
+        <FaStar />
+      </span>
+      <span>
+        <FaStar />
+      </span>
+      <span>
+        <FaStar />
+      </span>
+      <span>
+        <FaStar />
+      </span>
+      {/* {[...Array(fullStars)].map((star, index) => {
         return <FaStar key={index} color="#007d56" />
       })}
       {hasHalfStar && <FaStarHalf color="#007d56" />}
@@ -17,7 +32,7 @@ const StarRating = ({ rating }) => {
 
         <FaRegStar key={index} color="#007d56" />
       }
-      )}
+      )} */}
     </div>
   );
 };

@@ -2,22 +2,31 @@
 import { BsCart3 } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import StarRating from "../StarRating/StarRating"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../../store/Reducers/CartSlice"
 const ProductCard = (props) => {
+    const dispatch = useDispatch()
 
     //Destructing Data form the Props
-    const { id, name, category, price, imgSrc, rating } = props
+    const { id, name, category, price, imgSrc, rating } = props;
 
+    const handleAddToCart = () => {
 
+        //Adding Items to the Cart
+        dispatch(addToCart(props))
+
+    }
 
     return (
         <div className=" w-[340px] h-[498px] sm:w-full group  group  duration-300 cursor-pointer">
             {/* bg-[#fffcfc] */}
             {/* bg-[#f0f0f0] */}
-            <div className="w-full h-[323px] group-hover:shadow-xl duration-200  rounded-lg relative flex justify-center items-center mx-auto bg-[#f0f0f0]">
+            <div className="w-full h-[323px] group-hover:shadow-xl duration-200  rounded-2xl relative flex justify-center items-center mx-auto bg-[#f0f0f0]">
 
                 <img src={imgSrc} className="w-9/12 object-contain rounded-lg" alt="Product Image" />
                 <button className="absolute bottom-3 right-3 h-10 w-10 rounded-lg bg-gradient_bg  place-items-center hidden group-hover:grid duration-300 "
                     title="Add to Cart"
+                    onClick={handleAddToCart}
                 >
                     <span className="text-white text-2xl">
                         <BsCart3 />
