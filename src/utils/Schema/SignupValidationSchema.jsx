@@ -20,7 +20,7 @@ const signUpValidation = Yup.object({
         .required('Phone Number Required Can not be empty'),
 
     password: Yup.string().min(8, "Password must be atleat 8 Characters")
-        .max(25, "Password can not be more than 25 Characters").required("Name Required Can not be empty"),
+        .max(25, "Password can not be more than 25 Characters").required("Password Required Can not be empty"),
     confirmPassword: Yup.string()
         .min(8, "Password must be atleat 8 Characters")
         .max(25, "Password can not be more than 25 Characters")

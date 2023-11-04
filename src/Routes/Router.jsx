@@ -18,6 +18,9 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Cart from "../Pages/Cart/Cart";
 import CheckOut from "../Pages/CheckOut/CheckOut";
+import EnterEmail from "../Pages/ForgotPassword/EnterEmail";
+import ForgotEmailConfirmation from "../Pages/ForgotPassword/ForgotEmailConfirmation";
+import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 const Router = () => {
 
   // ========Showing Footer for the Specific Page=========
@@ -31,6 +34,8 @@ const Router = () => {
         <ToastContainer />
 
         <Routes >
+
+
           <Route element={<NavBar />}>
 
             <Route exact path="/" element={<Home />} />
@@ -49,7 +54,12 @@ const Router = () => {
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/SignUp" element={<SignUp />} />
 
-          {/* Error Page */}
+          {/* Forgot Password Routes */}
+          <Route path="/Forgot/EnterEmail" element={<EnterEmail />} />
+          <Route path="/Forgot/EmailConfimationSent" element={<ForgotEmailConfirmation />} />
+          <Route path="/Forgot/Password" element={<ForgotPassword />} />
+
+          {/* 404 Error Page */}
           <Route exact path="*" element={<Error />} />
 
         </Routes>

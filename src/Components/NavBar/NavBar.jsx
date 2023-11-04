@@ -13,7 +13,7 @@ import Logo from "../../assets/Images/Logo.png";
 import Empty_Cart from "../../assets/Images/SVG/EmptyCart.svg"
 
 //States
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, NavLink } from "react-router-dom"
 import { useRef, useState } from "react";
 import useClickOutSideDetector from "../../Hooks/useClickOutsideDetector"
 
@@ -31,6 +31,14 @@ const NavBar = () => {
   let cartRef = useRef()
   useClickOutSideDetector(cartRef, () => {
     setShowCart(false);
+  })
+
+  //============Hiding Navbar on Outside Click
+
+  let menuRef = useRef();
+
+  useClickOutSideDetector(menuRef, () => {
+    setShow(false)
   })
   return (
     <>
@@ -151,20 +159,39 @@ const NavBar = () => {
         <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9 max-w-[1700px] ">
           <div className="flex justify-between items-center w-full  xsm:flex-col  xsm:gap-y-3 xsm:items-start">
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
-            <div className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`}>
+            <div className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`} ref={menuRef}>
+              {show &&
+                <span className="absolute top-4 right-4 text-2xl hidden md:block"> <IoCloseSharp /></span>
+              }
 
               <ul className="flex w-full justify-evenly  md:h-3/5 md:flex-col md:w-6/12 md:items-center ">
                 <li>
-                  <Link to={"/Home"} className="text-base  duration-200 hover:text-[#aaa]">Home</Link>
+                  <NavLink to={"/Home"}
+                    className={({ isActive }) =>
+                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                    } onClick={() => setShow(false)}
+                  >Home</NavLink>
                 </li>
                 <li>
-                  <Link to={"/Shop"} className="text-base  duration-200 hover:text-[#aaa]">Shop</Link>
+                  <NavLink to={"/Shop"}
+                    className={({ isActive }) =>
+                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                    } onClick={() => setShow(false)}
+                  >Shop</NavLink>
                 </li>
                 <li>
-                  <Link to={"/About"} className="text-base  duration-200 hover:text-[#aaa]">About</Link>
+                  <NavLink to={"/About"}
+                    className={({ isActive }) =>
+                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                    } onClick={() => setShow(false)}
+                  >About</NavLink>
                 </li>
                 <li>
-                  <Link to={"/Contact"} className="text-base  duration-200 hover:text-[#aaa]">Contact</Link>
+                  <NavLink to={"/Contact"}
+                    className={({ isActive }) =>
+                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                    } onClick={() => setShow(false)}
+                  >Contact</NavLink>
                 </li>
               </ul>
             </div>
