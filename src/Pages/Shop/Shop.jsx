@@ -30,7 +30,7 @@ const Shop = () => {
                             {/* Handling Sorting of Products */}
 
                             <div className="min-h-[60px] mb-8  w-full flex justify-end items-center relative">
-                                <div className={`${showSortFilter ? "h-64" : "h-12"}  duration-300 overflow-hidden   w-40  absolute right-3 top-2 rounded-lg`}>
+                                <div className={`${showSortFilter ? "h-64" : "h-12"}  duration-300 overflow-hidden   w-40  absolute right-3 top-2 rounded-lg z-20`}>
                                     <button className="bg-primary_dark_green w-full h-12 mb-2 rounded-lg bg-gradient_bg text-white" onClick={() => setShowSortFilter((prev) => !prev)}>Sort By:{selectSortValue} </button>
                                     <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"Default"} onClick={handleSelectSortValue} >Default </button>
                                     <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"Low Price"} onClick={handleSelectSortValue}> Low Price</button>

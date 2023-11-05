@@ -25,7 +25,7 @@ const Login = () => {
       autoClose: 2300,
     });
     setIsDisabled(true);
-    console.log(values);
+    // console.log(values);
 
     //Showing Loader
     setIsLoading(true);
@@ -47,7 +47,9 @@ const Login = () => {
           <img src={LoginImg} alt="" className="w-8/12 " />
         </div>
         <div className="w-1/2  py-3 lg:w-full lg:flex lg:flex-col lg:items-center">
-          <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
+          <Link to={"/"}>
+            <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
+          </Link>
           <h1 className="text-3xl -translate-y-6 sm:text-2xl sm:text-center">
             Welcome to the
             <span className="text-primary_green mx-1 font-semibold">

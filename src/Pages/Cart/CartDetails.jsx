@@ -4,6 +4,8 @@ import { AiOutlineDelete } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
+import { toast } from "react-toastify"
+
 //Cart Functions
 import { addToCart, calculateDiscount, decreasingItemQunatity, removeToCart } from "../../store/Reducers/CartSlice"
 const CartDetails = () => {
@@ -12,14 +14,30 @@ const CartDetails = () => {
 
     //Getting Cart Data
     const data = useSelector((state) => state.CartSlice);
-    console.log(data);
+    // console.log(data);
+
+    //Checking Cupon Code implemented or not
+
+    const cuponApplied = useSelector((state) => state.CartSlice.isDiscountImplemented);
+
+
 
     //handling Discount
     const handleCuponCode = (e) => {
         e.preventDefault();
 
-        //Pass the amount how much percent you want to give discount
-        dispatch(calculateDiscount(20))
+        if (!cuponApplied) {
+
+            //Pass the amount how much percent you want to give discount
+            dispatch(calculateDiscount(20))
+        }
+        else {
+            toast.error("You have Already Applied Cupon Code", {
+                position: "top-right",
+                autoClose: 2300,
+                toastId: 2
+            })
+        }
 
     }
 

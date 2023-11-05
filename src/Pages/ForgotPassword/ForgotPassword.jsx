@@ -1,7 +1,7 @@
 import Logo from "../../assets/Images/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLockClosedOutline } from "react-icons/io5";
-import LoginImg from "../../assets/Images/SVG/Login.svg";
+import Img from "../../assets/Images/SVG/Forgot_password.svg";
 
 //FormIk Components
 import { Form, ErrorMessage, Field, Formik } from "formik";
@@ -21,10 +21,13 @@ const ForgotPassword = () => {
 
     const passwordValidation = Yup.object({
         newPassword: Yup.string().min(8, "Password must be atleat 8 Characters")
-            .max(25, "Password can not be more than 25 Characters").required("Password Required Can not be empty"),
+            .max(30, "Password can not be more than 25 Characters").required("Password Required Can not be empty").matches(
+                /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                'Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long'
+            ),
         confirmPassword: Yup.string()
             .min(8, "Password must be atleat 8 Characters")
-            .max(25, "Password can not be more than 25 Characters")
+            .max(30, "Password can not be more than 25 Characters")
             .required("Confirm Password Cannot be Empty")
             .oneOf([Yup.ref("newPassword"), null], "Password did not match"),
 
@@ -32,12 +35,12 @@ const ForgotPassword = () => {
 
     //Handling Login Submit
     const handleLoginSubmit = (values, onSubmitProps) => {
-        toast("Password Reset Succesfully ", {
+        toast("Password Changed Succesfully ", {
             position: "top-right",
             autoClose: 2300,
         });
         setIsDisabled(true);
-        console.log(values);
+        // console.log(values);
 
         //Showing Loader
         setIsLoading(true);
@@ -56,7 +59,7 @@ const ForgotPassword = () => {
         <div className="w-full min-h-screen flex justify-center items-center bg-primary_dark_green py-10">
             <div className="w-11/12  flex justify-center shadow-2xl rounded-md gap-x-20 border-2 bg-[#f0f8ff] lg:flex-col lg:items-center max-w-[1700px] mx-auto">
                 <div className="w-1/2  flex justify-center items-center lg:w-full">
-                    <img src={LoginImg} alt="" className="w-8/12 " />
+                    <img src={Img} alt="" className="w-8/12 " />
                 </div>
                 <div className="w-1/2  py-3 lg:w-full lg:flex lg:flex-col lg:items-center">
                     <Link to={"/"}>

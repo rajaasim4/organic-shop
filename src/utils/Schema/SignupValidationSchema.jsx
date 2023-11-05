@@ -20,10 +20,13 @@ const signUpValidation = Yup.object({
         .required('Phone Number Required Can not be empty'),
 
     password: Yup.string().min(8, "Password must be atleat 8 Characters")
-        .max(25, "Password can not be more than 25 Characters").required("Password Required Can not be empty"),
+        .max(30, "Password can not be more than 25 Characters").required("Password Required Can not be empty").matches(
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+            'Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long'
+        ),
     confirmPassword: Yup.string()
         .min(8, "Password must be atleat 8 Characters")
-        .max(25, "Password can not be more than 25 Characters")
+        .max(30, "Password can not be more than 25 Characters")
         .required("Confirm Password Cannot be Empty")
         .oneOf([Yup.ref("password"), null], "Password did not match"),
 })

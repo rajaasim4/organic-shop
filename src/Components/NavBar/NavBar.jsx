@@ -1,12 +1,13 @@
 //Icons from React-icons 
 import { BsSearch } from "react-icons/bs";
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineCloseCircle } from "react-icons/ai";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, } from "react-icons/fa"
 import { BiMenuAltRight } from "react-icons/bi"
 import { IoCloseSharp } from "react-icons/io5"
 import { IoMdClose } from "react-icons/io"
 import { HiOutlineShoppingBag } from "react-icons/hi"
+
 
 //Images
 import Logo from "../../assets/Images/Logo.png";
@@ -15,10 +16,17 @@ import Empty_Cart from "../../assets/Images/SVG/EmptyCart.svg"
 //States
 import { Link, Outlet, NavLink } from "react-router-dom"
 import { useRef, useState } from "react";
-import useClickOutSideDetector from "../../Hooks/useClickOutsideDetector"
+import useClickOutSideDetector from "../../Hooks/useClickOutsideDetector";
 
-// import SearchCategory from "../SearchCategory/SearchCategory";
+//Reducer
+import { useDispatch, useSelector } from "react-redux";
+import { removeToCart } from "../../store/Reducers/CartSlice"
+
+
+import SearchCategory from "../SearchCategory/SearchCategory";
 const NavBar = () => {
+
+  const dispatch = useDispatch()
 
 
   //=========Toggle Navbar==========
@@ -40,6 +48,13 @@ const NavBar = () => {
   useClickOutSideDetector(menuRef, () => {
     setShow(false)
   })
+
+  //=====Getting Cart Data from Reducer======
+
+  const cartdata = useSelector((state) => state.CartSlice.cart);
+
+
+
   return (
     <>
 
@@ -60,14 +75,14 @@ const NavBar = () => {
             </div>
 
             <div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2">
-              <div className="bg-primary_bg h-14 rounded-xl overflow-hidden flex justify-between">
+              <div className="bg-primary_bg h-14 rounded-xl  flex justify-between">
                 <input
                   type="text"
                   className="w-1/2 pl-4 h-full bg-transparent text-white placeholder:text-white outline-none sm:hidden"
                   placeholder="Search..."
                 />
-                <div className="w-1/2 sm:w-full px-4 border-l-[1px] relative14 ">
-                  <select
+                <div className="w-1/2 sm:w-full px-4 border-l-[1px] relative">
+                  {/* <select
                     name=""
                     id=""
                     className="h-full w-full bg-primary_bg cursor-pointer  text-white outline-none "
@@ -82,8 +97,8 @@ const NavBar = () => {
                     <option value="All Categories">Mushrooms</option>
                     <option value="All Categories">Organic Food</option>
                     <option value="All Categories">Oat Meal</option>
-                  </select>
-                  {/* <SearchCategory /> */}
+                  </select> */}
+                  <SearchCategory />
                 </div>
                 <button className="w-14 h-full bg-[#fb7645] text-white text-2xl flex justify-center items-center group">
                   <BsSearch className="group-hover:scale-125 duration-300 " />
@@ -136,8 +151,34 @@ const NavBar = () => {
                       <IoMdClose />
                     </span>
                   </div>
-                  <div className="">
-                    <img src={Empty_Cart} alt="" />
+                  <div className=" h-full">
+                    {cartdata.length === 0 ?
+                      <div className="flex justify-center items-center h-full">
+
+                        <img src={Empty_Cart} alt="" />
+                      </div>
+                      :
+                      cartdata.map((item) => {
+                        const { id, name, price, quantity, subtotal, img } = item
+                        return (
+                          <div className="flex items-center" key={id}>
+                            <span className="duration-300 hover:text-red-400 cursor-pointer" onClick={() => dispatch(removeToCart(id))}><AiOutlineCloseCircle /></span>
+                            <img src={img} alt="" className="w-20 h-20" />
+                            <div className="">
+                              <h2>{name}</h2>
+                              <div className="">
+                                <span className="text-primary_green mr-1">
+
+                                  {quantity}
+                                </span>
+                                x ${price}
+                              </div>
+                            </div>
+
+                          </div>
+                        )
+                      })
+                    }
                   </div>
                   <div className="">
 

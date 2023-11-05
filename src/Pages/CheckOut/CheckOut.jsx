@@ -1,9 +1,42 @@
+//States
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+//Components
 import CheckOutBilling from "./CheckOutBilling/CheckoutBilling";
 import CheckOutOrder from "./CheckOutOrder";
-import Brands from "../../Layout/Brands/Brands"
+import Brands from "../../Layout/Brands/Brands";
+import { toast } from "react-toastify"
+
+// Functions
+import { calculateDiscount } from "../../store/Reducers/CartSlice";
 const CheckOut = () => {
     const [visible, setVisible] = useState(false);
+    const dispatch = useDispatch();
+
+
+    //Checking Cupon Code implemented or not
+    const cuponApplied = useSelector((state) => state.CartSlice.isDiscountImplemented);
+
+
+    //Handle Cupon Code
+    const handleCuponCode = (e) => {
+        e.preventDefault();
+        if (!cuponApplied) {
+
+            //Pass the amount how much percent you want to give discount
+            dispatch(calculateDiscount(20))
+        }
+        else {
+            toast.error("You have Already Applied Cupon Code", {
+                position: "top-right",
+                autoClose: 2300,
+                toastId: 2
+            })
+        }
+
+    }
+
     return (
         <>
             <section className="py-10 w-full mb-20 ">
@@ -23,16 +56,19 @@ const CheckOut = () => {
                         </p>
                     </div>
                     {visible && (
-                        <div className="w-8/12 mt-5 flex items-center duration-300 flex-wrap gap-y-5 sm:justify-center sm:w-full ">
-                            <input
-                                type="text"
-                                className="w-full py-3 px-3 border-gray-300 border outline-none rounded-lg  focus-visible:border-[#ffc900] mr-5"
-                                name=""
-                                placeholder="Cupon Code"
-                                id=""
-                            />
-                            <button className="bg-btn_bg w-40  flex justify-center items-center text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Apply Cupon</button>
-                        </div>
+                        <form action="" onSubmit={handleCuponCode}>
+
+                            <div className="w-8/12 mt-5 flex items-center duration-300 flex-wrap gap-y-5 sm:justify-center sm:w-full ">
+                                <input
+                                    type="text"
+                                    className="w-full py-3 px-3 border-gray-300 border outline-none rounded-lg  focus-visible:border-[#007d56] focus-visible:border-2 mr-5"
+                                    name=""
+                                    placeholder="Cupon Code"
+                                    id=""
+                                />
+                                <button className="bg-btn_bg w-40  flex justify-center items-center text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Apply Cupon</button>
+                            </div>
+                        </form>
                     )}
                 </div>
                 <div className="w-11/12 mx-auto flex justify-center md:flex-col-reverse xxl:w-[1700px]">

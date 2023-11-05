@@ -22,7 +22,7 @@ const SignUp = () => {
       position: "top-right",
       autoClose: 2300,
     });
-    console.log(values);
+    // console.log(values);
     setIsDisabled(true);
 
     //Clearing the Form Values After Submitting and Disabling Button for 3 Seconds
@@ -36,12 +36,14 @@ const SignUp = () => {
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center bg-primary_dark_green py-20">
-      <div className="w-11/12 mx-auto flex justify-center shadow-2xl rounded-md gap-x-20 border-2 bg-[#f0f8ff] lg:flex-col lg:items-center lg:pt-10 max-w-[1700px] mx-auto">
+      <div className="w-11/12 mx-auto flex justify-center shadow-2xl rounded-md gap-x-20 border-2 bg-[#f0f8ff] lg:flex-col lg:items-center lg:pt-10 max-w-[1700px] ">
         <div className="w-1/2  flex justify-center items-center lg:w-full">
           <img src={SignUpImg} alt="" className="w-8/12 " />
         </div>
         <div className="w-1/2  py-3 lg:w-full lg:flex lg:flex-col lg:items-center">
-          <img src={Logo} className="mt-5 w-44 h-44 object-contain  " alt="" />
+          <Link to={"/"}>
+            <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
+          </Link>
           <h1 className="text-3xl -translate-y-6 sm:text-center sm:text-2xl">
             Welcome to the
             <span className="text-primary_green mx-1 font-semibold">
@@ -107,8 +109,8 @@ const SignUp = () => {
 
                     <button
                       className={`rounded-xl text-white w-32 h-12 mt-4 mx-auto block bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300 ${isDisabled
-                          ? "bg-[#f7855c] hover:bg-[#f7855c] cursor-not-allowed "
-                          : ""
+                        ? "bg-[#f7855c] hover:bg-[#f7855c] cursor-not-allowed "
+                        : ""
                         }`}
                       disabled={formik.onSubmitProps}
                       type="submit"

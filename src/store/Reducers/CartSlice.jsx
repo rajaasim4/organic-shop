@@ -5,7 +5,8 @@ const initialState = {
     cart: [],
     SubTotal: 0,
     priceAfterDiscount: 0,
-    discountPercent: 0
+    discountPercent: 0,
+    isDiscountImplemented: false
     // Total: ""
 }
 
@@ -86,6 +87,9 @@ export const CartSlice = createSlice({
 
         },
         calculateDiscount: (state, action) => {
+            //Discount can be Implemented Only Once
+            state.isDiscountImplemented = true;
+
             //How Much you want to give Discount;
             state.discountPercent = action.payload
             state.priceAfterDiscount = state.SubTotal * (1 - state.discountPercent / 100);

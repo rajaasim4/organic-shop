@@ -16,7 +16,7 @@ const CartTotal = () => {
     let totalDiscount = totalPriceAfterdiscount === 0 ? totalPriceAfterdiscount : (SubTotal - totalPriceAfterdiscount).toFixed(2)
 
 
-    console.log(`Total price is ${SubTotal} and then after 20% Discount we get ${totalPriceAfterdiscount} and hence now total is ${totalDiscount}`);
+    // console.log(`Total price is ${SubTotal} and then after 20% Discount we get ${totalPriceAfterdiscount} and hence now total is ${totalDiscount}`);
 
     let totalPrice = totalPriceAfterdiscount === 0 ? SubTotal : SubTotal - totalDiscount
 
