@@ -24,9 +24,9 @@ const Hero = () => {
                 <div className=" lg:col-span-3 lg:justify-end  lg:pt-4  flex flex-col gap-y-5 bg-transparent lg:h-[600px]">
 
                     <div className="md:h-[300px]  bg-hero_right_1_bg h-1/2 bg-cover bg-center w-full rounded-xl shadow-xl  flex items-center pl-4">
-                        <h3 className="text-3xl">
+                        <h3 className="text-xl">
                             Fresh
-                            <span className="font-semibold  block">
+                            <span className="text-3xl  block">
 
                                 Exotic Fruits
                             </span>
@@ -34,9 +34,9 @@ const Hero = () => {
 
                     </div>
                     <div className="md:h-[300px]  bg-hero_right_2_bg h-1/2 bg-cover bg-center w-full rounded-xl shadow-xl  flex items-center pl-4">
-                        <h3 className="text-3xl">
+                        <h3 className="text-xl">
                             Be Fitness
-                            <span className="font-semibold  block">
+                            <span className="text-3xl  block">
 
                                 Healthy Food
                             </span>

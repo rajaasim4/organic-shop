@@ -1,38 +1,11 @@
 import Logo from "../../assets/Images/Logo.png";
-import { Link, useNavigate } from "react-router-dom";
-import { IoMailOutline, IoLockClosedOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 import SignUpImg from "../../assets/Images/SVG/SignUp.svg";
-import { AiOutlineUser, AiOutlineTablet } from "react-icons/ai";
 
-//Formik Imports
-import { Form, ErrorMessage, Field, Formik } from "formik";
-import {
-  signupInitialValues,
-  signUpValidation,
-} from "../../utils/Schema/SignupValidationSchema";
-import { toast } from "react-toastify";
-import { useState } from "react";
+import SignUpForm from "../../Forms/SignupForm/SignupForm";
 
 const SignUp = () => {
-  const [isDisabled, setIsDisabled] = useState(false);
-  const navigate = useNavigate();
 
-  let handleSubmitForm = (values, onSubmitProps) => {
-    toast("Form has been Submited", {
-      position: "top-right",
-      autoClose: 2300,
-    });
-    // console.log(values);
-    setIsDisabled(true);
-
-    //Clearing the Form Values After Submitting and Disabling Button for 3 Seconds
-    setTimeout(() => {
-      setIsDisabled(false);
-      onSubmitProps.setSubmitting(false);
-      onSubmitProps.resetForm();
-      navigate("/Home");
-    }, 3000);
-  };
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center bg-primary_dark_green py-20">
@@ -51,7 +24,7 @@ const SignUp = () => {
             </span>
           </h1>
           <div className="w-[400px] sm:w-11/12 pb-20">
-            <Formik
+            {/* <Formik
               initialValues={signupInitialValues}
               onSubmit={handleSubmitForm}
               validationSchema={signUpValidation}
@@ -120,7 +93,9 @@ const SignUp = () => {
                   </Form>
                 );
               }}
-            </Formik>
+            </Formik> */}
+
+            <SignUpForm />
           </div>
           <div className="mt-7  mx-auto w-[400px] lg:text-center sm:w-full">
             <p>
@@ -139,27 +114,5 @@ const SignUp = () => {
   );
 };
 
-const SignUpFeild = (props) => {
-  return (
-    <>
-      <div className="shadow-md  px-3 pl-6 rounded-lg h-12 border border-gray-500  mt-4 flex items-center">
-        <span className="text-2xl">{props.icon}</span>
-        <Field
-          name={props.name}
-          type={props.type}
-          className="h-full w-full outline-none pl-3 bg-transparent"
-          placeholder={props.placeholder}
-        />
-      </div>
-      <ErrorMessage name={props.name}>
-        {(errMsg) => {
-          return (
-            <small className="text-red-400 font-semibold ">{errMsg}</small>
-          );
-        }}
-      </ErrorMessage>
-    </>
-  );
-};
 
 export default SignUp;

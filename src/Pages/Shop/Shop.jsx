@@ -2,7 +2,8 @@ import ShopAside from "../../Layout/ShopAside/ShopAside"
 import Helmet from "../../Components/Helmet/Helmet"
 import Brands from "../../Layout/Brands/Brands"
 import ProductCard from "../../Components/ProductCard/ProductCard"
-import { useState } from "react"
+import { useRef, useState } from "react"
+import useClickOutsideDetector from "../../Hooks/useClickOutsideDetector"
 //Products Data
 import Product from "../../Data/Product"
 const Shop = () => {
@@ -14,6 +15,15 @@ const Shop = () => {
         setSelectSortValue(e.target.value);
         setShowSortFilter((prev) => !prev);
     }
+
+    //Hiding the Sort Filter by Clicking Outside
+
+    let sortRef = useRef();
+
+    useClickOutsideDetector(sortRef, () => {
+        setShowSortFilter(false)
+    })
+
 
     return (
         <>
@@ -29,7 +39,7 @@ const Shop = () => {
 
                             {/* Handling Sorting of Products */}
 
-                            <div className="min-h-[60px] mb-8  w-full flex justify-end items-center relative">
+                            <div className="min-h-[60px] mb-8  w-full flex justify-end items-center relative" ref={sortRef}>
                                 <div className={`${showSortFilter ? "h-64" : "h-12"}  duration-300 overflow-hidden   w-40  absolute right-3 top-2 rounded-lg z-20`}>
                                     <button className="bg-primary_dark_green w-full h-12 mb-2 rounded-lg bg-gradient_bg text-white" onClick={() => setShowSortFilter((prev) => !prev)}>Sort By:{selectSortValue} </button>
                                     <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"Default"} onClick={handleSelectSortValue} >Default </button>

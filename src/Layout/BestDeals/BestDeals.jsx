@@ -1,5 +1,17 @@
 import ProductCard from "../../Components/ProductCard/ProductCard"
 import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
+//Swiper
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+
+
+// import required modules
+import { Autoplay, Navigation } from 'swiper/modules';
+import BestDealsProduct from "../../Data/BestDealsProduct"
+
 
 const BestDeals = () => {
     return (
@@ -23,11 +35,37 @@ const BestDeals = () => {
                         </div>
                     </div>
                     <div className="w-1/2 flex justify-evenly gap-x-3 md:w-full flex-wrap md:gap-y-8">
-                        <ProductCard />
-                        <div className="hidden md:flex">
 
-                            <ProductCard />
-                        </div>
+                        <Swiper
+                            spaceBetween={30}
+                            centeredSlides={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            pagination={{
+                                clickable: true,
+                            }}
+
+                            navigation={true}
+                            modules={[Autoplay, Navigation,]}
+                            className="mySwiper"
+                        >
+                            {BestDealsProduct.slice(0, 7).map((item) => {
+                                return (
+                                    <SwiperSlide key={item.id} className=" text-center flex justify-center items-center">
+                                        <div className="flex justify-center items-center">
+
+                                            <ProductCard {...item} />
+                                        </div>
+
+                                    </SwiperSlide>
+                                )
+                            })}
+
+                        </Swiper>
+
+
                     </div>
                 </div>
             </div>
@@ -38,3 +76,5 @@ const BestDeals = () => {
 
 
 export default BestDeals
+
+

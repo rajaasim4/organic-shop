@@ -1,0 +1,77 @@
+const BestDealsProduct = [
+  {
+    id: 18,
+    name: "Egg Plant",
+    category: "Vegetables",
+    rating: 4.3,
+    price: 13.73,
+    imgSrc: "./Product Images/EggPlant.png",
+  },
+
+  {
+    id: 24,
+    name: "Grapess",
+    category: "Fruits",
+    rating: 4.9,
+    price: 9.47,
+    imgSrc: "./Product Images/Grapess.png",
+  },
+  {
+    id: 25,
+    name: "Green Beans",
+    category: "Vegetables",
+    rating: 3.7,
+    price: 8.06,
+    imgSrc: "./Product Images/GreenBeans.png",
+  },
+  {
+    id: 26,
+    name: "Guava",
+    category: "Fruits",
+    rating: 4.9,
+    price: 15.48,
+    imgSrc: "./Product Images/Guava.png",
+  },
+  {
+    id: 27,
+    name: "Hand Grenade Courgettes",
+    category: "Vegetables",
+    rating: 4.4,
+    price: 5.97,
+    imgSrc: "./Product Images/Hand Grenade Courgettes.png",
+  },
+  {
+    id: 28,
+    name: "Kiwi Fruit",
+    category: "Fruits",
+    rating: 3.2,
+    price: 5.26,
+    imgSrc: "./Product Images/KiwiFruit.png",
+  },
+  {
+    id: 29,
+    name: "Leek",
+    category: "Vegetables",
+    rating: 3.4,
+    price: 14.13,
+    imgSrc: "./Product Images/Leek.png",
+  },
+  {
+    id: 30,
+    name: "Lemon",
+    category: "Vegetables",
+    rating: 3.5,
+    price: 8.91,
+    imgSrc: "./Product Images/Lemon.png",
+  },
+  {
+    id: 31,
+    name: "Lettuce",
+    category: "Vegetables",
+    rating: 3.3,
+    price: 7.21,
+    imgSrc: "./Product Images/Lettuce.png",
+  },
+];
+
+export default BestDealsProduct;

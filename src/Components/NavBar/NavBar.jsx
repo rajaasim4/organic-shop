@@ -1,32 +1,25 @@
 //Icons from React-icons 
 import { BsSearch } from "react-icons/bs";
-import { AiOutlineUser, AiOutlineCloseCircle } from "react-icons/ai";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, } from "react-icons/fa"
 import { BiMenuAltRight } from "react-icons/bi"
-import { IoCloseSharp } from "react-icons/io5"
-import { IoMdClose } from "react-icons/io"
-import { HiOutlineShoppingBag } from "react-icons/hi"
-
+import { IoCloseSharp, } from "react-icons/io5"
 
 //Images
 import Logo from "../../assets/Images/Logo.png";
-import Empty_Cart from "../../assets/Images/SVG/EmptyCart.svg"
-
 //States
 import { Link, Outlet, NavLink } from "react-router-dom"
 import { useRef, useState } from "react";
 import useClickOutSideDetector from "../../Hooks/useClickOutsideDetector";
 
 //Reducer
-import { useDispatch, useSelector } from "react-redux";
-import { removeToCart } from "../../store/Reducers/CartSlice"
-
+import { useSelector } from "react-redux";
 
 import SearchCategory from "../SearchCategory/SearchCategory";
+import Feedback from "../../ModalBox/Feedback/Feedback";
+import SidebarCart from "./SidebarCart";
+import LoginMenu from "./LoginMenu";
 const NavBar = () => {
-
-  const dispatch = useDispatch()
 
 
   //=========Toggle Navbar==========
@@ -51,9 +44,32 @@ const NavBar = () => {
 
   //=====Getting Cart Data from Reducer======
 
-  const cartdata = useSelector((state) => state.CartSlice.cart);
+  const cartdata = useSelector((state) => state.CartSlice);
 
+  //======Cart Subtotal Calculation
 
+  let subTotal = cartdata.SubTotal.toFixed(2);
+
+  //======Calculating Total Qunatites
+
+  let totalQuantites = 0 || cartdata.cart.map((item) => item.quantity).reduce((prev, next) => prev + next, 0)
+
+  //==========Toggle Login Dropdown===========
+
+  const [showloginDropdown, setShowloginDopdown] = useState(false);
+
+  const loginDropdownRef = useRef()
+
+  useClickOutSideDetector(loginDropdownRef, () => {
+    setShowloginDopdown(false);
+  })
+
+  //======== Showing Feedback Modal======
+  const [showfeedbackModal, setShowFeedbackModal] = useState(false);
+
+  const toggleFeedbackModal = () => {
+    setShowFeedbackModal(false)
+  }
 
   return (
     <>
@@ -74,7 +90,7 @@ const NavBar = () => {
               </Link>
             </div>
 
-            <div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2">
+            <div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2 slg:z-40">
               <div className="bg-primary_bg h-14 rounded-xl  flex justify-between">
                 <input
                   type="text"
@@ -82,46 +98,30 @@ const NavBar = () => {
                   placeholder="Search..."
                 />
                 <div className="w-1/2 sm:w-full px-4 border-l-[1px] relative">
-                  {/* <select
-                    name=""
-                    id=""
-                    className="h-full w-full bg-primary_bg cursor-pointer  text-white outline-none "
-                    defaultValue="All Categories"
-                  >
-                    <option value="All Categories">All Categories</option>
-                    <option value="All Categories">Vegetables</option>
-                    <option value="All Categories">Fruits</option>
-                    <option value="All Categories">Meat</option>
-                    <option value="All Categories">Canned Organic</option>
-                    <option value="All Categories">Organic</option>
-                    <option value="All Categories">Mushrooms</option>
-                    <option value="All Categories">Organic Food</option>
-                    <option value="All Categories">Oat Meal</option>
-                  </select> */}
+
                   <SearchCategory />
+
                 </div>
-                <button className="w-14 h-full bg-[#fb7645] text-white text-2xl flex justify-center items-center group">
+                <button className="w-14 h-full bg-[#fb7645] text-white text-2xl flex justify-center items-center group rounded-r-xl">
                   <BsSearch className="group-hover:scale-125 duration-300 " />
                 </button>
               </div>
             </div>
 
             <div className="flex items-center gap-x-4">
-              <div className="">
-                <Link to="/Login" className="flex items-center gap-x-3 duration-300 hover:scale-110">
-                  Login
-                  <span className="text-[#007d56] text-xl">
-                    <AiOutlineUser />
-                  </span>
-                </Link>
-              </div>
+
+              {/* Login Menu Start */}
+
+              <LoginMenu showloginDropdown={showloginDropdown} setShowloginDopdown={setShowloginDopdown} ref={loginDropdownRef} setShowFeedbackModal={setShowFeedbackModal} />
+
+              {/* Login Menu Ends*/}
 
               <div className="py-2 px-2 border border-gray-400 rounded-md">
 
                 <button className="flex items-center gap-x-4" onClick={() => setShowCart(!showCart)}>
                   <span className="text-3xl relative">
-                    <div className="absolute -top-2 text-white -right-2 bg-btn_bg text-sm rounded-full w-5 h-5 flex justify-center items-center">
-                      0
+                    <div className="absolute -top-2 text-white -right-2 bg-btn_bg text-sm animate-pulse rounded-full w-5 h-5 flex justify-center items-center">
+                      {totalQuantites}
                     </div>
                     <LiaShoppingBagSolid />
                   </span>
@@ -129,7 +129,8 @@ const NavBar = () => {
                     Shopping Basket
                     <br />
                     <span className="text-[#007d56] text-lg font-medium">
-                      $0.00
+                      ${subTotal}
+
                     </span>
                   </span>
                 </button>
@@ -138,99 +139,49 @@ const NavBar = () => {
 
               {/* =========== Sidebar Cart================ */}
 
-              <div className={`duration-150 
-              ${showCart ? "w-[300px]" : "w-0"}
-                h-full fixed top-0 right-0 bg-white z-50 rounded-l-2xl shadow-xl`} ref={cartRef}>
-                <div className=" py-4 px-5 flex flex-col justify-between h-full w-full">
-                  <div className="flex justify-between items-center">
-                    <h1 className="text-2xl  flex items-center">
-                      <span className="mr-3"><HiOutlineShoppingBag /></span>
-                      My Cart
-                    </h1>
-                    <span className="text-xl cursor-pointer" onClick={() => setShowCart(false)}>
-                      <IoMdClose />
-                    </span>
-                  </div>
-                  <div className=" h-full">
-                    {cartdata.length === 0 ?
-                      <div className="flex justify-center items-center h-full">
-
-                        <img src={Empty_Cart} alt="" />
-                      </div>
-                      :
-                      cartdata.map((item) => {
-                        const { id, name, price, quantity, subtotal, img } = item
-                        return (
-                          <div className="flex items-center" key={id}>
-                            <span className="duration-300 hover:text-red-400 cursor-pointer" onClick={() => dispatch(removeToCart(id))}><AiOutlineCloseCircle /></span>
-                            <img src={img} alt="" className="w-20 h-20" />
-                            <div className="">
-                              <h2>{name}</h2>
-                              <div className="">
-                                <span className="text-primary_green mr-1">
-
-                                  {quantity}
-                                </span>
-                                x ${price}
-                              </div>
-                            </div>
-
-                          </div>
-                        )
-                      })
-                    }
-                  </div>
-                  <div className="">
-
-                    <Link
-                      onClick={() => setShowCart(false)}
-                      to={"/Cart"}
-                      className="bg-btn_bg flex items-center justify-center max-w-40 w-9/12 mx-auto text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">View Cart
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
+              <SidebarCart showCart={showCart} setShowCart={setShowCart} ref={cartRef} />
               {/* ========Sidebar Cart Ended */}
 
             </div>
           </div>
 
         </div>
-        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md z-40 h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9 max-w-[1700px] ">
+        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9 max-w-[1700px] ">
+
           <div className="flex justify-between items-center w-full  xsm:flex-col  xsm:gap-y-3 xsm:items-start">
+
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
             <div className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`} ref={menuRef}>
               {show &&
-                <span className="absolute top-4 right-4 text-2xl hidden md:block"> <IoCloseSharp /></span>
+                <span className="absolute top-4 right-4 text-2xl hidden md:block" onClick={() => setShow(false)}> <IoCloseSharp /></span>
               }
 
               <ul className="flex w-full justify-evenly  md:h-3/5 md:flex-col md:w-6/12 md:items-center ">
                 <li>
                   <NavLink to={"/Home"}
                     className={({ isActive }) =>
-                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                      isActive ? "text-primary_dark_green " : "" + "text-base  duration-200 hover:text-[#aaa]"
                     } onClick={() => setShow(false)}
                   >Home</NavLink>
                 </li>
                 <li>
                   <NavLink to={"/Shop"}
                     className={({ isActive }) =>
-                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                      isActive ? "text-primary_dark_green " : "" + "text-base  duration-200 hover:text-[#aaa]"
                     } onClick={() => setShow(false)}
                   >Shop</NavLink>
                 </li>
                 <li>
                   <NavLink to={"/About"}
                     className={({ isActive }) =>
-                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                      isActive ? "text-primary_dark_green " : "" + "text-base  duration-200 hover:text-[#aaa]"
                     } onClick={() => setShow(false)}
                   >About</NavLink>
                 </li>
                 <li>
                   <NavLink to={"/Contact"}
                     className={({ isActive }) =>
-                      isActive ? "text-primary_dark_green underline" : "" + "text-base  duration-200 hover:text-[#aaa]"
+                      isActive ? "text-primary_dark_green " : "" + "text-base  duration-200 hover:text-[#aaa]"
                     } onClick={() => setShow(false)}
                   >Contact</NavLink>
                 </li>
@@ -267,6 +218,9 @@ const NavBar = () => {
         </div>
       </nav >
       <Outlet />
+
+      {/* Feedback Modal */}
+      <Feedback show={showfeedbackModal} closeModal={toggleFeedbackModal} />
     </>
   );
 };

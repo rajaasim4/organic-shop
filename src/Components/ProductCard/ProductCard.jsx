@@ -18,12 +18,13 @@ const ProductCard = (props) => {
     }
 
     return (
-        <div className=" w-[340px] h-[498px] sm:w-full group  group  duration-300 cursor-pointer">
+        <div className=" w-[340px] h-[498px] sm:w-full group  group  duration-300 cursor-pointer border rounded-xl border-gray-300 group relative">
             {/* bg-[#fffcfc] */}
             {/* bg-[#f0f0f0] */}
-            <div className="w-full h-[323px] group-hover:shadow-xl duration-200  rounded-2xl relative flex justify-center items-center mx-auto bg-[#f0f0f0]">
+            <div className="w-full h-[323px]  duration-200  rounded-2xl relative flex justify-center items-center mx-auto ">
+                <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  w-9/12 h-[75%] rounded-full bg-primary_dark_green  duration-300"></div>
 
-                <img src={imgSrc} className="w-9/12 object-contain rounded-lg" alt="Product Image" />
+                <img src={imgSrc} className="w-9/12 object-contain rounded-lg z-10" alt="Product Image" />
                 <button className="absolute bottom-3 right-3 h-10 w-10 rounded-lg bg-gradient_bg  place-items-center hidden group-hover:grid duration-300 "
                     title="Add to Cart"
                     onClick={handleAddToCart}
@@ -34,11 +35,11 @@ const ProductCard = (props) => {
 
                 </button>
             </div>
-            <div className=" flex flex-col items-center justify-evenly gap-y-3 mt-2 p-3">
+            <div className=" flex flex-col items-center justify-evenly gap-y-2 mt-2 p-3">
 
-                <span className="text-[#10101075] text-lg">{category}</span>
+                <span className="text-[#10101075] text-base">{category}</span>
                 <Link>
-                    <h4 className="text-2xl font-semibold">{name}</h4>
+                    <h4 className="text-xl font-semibold">{name}</h4>
                 </Link>
                 <div className="flex text-primary_green">
                     <StarRating rating={rating} />

@@ -2,9 +2,11 @@ import Helmet from "../../Components/Helmet/Helmet"
 import ProductCard from "../../Components/ProductCard/ProductCard"
 import { HiArrowSmRight, HiArrowSmLeft } from "react-icons/hi"
 import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
-import { Swiper, SwiperSlide, } from 'swiper/react';
-import { Navigation } from "swiper/modules";
 
+import { Swiper, SwiperSlide, } from 'swiper/react';
+import { Navigation, EffectCoverflow, Autoplay } from "swiper/modules";
+
+import Products from "../../Data/Product"
 const FeaturedProducts = () => {
     return (
         <Helmet>
@@ -26,13 +28,24 @@ const FeaturedProducts = () => {
             <div className="">
                 <div className="flex justify-evenly h-[550px] py-3 ">
                     <Swiper
-                        slidesPerView={4}
+                        slidesPerView={3}
                         spaceBetween={30}
+                        // centeredSlides={true}
                         pagination={{
                             clickable: true,
                         }}
+                        coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 2.5,
+                            slideShadows: false
+                        }}
+                        autoplay={true}
                         allowSlideNext={true}
                         allowSlidePrev={true}
+                        loop={true}
+                        effect="coverflow"
                         navigation={{
                             nextEl: ".swiper-button-next",
                             prevEl: ".swiper-button-prev",
@@ -41,70 +54,35 @@ const FeaturedProducts = () => {
                             0: {
                                 slidesPerView: 1
                             },
-                            710: {
+                            // 710: {
+                            //     slidesPerView: 1
+                            // },
+                            550: {
                                 slidesPerView: 2
                             },
-                            1110: {
+                            1024: {
                                 slidesPerView: 3
-                            },
-                            1340: {
-                                slidesPerView: 4
                             }
-
-
                         }}
-                        modules={[Navigation]}
+                        modules={[Navigation, EffectCoverflow, Autoplay]}
                         className="mySwiper w-full h-full mx-auto"
                     >
-                        <SwiperSlide className=" text-center flex justify-center items-center">
-                            <div className="flex justify-center items-center">
+                        {Products.slice(0, 7).map((item) => {
+                            return (
+                                <SwiperSlide key={item.id} className=" text-center flex justify-center items-center">
+                                    <div className="flex justify-center items-center">
 
-                                <ProductCard />
-                            </div>
+                                        <ProductCard {...item} />
+                                    </div>
 
-                        </SwiperSlide>
-                        <SwiperSlide className=" text-center flex justify-center items-center">
-                            <div className="flex justify-center items-center">
+                                </SwiperSlide>
+                            )
+                        })}
 
-                                <ProductCard />
-                            </div>
-
-                        </SwiperSlide>
-                        <SwiperSlide className=" text-center flex justify-center items-center">
-                            <div className="flex justify-center items-center">
-
-                                <ProductCard />
-                            </div>
-
-                        </SwiperSlide>
-                        <SwiperSlide className=" text-center flex justify-center items-center">
-                            <div className="flex justify-center items-center">
-
-                                <ProductCard />
-                            </div>
-
-                        </SwiperSlide>
-                        <SwiperSlide className=" text-center flex justify-center items-center">
-                            <div className="flex justify-center items-center">
-
-                                <ProductCard />
-                            </div>
-
-                        </SwiperSlide>
-                        <SwiperSlide className=" text-center flex justify-center items-center">
-                            <div className="flex justify-center items-center">
-
-                                <ProductCard />
-                            </div>
-
-                        </SwiperSlide>
 
                     </Swiper>
 
-                    {/* <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard /> */}
+
                 </div>
             </div>
 
