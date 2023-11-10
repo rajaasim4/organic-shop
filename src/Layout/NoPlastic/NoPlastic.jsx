@@ -1,10 +1,20 @@
-
+import { useRef } from "react"
+import { Parallax, useParallax } from "react-scroll-parallax"
 import no_plastic from "../../assets/Images/no_plastic.png"
 const NoPlastic = () => {
+
     return (
         <div className="py-20  mt-5 relative ">
-            <img src={no_plastic} alt="Platic Bag Image" className="absolute top-0 -translate-y-12 sm:translate-y-0 left-1/4 sm:w-40 sm:h-40" />
+
+
+            <Parallax className="absolute top-0 -translate-y-12 block sm:translate-y-0 left-1/4" rotate={[40, -40]}>
+
+                <img src={no_plastic} alt="Platic Bag Image" className="sm:w-40 sm:h-40" />
+            </Parallax>
+
+
             <div className="w-95 grid grid-cols-7 grid-rows-[410px] mx-auto gap-x-8 md:grid-cols-1">
+
 
                 <div className="col-span-5 bg-noplastic_main rounded-2xl bg-cover flex items-center pl-8 lg:bg-center md:col-span-1 sm:pl-4 ">
                     <div className="flex flex-col gap-y-3  box-border">

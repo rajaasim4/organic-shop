@@ -6,7 +6,7 @@ const ShopAside = () => {
     return (
         <div className="w-[340px] rounded-xl gap-y-4 py-10 min-h-[700px] bg-white shadow-md flex flex-col items-center">
             <div className=" w-full px-6 flex items-center gap-x-2">
-                <h2 className="text-2xl text-left">Search</h2>
+                <h2 className="text-xl text-left">Search</h2>
                 <span className=" w-52 h-1  bg-gradient_lines"></span>
             </div>
             <div className="px-6 w-full flex flex-col">
@@ -15,7 +15,7 @@ const ShopAside = () => {
                 <button className="mt-5 hover:bg-slate-800 duration-300 bg-primary_dark_green w-32  h-12 rounded-xl text-white text-xl">Search</button>
             </div>
             <div className=" w-full pl-6 mt-4 pr-2 flex items-center gap-x-2 ">
-                <h2 className="text-2xl text-left">Filter By Price</h2>
+                <h2 className="text-xl text-left">Filter By Price</h2>
                 <span className=" w-6/12 h-1   bg-gradient_lines"></span>
             </div>
             <div className="px-6 w-full mt-2">
@@ -24,7 +24,7 @@ const ShopAside = () => {
             </div>
 
             <div className=" w-full pl-6 mt-4 pr-2 flex items-center gap-x-2 ">
-                <h2 className="text-2xl text-left">Category</h2>
+                <h2 className="text-xl text-left">Category</h2>
                 <span className=" w-52 h-1   bg-gradient_lines"></span>
             </div>
             <div className="pl-4 pr-4 w-full">

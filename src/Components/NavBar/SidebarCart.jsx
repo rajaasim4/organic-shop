@@ -52,9 +52,9 @@ const SidebarCart = forwardRef(({ showCart, setShowCart }, ref) => {
                         cartdata.cart.map((item) => {
                             const { id, name, price, quantity, img } = item
                             return (
-                                <div className="flex items-center" key={id}>
+                                <div className="flex items-center gap-x-2" key={id}>
                                     <span className="duration-300 hover:text-red-400 cursor-pointer" onClick={() => dispatch(removeToCart(id))}><AiOutlineCloseCircle /></span>
-                                    <img src={img} alt="" className="w-20 h-20" />
+                                    <img src={img} alt="Product Image" className="w-20 h-20" />
                                     <div className="">
                                         <h2>{name}</h2>
                                         <div className="">

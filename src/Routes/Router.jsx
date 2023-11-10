@@ -21,17 +21,22 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import EnterEmail from "../Pages/ForgotPassword/EnterEmail";
 import ForgotEmailConfirmation from "../Pages/ForgotPassword/ForgotEmailConfirmation";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
+import ScrollTopButton from "../Components/ScrollTopButton/ScrollTopButton";
 const Router = () => {
 
   // ========Showing Footer for the Specific Page=========
   const location = useLocation();
-  const showFooter = ['/About', '/Contact', '/Shop', '/Shop/:productname', '/Home', '/Cart', '/', '/CheckOut'].includes(location.pathname);
+  // const showFooter = ['/About', '/Contact', '/Shop', '/Shop/*', '/Home', '/Cart', '/', '/CheckOut',].includes(location.pathname);
+
+  const showFooter = ['/About', '/Contact', '/Shop', '/Home', '/Cart', '/', '/CheckOut'].some(path => location.pathname.startsWith(path));
+
 
   return (
     <>
       <div className="bg-[#FBFBFB]">
 
         <ToastContainer />
+        <ScrollTopButton />
 
         <Routes >
 
@@ -55,9 +60,9 @@ const Router = () => {
           <Route exact path="/SignUp" element={<SignUp />} />
 
           {/* Forgot Password Routes */}
-          <Route path="/Forgot/EnterEmail" element={<EnterEmail />} />
-          <Route path="/Forgot/EmailConfimationSent" element={<ForgotEmailConfirmation />} />
-          <Route path="/Forgot/Password" element={<ForgotPassword />} />
+          <Route exact path="/Forgot/EnterEmail" element={<EnterEmail />} />
+          <Route exact path="/Forgot/EmailConfimationSent" element={<ForgotEmailConfirmation />} />
+          <Route exact path="/Forgot/Password" element={<ForgotPassword />} />
 
           {/* 404 Error Page */}
           <Route exact path="*" element={<Error />} />

@@ -20,6 +20,7 @@ import paypal from "../../../assets/Images/SVG/paypal.svg";
 import visa from "../../../assets/Images/SVG/visa.svg";
 import jazzcash from "../../../assets/Images/SVG/Jazz-cash.svg";
 import easypaisa from "../../../assets/Images/SVG/Easypaisa.svg";
+import sadapay from "../../../assets/Images/SVG/SadaPay.svg"
 import { useDispatch } from "react-redux";
 import { getCheckOutPaymentSelection } from "../../../store/Reducers/CheckDetailsSlice";
 const CheckOutBillingDetails = () => {
@@ -97,6 +98,7 @@ const CheckOutBillingDetails = () => {
                             <img src={paypal} alt="" className="w-20 h-20" />
                             <img src={jazzcash} alt="" className="w-20 h-20" />
                             <img src={easypaisa} alt="" className="w-20 h-20" />
+                            <img src={sadapay} alt="" className="w-28 h-28" />
                         </div>
                         <Formik
                         // initialValues={signupInitialValues}

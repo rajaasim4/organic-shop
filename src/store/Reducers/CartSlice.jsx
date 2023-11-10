@@ -24,7 +24,7 @@ export const CartSlice = createSlice({
                     name: newItem.name,
                     price: newItem.price,
                     img: newItem.imgSrc,
-                    quantity: 1,
+                    quantity: newItem.quantity,
                     subtotal: newItem.price
                 })
             }
