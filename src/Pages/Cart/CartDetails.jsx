@@ -4,10 +4,12 @@ import { AiOutlineDelete } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
+
 import { toast } from "react-toastify"
 
 //Cart Functions
 import { addToCart, calculateDiscount, decreasingItemQunatity, removeToCart } from "../../store/Reducers/CartSlice"
+import { motion } from "framer-motion"
 const CartDetails = () => {
 
     const dispatch = useDispatch()
@@ -66,7 +68,16 @@ const CartDetails = () => {
                         <tbody className="bg-white">
                             {data.cart.map((item, Index) => {
                                 return (
-                                    <tr className=" h-32 md:h-max md:py-5 border-gray-300 shadow-md" key={Index}>
+                                    <motion.tr
+                                        initial={{ x: -40, opacity: 0 }} whileInView={{
+                                            x: 0, opacity: 1, transition: {
+                                                duration: 1,
+                                                delay: 0.2 * Index
+                                            }
+                                        }}
+
+                                        viewport={{ once: true }}
+                                        className=" h-32 md:h-max md:py-5 border-gray-300 shadow-md" key={Index}>
                                         <td className="text-center">
                                             <img
                                                 src={item.img}
@@ -106,7 +117,7 @@ const CartDetails = () => {
                                                 <AiOutlineDelete />
                                             </span>
                                         </td>
-                                    </tr>)
+                                    </motion.tr>)
                             })}
 
 

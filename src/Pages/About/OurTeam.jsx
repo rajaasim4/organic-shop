@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
 import Helmet from "../../Components/Helmet/Helmet"
 import Img1 from "../../assets/Images/Team1.jpg"
@@ -18,10 +19,11 @@ const OurTeam = () => {
 
             </div>
             <div className="pb-24 mt-10 flex justify-evenly flex-wrap gap-y-7 gap-x-5  sm:pb-10">
-                <TeamCard teamImg={Img1} />
-                <TeamCard teamImg={Img2} />
-                <TeamCard teamImg={Img3} />
-                <TeamCard teamImg={Img4} />
+                <TeamCard teamImg={Img1} index={0} />
+                <TeamCard teamImg={Img2} index={1} />
+                <TeamCard teamImg={Img3} index={2} />
+                <TeamCard teamImg={Img4} index={3} />
+
 
 
             </div>
@@ -29,9 +31,18 @@ const OurTeam = () => {
     )
 }
 
-const TeamCard = ({ teamImg }) => {
+const TeamCard = ({ teamImg, index }) => {
     return (
-        <div className="w-[337px] h-[371px] relative rounded-lg group">
+        <motion.div className="w-[337px] h-[371px] relative rounded-lg group"
+            initial={{ x: -40, opacity: 0 }} whileInView={{
+                x: 0, opacity: 1, transition: {
+                    duration: 1,
+                    delay: 0.2 * index
+
+                }
+            }}
+            viewport={{ once: true }}
+        >
             <img src={teamImg} alt="" className="rounded-lg" />
             <div className="absolute bottom-0 left-0 w-full h-28 bg-primary_dark_green rounded-lg group-hover:bg-gradient_bg duration-300 flex flex-col justify-center px-2">
                 <h3 className="text-white text-2xl"> Simmons Grey</h3>
@@ -53,7 +64,7 @@ const TeamCard = ({ teamImg }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const CheckOutOrder = () => {
 
   //Checking for the Details is Filled or not
@@ -51,7 +51,16 @@ const CheckOutOrder = () => {
   return (
     <>
 
-      < div className=" rounded-lg p-6 shadow-lg border-2 h-max pb-14  border-gray-400 " >
+      <motion.div
+        initial={{ x: -40, opacity: 0 }} whileInView={{
+          x: 0, opacity: 1, transition: {
+            duration: 1,
+
+          }
+        }}
+        viewport={{ once: true }}
+
+        className=" rounded-lg p-6 shadow-lg border-2 h-max pb-14  border-gray-400 " >
         <div className="">
 
           <h1 className="font-semibold text-3xl  border-gray-400 pb-4  text-center">Total</h1>
@@ -86,7 +95,7 @@ const CheckOutOrder = () => {
           <button className="bg-btn_bg w-9/12 mx-auto flex justify-center items-center mt-7 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 " onClick={CheckOutPayment}>Place Order And Pay</button>
         </div>
 
-      </div >
+      </motion.div >
 
     </>
   );

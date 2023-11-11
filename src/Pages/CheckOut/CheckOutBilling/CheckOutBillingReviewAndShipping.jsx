@@ -7,6 +7,8 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 //State
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+
 
 
 const CheckOutBillingReviewAndShipping = () => {
@@ -21,8 +23,16 @@ const CheckOutBillingReviewAndShipping = () => {
     const [showReviewItems, setShowReviewItems] = useState(false);
 
     return (
-        <div
+        <motion.div
             className={`mt-9 w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${showReviewItems ? "h-max" : "h-28"} duration-150 overflow-hidden`}
+            initial={{ x: -40, opacity: 0 }} whileInView={{
+                x: 0, opacity: 1, transition: {
+                    duration: 1,
+                    delay: 0.6
+
+                }
+            }}
+            viewport={{ once: true }}
         >
             <div
                 className="flex items-center justify-between cursor-pointer"
@@ -133,7 +143,7 @@ const CheckOutBillingReviewAndShipping = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

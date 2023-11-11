@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 const CartTotal = () => {
 
@@ -21,7 +22,16 @@ const CartTotal = () => {
     let totalPrice = totalPriceAfterdiscount === 0 ? SubTotal : SubTotal - totalDiscount
 
     return (
-        <div className="w-[600px] rounded-lg p-6 shadow-lg border-2 h-max pb-14  border-gray-400 ">
+        <motion.div
+            initial={{ x: -40, opacity: 0 }} whileInView={{
+                x: 0, opacity: 1, transition: {
+                    duration: 1,
+                    delay: 0.5
+                }
+            }}
+
+            viewport={{ once: true }}
+            className="w-[600px] rounded-lg p-6 shadow-lg border-2 h-max pb-14  border-gray-400 ">
             <div className="">
 
                 <h1 className="font-semibold text-3xl  border-gray-400 pb-4  text-center">Cart Total</h1>
@@ -48,7 +58,7 @@ const CartTotal = () => {
                 <Link to={"/CheckOut"} className="bg-btn_bg w-9/12 mx-auto flex justify-center items-center mt-7 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">CheckOut</Link>
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 

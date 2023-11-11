@@ -7,6 +7,7 @@ import { BsFillCreditCard2BackFill, BsCalendarDate } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Formik, Form } from "formik";
 
+
 //State
 import { useState } from "react";
 
@@ -23,6 +24,7 @@ import easypaisa from "../../../assets/Images/SVG/Easypaisa.svg";
 import sadapay from "../../../assets/Images/SVG/SadaPay.svg"
 import { useDispatch } from "react-redux";
 import { getCheckOutPaymentSelection } from "../../../store/Reducers/CheckDetailsSlice";
+import { motion } from "framer-motion";
 const CheckOutBillingDetails = () => {
 
     const dispatch = useDispatch()
@@ -45,9 +47,18 @@ const CheckOutBillingDetails = () => {
     }
     return (
 
-        <div
+        <motion.div
             className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${paymentMethod === "card" && showBilling ? "h-[750px]" : showBilling ? "h-44" : "h-28"
                 }   duration-150 overflow-hidden mt-8`}
+
+            initial={{ x: -40, opacity: 0 }} whileInView={{
+                x: 0, opacity: 1, transition: {
+                    duration: 1,
+                    delay: 0.3
+
+                }
+            }}
+            viewport={{ once: true }}
         >
             <div
                 className="flex items-center justify-between cursor-pointer"
@@ -154,7 +165,7 @@ const CheckOutBillingDetails = () => {
                     </>
                 ) : null}
             </div>
-        </div>
+        </motion.div>
     )
 }
 

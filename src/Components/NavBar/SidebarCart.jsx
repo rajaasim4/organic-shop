@@ -15,7 +15,9 @@ import { Link, } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { removeToCart } from "../../store/Reducers/CartSlice"
 
-import { forwardRef } from "react"
+import { forwardRef } from "react";
+
+import { motion } from "framer-motion"
 
 const SidebarCart = forwardRef(({ showCart, setShowCart }, ref) => {
     // const SidebarCart = forwardRef(({ showCart, setShowCart }, ref) => {
@@ -46,7 +48,10 @@ const SidebarCart = forwardRef(({ showCart, setShowCart }, ref) => {
                     {cartdata.cart.length === 0 ?
                         <div className="flex justify-center items-center h-full">
 
-                            <img src={Empty_Cart} alt="" />
+                            <motion.img
+                                whileHover={{ scale: 1.1 }}
+
+                                src={Empty_Cart} alt="" />
                         </div>
                         :
                         cartdata.cart.map((item) => {

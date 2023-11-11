@@ -19,6 +19,9 @@ import SearchCategory from "../SearchCategory/SearchCategory";
 import Feedback from "../../ModalBox/Feedback/Feedback";
 import SidebarCart from "./SidebarCart";
 import LoginMenu from "./LoginMenu";
+
+//Framer motion
+import { motion } from "framer-motion";
 const NavBar = () => {
 
 
@@ -85,12 +88,30 @@ const NavBar = () => {
         <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6 slg:min-h-[230px] slg:items-start slg:pt-9 slg:py-3 slg:pb-14 relative ">
           <div className="mx-auto w-95 flex justify-between items-center   gap-y-6 slg:h-max max-w-[1700px]">
             <div className="">
+
               <Link to={"/Home"}>
-                <img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" />
+                <motion.img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" whileInView={{
+                  x: 0, transition: {
+                    duration: 1,
+
+                  }
+                }}
+                  viewport={{ once: true }}
+                  initial={{ x: -40 }} whileHover={{ scale: 1.1 }} />
               </Link>
+
             </div>
 
-            <div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2 slg:z-40">
+            <motion.div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2 slg:z-40"
+              whileInView={{
+                x: 0, transition: {
+                  duration: 1,
+                }
+
+              }}
+              viewport={{ once: true }}
+              initial={{ x: -40 }}
+            >
               <div className="bg-primary_bg h-14 rounded-xl  flex justify-between">
                 <input
                   type="text"
@@ -106,9 +127,9 @@ const NavBar = () => {
                   <BsSearch className="group-hover:scale-125 duration-300 " />
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center gap-x-4">
+            <div className="flex items-center gap-x-4" >
 
               {/* Login Menu Start */}
 
@@ -116,7 +137,16 @@ const NavBar = () => {
 
               {/* Login Menu Ends*/}
 
-              <div className="py-2 px-2 border border-gray-400 rounded-md">
+              <motion.div className="py-2 px-2 border border-gray-400 rounded-md"
+                whileInView={{
+                  x: 0, transition: {
+                    duration: 1,
+                  }
+
+                }}
+                viewport={{ once: true }}
+                initial={{ x: -40 }}
+              >
 
                 <button className="flex items-center gap-x-4" onClick={() => setShowCart(!showCart)}>
                   <span className="text-3xl relative">
@@ -135,7 +165,7 @@ const NavBar = () => {
                   </span>
                 </button>
 
-              </div>
+              </motion.div>
 
               {/* =========== Sidebar Cart================ */}
 
@@ -146,11 +176,12 @@ const NavBar = () => {
           </div>
 
         </div>
-        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9 max-w-[1700px] ">
+        <div className="bg-white w-95 mx-auto rounded-2xl px-5 py-4 shadow-md h-20 sm:h-max sm:py-4 flex justify-center items-center relative bottom-9 max-w-[1700px] z-20">
 
           <div className="flex justify-between items-center w-full  xsm:flex-col  xsm:gap-y-3 xsm:items-start">
 
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
+
             <div className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`} ref={menuRef}>
               {show &&
                 <span className="absolute top-4 right-4 text-2xl hidden md:block" onClick={() => setShow(false)}> <IoCloseSharp /></span>

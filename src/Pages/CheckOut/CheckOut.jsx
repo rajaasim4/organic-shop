@@ -41,7 +41,7 @@ const CheckOut = () => {
         <>
             <section className="py-10 w-full mb-20 ">
                 <div
-                    className={`w-[89%] duration-300  mx-auto xxl:w-[1700px]   ${visible ? "h-52 " : "h-16"
+                    className={`w-[89%] duration-300  mx-auto xxl:w-[1700px] mb-7   ${visible ? "h-52 " : "h-16"
                         } `}
                 >
                     <div className="w-full  bg-primary_dark_green px-4 h-16 rounded-lg   flex items-center">

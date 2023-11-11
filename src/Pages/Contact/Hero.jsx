@@ -1,5 +1,6 @@
 import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
 import Helmet from "../../Components/Helmet/Helmet"
+import { motion } from "framer-motion"
 
 const Hero = () => {
     return (
@@ -9,7 +10,15 @@ const Hero = () => {
                     <HeadingBtn title="Please Get in Touch" />
 
                     <h1 className="text-5xl font-light text-center my-8 sm:text-4xl">Contact US</h1>
-                    <div className="w-full">
+                    <motion.div className="w-full"
+                        initial={{ x: -40, opacity: 0 }} whileInView={{
+                            x: 0, opacity: 1, transition: {
+                                duration: 1,
+                                delay: 0.5
+                            }
+                        }}
+                        viewport={{ once: true }}
+                    >
                         <form action="">
                             <div className="flex gap-x-5 mb-4 sm:flex-col sm:gap-y-4">
                                 <input type="text" className="bg-gray-200 py-3 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your Name*" />
@@ -23,9 +32,18 @@ const Hero = () => {
                                 Submit
                             </button>
                         </form>
-                    </div>
+                    </motion.div>
                 </div>
-                <div className="w-1/2 flex justify-center  items-center  md:w-[360px] xsm:w-full">
+                <motion.div className="w-1/2 flex justify-center  items-center  md:w-[360px] xsm:w-full"
+                    initial={{ x: -40, opacity: 0 }} whileInView={{
+                        x: 0, opacity: 1, transition: {
+                            duration: 1,
+                            delay: 0.5
+                        }
+                    }}
+
+                    viewport={{ once: true }}
+                >
                     <div className="w-[420px] h-[450px] bg-gradient_bg rounded-lg flex flex-col items-center py-8 justify-evenly">
                         <h3 className="text-white text-4xl border-b-[1px] border-white py-3 sm:text-3xl">New York</h3>
 
@@ -45,7 +63,7 @@ const Hero = () => {
                             </span>
                         </address>
                     </div>
-                </div>
+                </motion.div>
 
             </div>
 

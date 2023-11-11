@@ -5,15 +5,24 @@ import { useState } from 'react'
 import { MdKeyboardArrowDown } from "react-icons/md";
 //Formik
 import CheckOutBillingShippingForm from '../../../Forms/CheckOutBillingShippingForm/CheckOutBillingShippingForm';
+import { motion } from 'framer-motion';
 const CheckOutBillingShipping = () => {
 
     const [showShipping, setShowShipping] = useState(false);
 
 
     return (
-        <div
+        <motion.div
             className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${showShipping ? "min-h-[410px]" : "h-28"
                 }   duration-150 overflow-hidden`}
+
+            initial={{ x: -40, opacity: 0 }} whileInView={{
+                x: 0, opacity: 1, transition: {
+                    duration: 1,
+
+                }
+            }}
+            viewport={{ once: true }}
         >
             <div
                 className="flex items-center justify-between cursor-pointer"
@@ -28,7 +37,7 @@ const CheckOutBillingShipping = () => {
 
                 <CheckOutBillingShippingForm />
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -12,16 +12,17 @@ import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Error from "../Pages/Error/Error";
-
-//Toast Notificaion
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import Cart from "../Pages/Cart/Cart";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import EnterEmail from "../Pages/ForgotPassword/EnterEmail";
 import ForgotEmailConfirmation from "../Pages/ForgotPassword/ForgotEmailConfirmation";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import ScrollTopButton from "../Components/ScrollTopButton/ScrollTopButton";
+import ScrollTop from "../Hooks/ScrollTop"
+
+//Toast Notificaion
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const Router = () => {
 
   // ========Showing Footer for the Specific Page=========
@@ -37,6 +38,7 @@ const Router = () => {
 
         <ToastContainer />
         <ScrollTopButton />
+        <ScrollTop />
 
         <Routes >
 
