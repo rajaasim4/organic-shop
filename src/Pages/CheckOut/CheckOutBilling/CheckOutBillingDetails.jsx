@@ -48,7 +48,7 @@ const CheckOutBillingDetails = () => {
     return (
 
         <motion.div
-            className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${paymentMethod === "card" && showBilling ? "h-[750px]" : showBilling ? "h-44" : "h-28"
+            className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${paymentMethod === "card" && showBilling ? "h-[790px]" : showBilling ? "h-44" : "h-28"
                 }   duration-150 overflow-hidden mt-8`}
 
             initial={{ x: -40, opacity: 0 }} whileInView={{

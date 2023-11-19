@@ -2,14 +2,18 @@ import ShopAside from "../../Layout/ShopAside/ShopAside"
 import Helmet from "../../Components/Helmet/Helmet"
 import Brands from "../../Layout/Brands/Brands"
 import ProductCard from "../../Components/ProductCard/ProductCard"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import useClickOutsideDetector from "../../Hooks/useClickOutsideDetector"
 //Products Data
 import Product from "../../Data/Product"
+import SkeletonLoader from "../../utils/Helpers/Loaders/SkeletonLoader"
+
 const Shop = () => {
     const [showSortFilter, setShowSortFilter] = useState(false)
 
     const [selectSortValue, setSelectSortValue] = useState("Default");
+
+    const [showSkeletonLoader, setShowSkeletonLoader] = useState(true);
 
     const handleSelectSortValue = (e) => {
         setSelectSortValue(e.target.value);
@@ -22,6 +26,16 @@ const Shop = () => {
 
     useClickOutsideDetector(sortRef, () => {
         setShowSortFilter(false)
+    })
+
+    const dummySkeletonLoader = [1, 2, 3, 4, 5, 6];
+
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowSkeletonLoader(false);
+        }, 4300)
+
     })
 
 
@@ -50,21 +64,43 @@ const Shop = () => {
                                 </div>
                             </div>
 
-                            {/* Showing All Items */}
-                            <div className="flex gap-x-5 gap-y-8 flex-wrap">
-                                {Product.map((item) => {
-                                    return (
+                            {showSkeletonLoader ?
+                                <>
 
-                                        <ProductCard key={item.id} {...item} />
-                                    )
-                                })}
+                                    {/* Showing Skeleton Loader */}
 
-                            </div>
+                                    < div className="flex gap-x-5 gap-y-8 flex-wrap">
+                                        {dummySkeletonLoader.map((item, Index) => {
+                                            return (
+                                                <SkeletonLoader key={Index} />
+
+                                            )
+                                        })}
+
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    {/* Showing All Items */}
+
+                                    <div className="flex gap-x-5 gap-y-8 flex-wrap">
+                                        {Product.map((item) => {
+                                            return (
+
+                                                <ProductCard key={item.id} {...item} />
+                                            )
+                                        })}
+
+                                    </div>
+
+                                </>
+                            }
+
                         </div>
                     </div>
-                </Helmet>
+                </Helmet >
                 <div className="h-24"></div>
-            </div>
+            </div >
             <Brands />
         </>
     )
