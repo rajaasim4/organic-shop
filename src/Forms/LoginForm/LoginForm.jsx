@@ -11,32 +11,60 @@ import {
 import { useState } from "react";
 import { OvalLoader } from "../../utils/Helpers/Loaders/Loaders";
 import { toast } from "react-toastify";
+
+
+// Firebase for Log In the User
+import { app } from "../../Config/FirebaseConfig"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 const LoginForm = () => {
+
+    //Firebase Function to Check User Log In
+    const auth = getAuth();
+
+
     const [isloading, setIsLoading] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
 
     const navigate = useNavigate();
 
     //Handling Login Submit
-    const handleLoginSubmit = (values, onSubmitProps) => {
-        toast("You are Successfully Loggedin ", {
-            position: "top-right",
-            autoClose: 2300,
-        });
+    const handleLoginSubmit = async (values, onSubmitProps) => {
+
         setIsDisabled(true);
-        // console.log(values);
 
-        //Showing Loader
-        setIsLoading(true);
 
-        setTimeout(() => {
-            setIsDisabled(false);
-            onSubmitProps.setSubmitting(false);
-            onSubmitProps.resetForm();
-            //Hiding the Loader
-            setIsLoading(false);
-            navigate("/Home");
-        }, 3000);
+        //LogIn User
+
+        signInWithEmailAndPassword(auth, values.email, values.password).then((user) => {
+
+            toast("You have Successfully Loggedin ", {
+                position: "top-right",
+                autoClose: 2300,
+            });
+
+            //Showing Loader
+            setIsLoading(true);
+
+            //TimeOut Function to enable Button,Clear Form and Redirect to Home Page
+            setTimeout(() => {
+                setIsDisabled(false);
+                onSubmitProps.setSubmitting(false);
+                onSubmitProps.resetForm();
+                //Hiding the Loader
+                setIsLoading(false);
+                navigate("/Home");
+            }, 3000);
+
+        }).catch((err) => {
+
+            toast.error("An Error Occured While Log In ", {
+                position: "top-right",
+                autoClose: 2300,
+            });
+        });
+
+
     };
 
     return (

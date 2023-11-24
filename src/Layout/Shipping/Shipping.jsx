@@ -3,19 +3,14 @@ import { BsCreditCard2Back } from "react-icons/bs"
 import { PiShoppingCartSimple, PiArrowsCounterClockwiseBold } from "react-icons/pi"
 
 import { motion } from "framer-motion"
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
+
 const Shipping = () => {
     return (
         <div className="rounded-xl min-h-[250px] w-95 mx-auto bg-primary_dark_green flex items-center px-5 justify-evenly flex-wrap sm:py-8 gap-x-9 gap-y-5">
             <motion.div className="flex gap-x-5 items-center min-h-[120px]"
 
-                initial={{ x: -40, opacity: 0 }}
-                whileInView={{
-                    x: 0, opacity: 1, transition: {
-                        duration: 1,
-                        delay: 0
-                    }
-                }}
-                viewport={{ once: true }}
+                {...fadeInFromLeft(0.2)}
             >
                 <div className="">
                     <span className="">
@@ -28,15 +23,7 @@ const Shipping = () => {
                 </div>
             </motion.div>
             <motion.div className="flex gap-x-5 items-center min-h-[120px]"
-
-                initial={{ x: -40, opacity: 0 }}
-                whileInView={{
-                    x: 0, opacity: 1, transition: {
-                        duration: 1,
-                        delay: 0.4
-                    }
-                }}
-                viewport={{ once: true }}
+                {...fadeInFromLeft(0.4)}
             >
                 <div className="">
                     <span className="">
@@ -50,14 +37,7 @@ const Shipping = () => {
             </motion.div>
             <motion.div className="flex gap-x-5 items-center min-h-[120px]"
 
-                initial={{ x: -40, opacity: 0 }}
-                whileInView={{
-                    x: 0, opacity: 1, transition: {
-                        duration: 1,
-                        delay: 0.6
-                    }
-                }}
-                viewport={{ once: true }}
+                {...fadeInFromLeft(0.6)}
             >
                 <div className="">
                     <span className="">
@@ -70,15 +50,7 @@ const Shipping = () => {
                 </div>
             </motion.div>
             <motion.div className="flex gap-x-5 items-center min-h-[120px]"
-
-                initial={{ x: -40, opacity: 0 }}
-                whileInView={{
-                    x: 0, opacity: 1, transition: {
-                        duration: 1,
-                        delay: 0.8
-                    }
-                }}
-                viewport={{ once: true }}
+                {...fadeInFromLeft(0.3)}
             >
                 <div className="">
                     <span className="">

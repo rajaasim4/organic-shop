@@ -8,7 +8,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-
+import { fadeInFromLeft } from "../../../utils/Helpers/Animation/FadeFromLeftAnimation";
 
 
 const CheckOutBillingReviewAndShipping = () => {
@@ -25,14 +25,7 @@ const CheckOutBillingReviewAndShipping = () => {
     return (
         <motion.div
             className={`mt-9 w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${showReviewItems ? "h-max" : "h-28"} duration-150 overflow-hidden`}
-            initial={{ x: -40, opacity: 0 }} whileInView={{
-                x: 0, opacity: 1, transition: {
-                    duration: 1,
-                    delay: 0.6
-
-                }
-            }}
-            viewport={{ once: true }}
+            {...fadeInFromLeft(0.6)}
         >
             <div
                 className="flex items-center justify-between cursor-pointer"

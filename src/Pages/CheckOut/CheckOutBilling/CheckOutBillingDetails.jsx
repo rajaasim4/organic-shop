@@ -25,6 +25,8 @@ import sadapay from "../../../assets/Images/SVG/SadaPay.svg"
 import { useDispatch } from "react-redux";
 import { getCheckOutPaymentSelection } from "../../../store/Reducers/CheckDetailsSlice";
 import { motion } from "framer-motion";
+import { fadeInFromLeft } from "../../../utils/Helpers/Animation/FadeFromLeftAnimation"
+
 const CheckOutBillingDetails = () => {
 
     const dispatch = useDispatch()
@@ -51,14 +53,7 @@ const CheckOutBillingDetails = () => {
             className={`w-full shadow-lg py-8 px-4 rounded-lg border border-gray-300 ${paymentMethod === "card" && showBilling ? "h-[790px]" : showBilling ? "h-44" : "h-28"
                 }   duration-150 overflow-hidden mt-8`}
 
-            initial={{ x: -40, opacity: 0 }} whileInView={{
-                x: 0, opacity: 1, transition: {
-                    duration: 1,
-                    delay: 0.3
-
-                }
-            }}
-            viewport={{ once: true }}
+            {...fadeInFromLeft(0.3)}
         >
             <div
                 className="flex items-center justify-between cursor-pointer"

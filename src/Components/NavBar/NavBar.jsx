@@ -7,6 +7,8 @@ import { IoCloseSharp, } from "react-icons/io5"
 
 //Images
 import Logo from "../../assets/Images/Logo.png";
+
+
 //States
 import { Link, Outlet, NavLink } from "react-router-dom"
 import { useRef, useState } from "react";
@@ -15,6 +17,8 @@ import useClickOutSideDetector from "../../Hooks/useClickOutsideDetector";
 //Reducer
 import { useSelector } from "react-redux";
 
+
+//Components
 import SearchCategory from "../SearchCategory/SearchCategory";
 import Feedback from "../../ModalBox/Feedback/Feedback";
 import SidebarCart from "./SidebarCart";
@@ -22,6 +26,7 @@ import LoginMenu from "./LoginMenu";
 
 //Framer motion
 import { motion } from "framer-motion";
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
 const NavBar = () => {
 
 
@@ -61,6 +66,7 @@ const NavBar = () => {
 
   const [showloginDropdown, setShowloginDopdown] = useState(false);
 
+  //==========Closing the Category DropDown Clicking Outside===========
   const loginDropdownRef = useRef()
 
   useClickOutSideDetector(loginDropdownRef, () => {
@@ -70,9 +76,13 @@ const NavBar = () => {
   //======== Showing Feedback Modal======
   const [showfeedbackModal, setShowFeedbackModal] = useState(false);
 
+
+  //========== Closing the Feedback Model ===========
   const toggleFeedbackModal = () => {
     setShowFeedbackModal(false)
   }
+
+
 
   return (
     <>
@@ -90,27 +100,17 @@ const NavBar = () => {
             <div className="">
 
               <Link to={"/Home"}>
-                <motion.img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12" whileInView={{
-                  x: 0, transition: {
-                    duration: 1,
-
-                  }
-                }}
-                  viewport={{ once: true }}
-                  initial={{ x: -40 }} whileHover={{ scale: 1.1 }} />
+                <motion.img src={Logo} alt="Logo" className="w-11/12 object-contain h-full lg:w-8/12"
+                  {...fadeInFromLeft()}
+                  whileHover={{ scale: 1.1 }} />
               </Link>
 
             </div>
 
-            <motion.div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2 slg:z-40"
-              whileInView={{
-                x: 0, transition: {
-                  duration: 1,
-                }
+            {/* Search Category Component */}
 
-              }}
-              viewport={{ once: true }}
-              initial={{ x: -40 }}
+            <motion.div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2 slg:z-40"
+              {...fadeInFromLeft(0.3)}
             >
               <div className="bg-primary_bg h-14 rounded-xl  flex justify-between">
                 <input
@@ -137,15 +137,12 @@ const NavBar = () => {
 
               {/* Login Menu Ends*/}
 
-              <motion.div className="py-2 px-2 border border-gray-400 rounded-md"
-                whileInView={{
-                  x: 0, transition: {
-                    duration: 1,
-                  }
 
-                }}
-                viewport={{ once: true }}
-                initial={{ x: -40 }}
+
+              {/* Shopping Menu */}
+
+              <motion.div className="py-2 px-2 border border-gray-400 rounded-md"
+                {...fadeInFromLeft(0.5)}
               >
 
                 <button className="flex items-center gap-x-4" onClick={() => setShowCart(!showCart)}>
@@ -182,7 +179,15 @@ const NavBar = () => {
 
             <button className="bg-btn_bg w-60 text-xl h-12 text-white rounded-xl hover:bg-black duration-300 sm:text-base sm:w-40 ">Shop By Category</button>
 
-            <div className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`} ref={menuRef}>
+
+            {/* Navbr Links */}
+
+            <motion.div
+              className={` ${show ? "md:w-[400px] sm:w-full" : "md:w-0"} duration-300 w-4/12 slg:w-5/12 md:fixed md:top-0 md:left-0   md:h-full md:flex md:justify-center  md:items-center rounded-r-xl md:overflow-hidden md:bg-white md:z-50 md:shadow-xl`}
+              ref={menuRef}
+              {...fadeInFromLeft(0.2)}
+
+            >
               {show &&
                 <span className="absolute top-4 right-4 text-2xl hidden md:block" onClick={() => setShow(false)}> <IoCloseSharp /></span>
               }
@@ -217,8 +222,10 @@ const NavBar = () => {
                   >Contact</NavLink>
                 </li>
               </ul>
-            </div>
+            </motion.div>
+
             {/* =========== Social Icons================== */}
+
             <div className="w-2/12 md:mr-16 xsm:hidden">
               <div className="flex  justify-evenly gap-5 ">
                 <span className="cursor-pointer  text-xl hover:scale-125 duration-300 hover:text-[#fb7645]">
@@ -235,6 +242,8 @@ const NavBar = () => {
                 </span>
               </div>
             </div>
+
+
             <div className="hidden md:block absolute top-1/2 right-3 -translate-y-1/2">
               <button className=" text-2xl mt-1  hover:scale-125 duration-300 outline-none" onClick={() => setShow(!show)}>
                 {show ?

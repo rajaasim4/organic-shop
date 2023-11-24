@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation";
 
 const CartTotal = () => {
 
@@ -23,14 +24,7 @@ const CartTotal = () => {
 
     return (
         <motion.div
-            initial={{ x: -40, opacity: 0 }} whileInView={{
-                x: 0, opacity: 1, transition: {
-                    duration: 1,
-                    delay: 0.5
-                }
-            }}
-
-            viewport={{ once: true }}
+            {...fadeInFromLeft(0.5)}
             className="w-[600px] rounded-lg p-6 shadow-lg border-2 h-max pb-14  border-gray-400 ">
             <div className="">
 

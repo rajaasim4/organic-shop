@@ -14,7 +14,7 @@ const SignUp = () => {
           <img src={SignUpImg} alt="" className="w-8/12 " />
         </div>
         <div className="w-1/2  py-3 lg:w-full lg:flex lg:flex-col lg:items-center">
-          <Link to={"/"}>
+          <Link to={"/Home"}>
             <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
           </Link>
           <h1 className="text-3xl -translate-y-6 sm:text-center sm:text-2xl">

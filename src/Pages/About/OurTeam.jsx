@@ -7,7 +7,9 @@ import Img3 from "../../assets/Images/Team3.jpg"
 import Img4 from "../../assets/Images/Team4.jpg"
 
 
+
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa"
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
 
 const OurTeam = () => {
     return (
@@ -34,14 +36,7 @@ const OurTeam = () => {
 const TeamCard = ({ teamImg, index }) => {
     return (
         <motion.div className="w-[337px] h-[371px] relative rounded-lg group"
-            initial={{ x: -40, opacity: 0 }} whileInView={{
-                x: 0, opacity: 1, transition: {
-                    duration: 1,
-                    delay: 0.2 * index
-
-                }
-            }}
-            viewport={{ once: true }}
+            {...fadeInFromLeft(0. * index)}
         >
             <img src={teamImg} alt="" className="rounded-lg" />
             <div className="absolute bottom-0 left-0 w-full h-28 bg-primary_dark_green rounded-lg group-hover:bg-gradient_bg duration-300 flex flex-col justify-center px-2">

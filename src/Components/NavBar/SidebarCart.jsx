@@ -31,9 +31,7 @@ const SidebarCart = forwardRef(({ showCart, setShowCart }, ref) => {
 
 
     return (
-        <div className={`duration-150 
-    ${showCart ? "w-[300px]" : "w-0"}
-      h-full fixed top-0 right-0 bg-white z-50 rounded-l-2xl shadow-xl`} ref={ref}>
+        <div className={`duration-150  ${showCart ? "w-[300px]" : "w-0"} h-full fixed top-0 right-0 bg-white z-50 rounded-l-2xl shadow-xl`} ref={ref}>
             <div className=" py-4 px-5 flex flex-col justify-between h-full w-full">
                 <div className="flex justify-between items-center">
                     <h1 className="text-2xl  flex items-center">

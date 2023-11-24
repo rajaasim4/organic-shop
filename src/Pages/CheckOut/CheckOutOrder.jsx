@@ -3,6 +3,10 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation";
+
+
+
 const CheckOutOrder = () => {
 
   //Checking for the Details is Filled or not
@@ -52,13 +56,7 @@ const CheckOutOrder = () => {
     <>
 
       <motion.div
-        initial={{ x: -40, opacity: 0 }} whileInView={{
-          x: 0, opacity: 1, transition: {
-            duration: 1,
-
-          }
-        }}
-        viewport={{ once: true }}
+        {...fadeInFromLeft(0.3)}
 
         className=" rounded-lg p-6 shadow-lg border-2 h-max pb-14  border-gray-400 " >
         <div className="">

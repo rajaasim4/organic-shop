@@ -8,17 +8,16 @@ const SkeletonLoader = (props) => {
                 speed={2}
                 width={340}
                 height={498}
-                viewBox="0 0 400 460"
-                backgroundColor="#f3f3f3"
-                foregroundColor="#ecebeb"
-
+                viewBox="0 0 400 490"
+                backgroundColor="#DCDCDC"
+                foregroundColor="#f0f0f0"
                 {...props}
             >
-                <circle cx="189" cy="123" r="120" />
-                <rect x="117" y="280" rx="2" ry="2" width="160" height="10" />
-                <rect x="118" y="300" rx="2" ry="2" width="160" height="10" />
-                <rect x="120" y="320" rx="0" ry="0" width="168" height="9" />
-                <rect x="122" y="340" rx="0" ry="0" width="160" height="9" />
+                <circle cx="200" cy="143" r="140" />
+                <rect x="60" y="340" rx="4" ry="4" width="280" height="20" />
+                <rect x="60" y="380" rx="4" ry="4" width="280" height="20" />
+                <rect x="60" y="420" rx="4" ry="4" width="280" height="20" />
+                <rect x="60" y="460" rx="4" ry="4" width="280" height="20" />
             </ContentLoader>
         </div>
     )

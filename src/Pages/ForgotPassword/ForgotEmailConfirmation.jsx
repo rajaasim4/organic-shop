@@ -12,7 +12,7 @@ const ForgotEmailConfirmation = () => {
             <div className="w-11/12 mx-auto flex justify-center  shadow-2xl rounded-md gap-x-20 border-2 bg-[#f0f8ff] lg:flex-col lg:items-center max-w-[1700px] ">
 
                 <div className="  py-3  flex flex-col items-center">
-                    <Link to={"/"}>
+                    <Link to={"/Home"}>
                         <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
                     </Link>
                     <h1 className="text-xl -translate-y-6  sm:text-center">

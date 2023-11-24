@@ -12,25 +12,89 @@ import {
 import { toast } from "react-toastify";
 import { useState } from "react";
 
+//Firebase Components
+import { app, database, auth } from "../../Config/FirebaseConfig";
+import { storage } from "../../Config/FirebaseConfig";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail, updateProfile } from "firebase/auth"
+import { addDoc, collection } from "firebase/firestore";
+
 const SignUpForm = () => {
+
     const [isDisabled, setIsDisabled] = useState(false);
     const navigate = useNavigate();
 
-    let handleSubmitForm = (values, onSubmitProps) => {
-        toast("Form has been Submited", {
-            position: "top-right",
-            autoClose: 2300,
-        });
-        // console.log(values);
+    // Initializing Firebase Functions
+
+    let collectionRef = collection(database, "users")
+
+    let handleSubmitForm = async (values, onSubmitProps) => {
+
         setIsDisabled(true);
 
-        //Clearing the Form Values After Submitting and Disabling Button for 3 Seconds
-        setTimeout(() => {
-            setIsDisabled(false);
-            onSubmitProps.setSubmitting(false);
-            onSubmitProps.resetForm();
-            navigate("/Home");
-        }, 3000);
+        //Destructing the the Form Values
+        const { name, email, phoneNumber, password } = values;
+
+
+
+        //Creating User with and Storing in the firebase
+
+        fetchSignInMethodsForEmail(auth, email).then((data) => {
+            if (data.length > 0) {
+                toast.error("Email Already in Use.Use Different Email", {
+                    position: "top-right",
+                    autoClose: 2300,
+
+                });
+                return;
+            }
+        })
+        try {
+
+            //Create User with Email and Password
+            const { user } = await createUserWithEmailAndPassword(auth, email, password,);
+
+            //Clearing the Form Values After Submitting and Disabling Button for 3 Seconds
+            setTimeout(() => {
+                setIsDisabled(false);
+                onSubmitProps.setSubmitting(false);
+                onSubmitProps.resetForm();
+
+            }, 3000);
+
+            updateProfile(auth.currentUser, {
+                displayName: name
+
+            })
+
+            //Adding Data into Firebase
+            addDoc(collectionRef, {
+                name: name,
+                email: email,
+                password: password,
+                phoneNumber: phoneNumber
+            })
+
+
+            signInWithEmailAndPassword(auth, email, password)
+
+
+            toast("You have Signed In Successfully", {
+                position: "top-right",
+                autoClose: 2300,
+            });
+
+            navigate("/Home")
+
+
+        } catch (error) {
+            console.log("An Error Occured While Sing In", error)
+            toast.error("An Error Occured While Sing In", {
+                position: "top-right",
+                autoClose: 2300,
+            });
+
+        }
+
     };
 
     return (

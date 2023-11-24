@@ -5,7 +5,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.5,
     price: 12.33,
-    imgSrc: "./Product Images/AshGourd.png",
+    imgSrc: "/Product Images/AshGourd.png",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const Product = [
     category: "Fruits",
     rating: 3.9,
     price: 11.09,
-    imgSrc: "./Product Images/AsianPear.png",
+    imgSrc: "/Product Images/AsianPear.png",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const Product = [
     category: "Fruits",
     rating: 4.9,
     price: 17.83,
-    imgSrc: "./Product Images/Avocado.png",
+    imgSrc: "/Product Images/Avocado.png",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const Product = [
     category: "Fruits",
     rating: 4.8,
     price: 9.31,
-    imgSrc: "./Product Images/Banana.png",
+    imgSrc: "/Product Images/Banana.png",
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const Product = [
     category: "Vegetables",
     rating: 5,
     price: 15.26,
-    imgSrc: "./Product Images/BeetRoot.png",
+    imgSrc: "/Product Images/BeetRoot.png",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.6,
     price: 18.96,
-    imgSrc: "./Product Images/BitterGourd.png",
+    imgSrc: "/Product Images/BitterGourd.png",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const Product = [
     category: "Fruits",
     rating: 3.7,
     price: 14.47,
-    imgSrc: "./Product Images/BlackBerry.png",
+    imgSrc: "/Product Images/BlackBerry.png",
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.7,
     price: 8.15,
-    imgSrc: "./Product Images/Brocolli.png",
+    imgSrc: "/Product Images/Brocolli.png",
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.4,
     price: 19.35,
-    imgSrc: "./Product Images/BrownCoconut.png",
+    imgSrc: "/Product Images/BrownCoconut.png",
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const Product = [
     category: "Vegetables",
     rating: 5,
     price: 17.9,
-    imgSrc: "./Product Images/Cabbage.png",
+    imgSrc: "/Product Images/Cabbage.png",
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.9,
     price: 14.89,
-    imgSrc: "./Product Images/Carrot.png",
+    imgSrc: "/Product Images/Carrot.png",
   },
   {
     id: 12,
@@ -93,7 +93,7 @@ const Product = [
     category: "Fruits",
     rating: 3.6,
     price: 12.88,
-    imgSrc: "./Product Images/CatusFruit.png",
+    imgSrc: "/Product Images/CatusFruit.png",
   },
   {
     id: 13,
@@ -101,7 +101,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.4,
     price: 17.46,
-    imgSrc: "./Product Images/Cauliflower.png",
+    imgSrc: "/Product Images/Cauliflower.png",
   },
   {
     id: 14,
@@ -109,7 +109,7 @@ const Product = [
     category: "Fruits",
     rating: 3.5,
     price: 19.6,
-    imgSrc: "./Product Images/Cherry.png",
+    imgSrc: "/Product Images/Cherry.png",
   },
   {
     id: 15,
@@ -117,7 +117,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.8,
     price: 8.84,
-    imgSrc: "./Product Images/Cucumber.png",
+    imgSrc: "/Product Images/Cucumber.png",
   },
   {
     id: 16,
@@ -125,7 +125,7 @@ const Product = [
     category: "Fruits",
     rating: 3.1,
     price: 14.75,
-    imgSrc: "./Product Images/DragonfruitYellow.png",
+    imgSrc: "/Product Images/DragonfruitYellow.png",
   },
   {
     id: 17,
@@ -133,7 +133,7 @@ const Product = [
     category: "Fruits",
     rating: 4.1,
     price: 18.33,
-    imgSrc: "./Product Images/Durian Whole.png",
+    imgSrc: "/Product Images/Durian Whole.png",
   },
   {
     id: 18,
@@ -141,7 +141,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.3,
     price: 13.73,
-    imgSrc: "./Product Images/EggPlant.png",
+    imgSrc: "/Product Images/EggPlant.png",
   },
   {
     id: 19,
@@ -149,7 +149,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.7,
     price: 10.56,
-    imgSrc: "./Product Images/Fresh turmeric roots.png",
+    imgSrc: "/Product Images/Fresh turmeric roots.png",
   },
   {
     id: 20,
@@ -157,7 +157,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.2,
     price: 14.79,
-    imgSrc: "./Product Images/Garlic.png",
+    imgSrc: "/Product Images/Garlic.png",
   },
   {
     id: 21,
@@ -165,7 +165,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.4,
     price: 11.73,
-    imgSrc: "./Product Images/GermanMaizeCorn.png",
+    imgSrc: "/Product Images/GermanMaizeCorn.png",
   },
   {
     id: 22,
@@ -173,7 +173,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.8,
     price: 9.92,
-    imgSrc: "./Product Images/Ginger.png",
+    imgSrc: "/Product Images/Ginger.png",
   },
   {
     id: 23,
@@ -181,7 +181,7 @@ const Product = [
     category: "Fruits",
     rating: 3.2,
     price: 14.8,
-    imgSrc: "./Product Images/Grapes.png",
+    imgSrc: "/Product Images/Grapes.png",
   },
   {
     id: 24,
@@ -189,7 +189,7 @@ const Product = [
     category: "Fruits",
     rating: 4.9,
     price: 9.47,
-    imgSrc: "./Product Images/Grapess.png",
+    imgSrc: "/Product Images/Grapess.png",
   },
   {
     id: 25,
@@ -197,7 +197,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.7,
     price: 8.06,
-    imgSrc: "./Product Images/GreenBeans.png",
+    imgSrc: "/Product Images/GreenBeans.png",
   },
   {
     id: 26,
@@ -205,7 +205,7 @@ const Product = [
     category: "Fruits",
     rating: 4.9,
     price: 15.48,
-    imgSrc: "./Product Images/Guava.png",
+    imgSrc: "/Product Images/Guava.png",
   },
   {
     id: 27,
@@ -213,7 +213,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.4,
     price: 5.97,
-    imgSrc: "./Product Images/Hand Grenade Courgettes.png",
+    imgSrc: "/Product Images/Hand Grenade Courgettes.png",
   },
   {
     id: 28,
@@ -221,7 +221,7 @@ const Product = [
     category: "Fruits",
     rating: 3.2,
     price: 5.26,
-    imgSrc: "./Product Images/KiwiFruit.png",
+    imgSrc: "/Product Images/KiwiFruit.png",
   },
   {
     id: 29,
@@ -229,7 +229,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.4,
     price: 14.13,
-    imgSrc: "./Product Images/Leek.png",
+    imgSrc: "/Product Images/Leek.png",
   },
   {
     id: 30,
@@ -237,7 +237,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.5,
     price: 8.91,
-    imgSrc: "./Product Images/Lemon.png",
+    imgSrc: "/Product Images/Lemon.png",
   },
   {
     id: 31,
@@ -245,7 +245,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.3,
     price: 7.21,
-    imgSrc: "./Product Images/Lettuce.png",
+    imgSrc: "/Product Images/Lettuce.png",
   },
   {
     id: 32,
@@ -253,7 +253,7 @@ const Product = [
     category: "Fruits",
     rating: 3.8,
     price: 5.69,
-    imgSrc: "./Product Images/MangoKent.png",
+    imgSrc: "/Product Images/MangoKent.png",
   },
   {
     id: 33,
@@ -261,7 +261,7 @@ const Product = [
     category: "Fruits",
     rating: 3.7,
     price: 13.63,
-    imgSrc: "./Product Images/Maracuya.png",
+    imgSrc: "/Product Images/Maracuya.png",
   },
   {
     id: 34,
@@ -269,7 +269,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.3,
     price: 5.13,
-    imgSrc: "./Product Images/Margosa.png",
+    imgSrc: "/Product Images/Margosa.png",
   },
   {
     id: 35,
@@ -277,7 +277,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.2,
     price: 14.77,
-    imgSrc: "./Product Images/MazeCorn.png",
+    imgSrc: "/Product Images/MazeCorn.png",
   },
   {
     id: 36,
@@ -285,7 +285,7 @@ const Product = [
     category: "Vegetables",
     rating: 5,
     price: 18.35,
-    imgSrc: "./Product Images/Mushrooms.png",
+    imgSrc: "/Product Images/Mushrooms.png",
   },
   {
     id: 37,
@@ -293,7 +293,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.6,
     price: 14.63,
-    imgSrc: "./Product Images/Orange.png",
+    imgSrc: "/Product Images/Orange.png",
   },
   {
     id: 38,
@@ -301,7 +301,7 @@ const Product = [
     category: "Vegetables",
     rating: 4,
     price: 10.84,
-    imgSrc: "./Product Images/OrangeCapsicumSeed.png",
+    imgSrc: "/Product Images/OrangeCapsicumSeed.png",
   },
   {
     id: 39,
@@ -309,7 +309,7 @@ const Product = [
     category: "Vegetables",
     rating: 4,
     price: 9.63,
-    imgSrc: "./Product Images/Organic Mushroom.png",
+    imgSrc: "/Product Images/Organic Mushroom.png",
   },
   {
     id: 40,
@@ -317,7 +317,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.6,
     price: 17.9,
-    imgSrc: "./Product Images/Organic Wild Garlic Leaves.png",
+    imgSrc: "/Product Images/Organic Wild Garlic Leaves.png",
   },
   {
     id: 41,
@@ -325,7 +325,7 @@ const Product = [
     category: "Fruits",
     rating: 3.4,
     price: 15.82,
-    imgSrc: "./Product Images/Papaya.png",
+    imgSrc: "/Product Images/Papaya.png",
   },
   {
     id: 42,
@@ -333,7 +333,7 @@ const Product = [
     category: "Fruits",
     rating: 3.7,
     price: 18.12,
-    imgSrc: "./Product Images/Peach.png",
+    imgSrc: "/Product Images/Peach.png",
   },
   {
     id: 43,
@@ -341,7 +341,7 @@ const Product = [
     category: "Fruits",
     rating: 3.2,
     price: 16.95,
-    imgSrc: "./Product Images/Pineapple.png",
+    imgSrc: "/Product Images/Pineapple.png",
   },
   {
     id: 44,
@@ -349,7 +349,7 @@ const Product = [
     category: "Vegetables",
     rating: 3,
     price: 12.67,
-    imgSrc: "./Product Images/Potatoes.png",
+    imgSrc: "/Product Images/Potatoes.png",
   },
   {
     id: 45,
@@ -357,7 +357,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.6,
     price: 17.18,
-    imgSrc: "./Product Images/PurpleCabbage.png",
+    imgSrc: "/Product Images/PurpleCabbage.png",
   },
   {
     id: 46,
@@ -365,7 +365,7 @@ const Product = [
     category: "Fruits",
     rating: 4,
     price: 8.08,
-    imgSrc: "./Product Images/Red Grapefruit.png",
+    imgSrc: "/Product Images/Red Grapefruit.png",
   },
   {
     id: 47,
@@ -373,7 +373,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.6,
     price: 13.58,
-    imgSrc: "./Product Images/Red Leaf Lettuce.png",
+    imgSrc: "/Product Images/Red Leaf Lettuce.png",
   },
   {
     id: 48,
@@ -381,7 +381,7 @@ const Product = [
     category: "Vegetables",
     rating: 3,
     price: 13.18,
-    imgSrc: "./Product Images/Red Watermelon.png",
+    imgSrc: "/Product Images/Red Watermelon.png",
   },
   {
     id: 49,
@@ -389,7 +389,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.6,
     price: 8.67,
-    imgSrc: "./Product Images/RedCapsicumSeed.png",
+    imgSrc: "/Product Images/RedCapsicumSeed.png",
   },
   {
     id: 50,
@@ -397,7 +397,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.5,
     price: 17.21,
-    imgSrc: "./Product Images/RoseApple.png",
+    imgSrc: "/Product Images/RoseApple.png",
   },
   {
     id: 51,
@@ -405,7 +405,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.6,
     price: 13.7,
-    imgSrc: "./Product Images/RoundGourd.png",
+    imgSrc: "/Product Images/RoundGourd.png",
   },
   {
     id: 52,
@@ -413,7 +413,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.6,
     price: 5.65,
-    imgSrc: "./Product Images/Spinach.png",
+    imgSrc: "/Product Images/Spinach.png",
   },
   {
     id: 53,
@@ -421,7 +421,7 @@ const Product = [
     category: "Vegetables",
     rating: 3.8,
     price: 15.21,
-    imgSrc: "./Product Images/SproutingBroccoli.png",
+    imgSrc: "/Product Images/SproutingBroccoli.png",
   },
   {
     id: 54,
@@ -429,7 +429,7 @@ const Product = [
     category: "Fruits",
     rating: 3.9,
     price: 11.21,
-    imgSrc: "./Product Images/Straberry.png",
+    imgSrc: "/Product Images/Straberry.png",
   },
   {
     id: 55,
@@ -437,7 +437,7 @@ const Product = [
     category: "Fruits",
     rating: 3.8,
     price: 10.2,
-    imgSrc: "./Product Images/Sweet Santol.png",
+    imgSrc: "/Product Images/Sweet Santol.png",
   },
   {
     id: 56,
@@ -445,7 +445,7 @@ const Product = [
     category: "Fruits",
     rating: 3.2,
     price: 15.71,
-    imgSrc: "./Product Images/Tamarillo.png",
+    imgSrc: "/Product Images/Tamarillo.png",
   },
   {
     id: 57,
@@ -453,7 +453,7 @@ const Product = [
     category: "Fruits",
     rating: 3.1,
     price: 6.24,
-    imgSrc: "./Product Images/Thailand apricot.png",
+    imgSrc: "/Product Images/Thailand apricot.png",
   },
   {
     id: 58,
@@ -461,7 +461,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.5,
     price: 6.45,
-    imgSrc: "./Product Images/Tomatoes.png",
+    imgSrc: "/Product Images/Tomatoes.png",
   },
   {
     id: 59,
@@ -469,7 +469,7 @@ const Product = [
     category: "Vegetables",
     rating: 4.9,
     price: 9.96,
-    imgSrc: "./Product Images/Whitepumpkin.png",
+    imgSrc: "/Product Images/Whitepumpkin.png",
   },
   {
     id: 60,
@@ -477,7 +477,7 @@ const Product = [
     category: "Vegetables",
     rating: 3,
     price: 12.27,
-    imgSrc: "./Product Images/YellowWaterMelon.png",
+    imgSrc: "/Product Images/YellowWaterMelon.png",
   },
 ];
 export default Product;

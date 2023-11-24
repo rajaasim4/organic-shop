@@ -1,7 +1,11 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { AiOutlineArrowUp } from "react-icons/ai"
+
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
 const ScrollTopButton = () => {
 
+    //Smooth Scroll Function
     const Scroll = () => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
@@ -9,6 +13,8 @@ const ScrollTopButton = () => {
 
     const [showButton, setShowButton] = useState(false);
 
+
+    //Shoing Button On Specific Scroll
     const setButtontoScroll = () => {
         const height = 300;
         const currentScroll = window.pageYOffset;
@@ -20,6 +26,7 @@ const ScrollTopButton = () => {
         }
     }
 
+    //Using the Scroll Event
     useEffect(() => {
         window.addEventListener("scroll", setButtontoScroll);
         return () => {
@@ -31,9 +38,12 @@ const ScrollTopButton = () => {
     return (
         <div className="fixed bottom-5 right-5 z-40">
             {showButton &&
-                <button className="bg-gradient_bg w-10 h-10 outline-none text-xl rounded-xl text-white grid place-items-center" onClick={Scroll}>
+                <motion.button
+                    {...fadeInFromLeft()}
+                    whileTap={{ scale: 1.2 }}
+                    className="bg-gradient_bg w-10 h-10 outline-none text-xl rounded-xl text-white grid place-items-center" onClick={Scroll}>
                     <AiOutlineArrowUp />
-                </button>
+                </motion.button>
             }
         </div>
     )

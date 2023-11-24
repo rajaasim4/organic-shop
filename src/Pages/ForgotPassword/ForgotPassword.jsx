@@ -1,5 +1,5 @@
 import Logo from "../../assets/Images/Logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoLockClosedOutline } from "react-icons/io5";
 import Img from "../../assets/Images/SVG/Forgot_password.svg";
 
@@ -9,8 +9,14 @@ import { Form, ErrorMessage, Field, Formik } from "formik";
 import { useState } from "react";
 import { OvalLoader } from "../../utils/Helpers/Loaders/Loaders";
 import { toast } from "react-toastify";
-
 import *as Yup from "yup"
+
+//Firebase
+import { confirmPasswordReset, updatePassword } from "firebase/auth"
+import { auth } from "../../Config/FirebaseConfig"
+import { updateDoc } from "firebase/firestore";
+
+
 const ForgotPassword = () => {
     const [isloading, setIsLoading] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -33,8 +39,11 @@ const ForgotPassword = () => {
 
     })
 
+    const location = useLocation();
+    const oobCode = new URLSearchParams(location.search).get('oobCode')
+
     //Handling Login Submit
-    const handleLoginSubmit = (values, onSubmitProps) => {
+    const handleLoginSubmit = async (values, onSubmitProps) => {
         toast("Password Changed Succesfully ", {
             position: "top-right",
             autoClose: 2300,
@@ -45,14 +54,37 @@ const ForgotPassword = () => {
         //Showing Loader
         setIsLoading(true);
 
-        setTimeout(() => {
-            setIsDisabled(false);
-            onSubmitProps.setSubmitting(false);
-            onSubmitProps.resetForm();
-            //Hiding the Loader
-            setIsLoading(false);
-            navigate("/Login");
-        }, 3000);
+
+        //Firebase Password Change Function  
+        confirmPasswordReset(auth, oobCode, newPassword).then((values) => {
+            // updatePassword(auth?.currentUser, values?.newPassword).then((values) => {
+
+            toast("Password Changed Successfully ", {
+                position: "top-right",
+                autoClose: 2300,
+            });
+
+            setTimeout(() => {
+                setIsDisabled(false);
+                onSubmitProps.setSubmitting(false);
+                onSubmitProps.resetForm();
+                //Hiding the Loader
+                setIsLoading(false);
+                navigate("/Login");
+            }, 3000);
+
+        }).catch((err) => {
+
+            toast.error("An Error While Changing Password ", {
+                position: "top-right",
+                autoClose: 2300,
+            });
+        })
+
+
+
+
+
     };
 
     return (
@@ -62,7 +94,7 @@ const ForgotPassword = () => {
                     <img src={Img} alt="" className="w-8/12 " />
                 </div>
                 <div className="w-1/2  py-3 lg:w-full lg:flex lg:flex-col lg:items-center">
-                    <Link to={"/"}>
+                    <Link to={"/Home"}>
                         <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
                     </Link>
                     <h1 className="text-3xl -translate-y-6 sm:text-2xl sm:text-center">

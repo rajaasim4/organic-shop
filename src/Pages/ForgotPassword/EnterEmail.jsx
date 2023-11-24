@@ -4,16 +4,27 @@ import { IoMailOutline, } from "react-icons/io5";
 import Img from "../../assets/Images/SVG/Enter_Email.svg";
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+
+//Firebase 
+import { database, auth } from "../../Config/FirebaseConfig"
+import { collection, onSnapshot, doc, getDoc } from "firebase/firestore";
+import { sendPasswordResetEmail } from "firebase/auth";
+
 const EnterEmail = () => {
+
+    const collectionRef = collection(database, "users")
 
     const navigate = useNavigate()
 
     const [email, setEmail] = useState('');
     const [isValid, setIsValid] = useState(true);
+    const [data, setData] = useState([])
 
     const handleEmailChange = (e) => {
+
+
         const enteredEmail = e.target.value;
         setEmail(enteredEmail);
 
@@ -24,15 +35,70 @@ const EnterEmail = () => {
 
     };
 
+
+
+    const getData = () => {
+        onSnapshot(collectionRef, (data) => {
+            setData(data.docs.map((item) => {
+                // return item.data()
+                return { ...item.data(), id: item.id }
+            }))
+        })
+
+    }
+    useEffect(() => {
+        getData()
+
+    }, [])
+
     //=======handle Email Submit========
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
+
         e.preventDefault();
 
-        isValid ? navigate("/Forgot/EmailConfimationSent") : toast.error("Please Enter Correct Email ", {
-            position: "top-right",
-            autoClose: 2300,
-            toastId: 1
-        });
+
+        if (isValid) {
+
+            console.log(data)
+            //Checking Entered Email Exist or not
+            const isEmailExit = data.find((item) => item.email === email)
+            console.log(email)
+            console.log(isEmailExit)
+            if (isEmailExit === undefined) {
+                toast.error("Provided Email Doesnt exist ", {
+                    position: "top-right",
+                    autoClose: 2300,
+                    toastId: 1
+                });
+            }
+            else {
+                //Sending Reset Password Confirmation Email
+                sendPasswordResetEmail(auth, email, {
+                    url: "http://localhost:5173/Forgot/Password"
+                }).then((value) => {
+                    window.localStorage.setItem("useremail", email)
+                }).catch((err) => {
+
+                    toast.error("An Error Occured ", {
+                        position: "top-right",
+                        autoClose: 2300,
+                        toastId: 1
+                    });
+                })
+
+                navigate("/Forgot/EmailConfimationSent")
+            }
+        }
+        else {
+
+            toast.error("Please Enter Correct Email ", {
+                position: "top-right",
+                autoClose: 2300,
+                toastId: 1
+            });
+
+        }
+
     }
 
 
@@ -43,7 +109,7 @@ const EnterEmail = () => {
                     <img src={Img} alt="" className="w-8/12 " />
                 </div>
                 <div className="w-1/2  py-3 lg:w-full lg:flex lg:flex-col lg:items-center">
-                    <Link to={"/"}>
+                    <Link to={"/Home"}>
                         <img src={Logo} className="  mt-5 w-44 h-44 object-contain" alt="" />
                     </Link>
                     <h1 className="text-3xl -translate-y-6 sm:text-2xl sm:text-center">

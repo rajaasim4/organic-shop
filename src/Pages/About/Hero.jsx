@@ -4,6 +4,7 @@ import Img1 from "../../assets/Images/about-img.jpg"
 import Img2 from "../../assets/Images/about-img2.jpg"
 import { motion } from "framer-motion"
 import { Parallax } from "react-scroll-parallax"
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
 
 
 const Hero = () => {
@@ -15,24 +16,11 @@ const Hero = () => {
                         translateY={[-15, 50]}
                         className="bg-primary_green rounded-lg w-[454px] h-[250px] absolute top-16 right-10 z-10 sm:hidden"></Parallax>
                     <motion.img
-                        initial={{ x: -40, opacity: 0 }} whileInView={{
-                            x: 0, opacity: 1, transition: {
-                                duration: 1,
-
-                            }
-                        }}
-                        viewport={{ once: true }}
+                        {...fadeInFromLeft()}
 
                         src={Img1} alt="" className="z-20 absolute top-0 left-0 rounded-lg sm:w-full sm:h-full sm:object-cover" />
                     <motion.img
-                        initial={{ x: -40, opacity: 0 }} whileInView={{
-                            x: 0, opacity: 1, transition: {
-                                duration: 1,
-                                delay: 0.5
-                            }
-                        }}
-
-                        viewport={{ once: true }}
+                        {...fadeInFromLeft(0.5)}
                         src={Img2} alt="" className="z-30 absolute bottom-0 right-0 rounded-lg sm:hidden" />
                 </div>
                 <div className="w-1/2 slg:w-full md:flex md:flex-col md:items-center">

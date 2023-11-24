@@ -10,13 +10,16 @@ import { toast } from "react-toastify"
 //Cart Functions
 import { addToCart, calculateDiscount, decreasingItemQunatity, removeToCart } from "../../store/Reducers/CartSlice"
 import { motion } from "framer-motion"
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
+
+
 const CartDetails = () => {
 
     const dispatch = useDispatch()
 
     //Getting Cart Data
     const data = useSelector((state) => state.CartSlice);
-    // console.log(data);
+
 
     //Checking Cupon Code implemented or not
 
@@ -69,14 +72,8 @@ const CartDetails = () => {
                             {data.cart.map((item, Index) => {
                                 return (
                                     <motion.tr
-                                        initial={{ x: -40, opacity: 0 }} whileInView={{
-                                            x: 0, opacity: 1, transition: {
-                                                duration: 1,
-                                                delay: 0.2 * Index
-                                            }
-                                        }}
+                                        {...fadeInFromLeft(0.2 * Index)}
 
-                                        viewport={{ once: true }}
                                         className=" h-32 md:h-max md:py-5 border-gray-300 shadow-md" key={Index}>
                                         <td className="text-center">
                                             <img

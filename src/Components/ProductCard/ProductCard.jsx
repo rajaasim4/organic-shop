@@ -1,13 +1,11 @@
 
 import { BsCart3 } from "react-icons/bs"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, } from "react-router-dom"
 import StarRating from "../StarRating/StarRating"
 import { useDispatch } from "react-redux"
 import { addToCart } from "../../store/Reducers/CartSlice"
 const ProductCard = (props) => {
     const dispatch = useDispatch()
-
-    const navigate = useNavigate();
 
 
     //Destructing Data form the Props
@@ -22,9 +20,6 @@ const ProductCard = (props) => {
 
     // const Itemdata = { id, name, category, price, imgSrc, rating };
 
-    // const navigaiontoSingleProduct = () => {
-    //     navigate(`/Shop/${name}`, { state: { id } })
-    // }
 
     return (
         <div className=" w-[340px] h-[498px] sm:w-full group  group  duration-300 cursor-pointer border rounded-xl border-gray-300 group relative">
@@ -46,12 +41,10 @@ const ProductCard = (props) => {
             <div className=" flex flex-col items-center justify-evenly gap-y-2 mt-2 p-3">
 
                 <span className="text-[#10101075] text-base">{category}</span>
-                <Link to={`/Shop/${name}`} state={id} className="hover:text-orange-300">
+                <Link to={`/Shop/${name}`} state={id} className="hover:text-primary_green">
                     <h4 className="text-xl font-semibold">{name}</h4>
                 </Link>
-                {/* <button onClick={navigaiontoSingleProduct} className="hover:text-orange-300">
-                    <h4 className="text-xl font-semibold">{name}</h4>
-                </button> */}
+
                 <div className="flex text-primary_green">
                     <StarRating rating={rating} />
 

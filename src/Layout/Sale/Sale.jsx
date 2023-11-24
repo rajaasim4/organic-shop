@@ -1,18 +1,12 @@
 import { motion } from "framer-motion"
 import Helmet from "../../Components/Helmet/Helmet"
-
+import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
 const Sale = () => {
     return (
         <Helmet>
             <div className="flex gap-x-8 lg:flex-col lg:gap-y-6">
                 <motion.div className="w-1/2 bg-sale_left_bg bg-cover flex items-end justify-end p-16 h-[400px] rounded-2xl lg:w-full  sm:justify-start sm:items-end"
-                    initial={{ x: -40, opacity: 0 }} whileInView={{
-                        x: 0, opacity: 1, transition: {
-                            duration: 1,
-
-                        }
-                    }}
-                    viewport={{ once: true }}
+                    {...fadeInFromLeft()}
                 >
                     <div className="flex flex-col  w-4/12  sm:w-max sm:items-start ">
 
@@ -25,13 +19,7 @@ const Sale = () => {
                     </div>
                 </motion.div>
                 <motion.div className="w-1/2 bg-sale_right_bg bg-cover flex items-end justify-start p-16 h-[400px] rounded-2xl lg:w-full"
-                    initial={{ x: -40, opacity: 0 }} whileInView={{
-                        x: 0, opacity: 1, transition: {
-                            duration: 1,
-                            delay: 0.5
-                        }
-                    }}
-                    viewport={{ once: true }}
+                    {...fadeInFromLeft(0.5)}
                 >
 
 

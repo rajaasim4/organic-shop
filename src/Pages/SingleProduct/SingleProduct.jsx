@@ -2,7 +2,6 @@ import { useLayoutEffect, useState } from "react"
 import Helmet from "../../Components/Helmet/Helmet"
 import Brands from "../../Layout/Brands/Brands"
 import Product from "../../Data/Product"
-// import Onion from "../../../public/Product Images"
 
 //Icons
 import { BiMinus, BiPlus } from "react-icons/bi"
@@ -25,7 +24,7 @@ const SingleProduct = (props) => {
     // const newImgSrc = `../../../public${imgSrc.slice(1)}`
 
     let getdata = Product.find((item) => item.id === SingleItemId);
-    console.log(getdata);
+
 
     const { id, name, category, price, imgSrc, rating } = getdata
 
@@ -51,6 +50,7 @@ const SingleProduct = (props) => {
 
     const handleAddToCart = () => {
         dispatch(addToCart({ id, name, category, price, imgSrc, rating, quantity: itemquantity }))
+
     }
 
 

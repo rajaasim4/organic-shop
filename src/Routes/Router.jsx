@@ -29,7 +29,9 @@ const Router = () => {
   const location = useLocation();
   // const showFooter = ['/About', '/Contact', '/Shop', '/Shop/*', '/Home', '/Cart', '/', '/CheckOut',].includes(location.pathname);
 
-  const showFooter = ['/About', '/Contact', '/Shop', '/Home', '/Cart', '/', '/CheckOut'].some(path => location.pathname.startsWith(path));
+  const hideFooterOnPaths = ['/Login', '/SignUp', '/Forgot', /* add more paths as needed */];
+  const showFooter = !hideFooterOnPaths.some(path => location.pathname.startsWith(path));
+
 
 
   return (
@@ -42,6 +44,7 @@ const Router = () => {
 
         <Routes >
 
+          {/* Simple Routes For User */}
 
           <Route element={<NavBar />}>
 
@@ -54,8 +57,8 @@ const Router = () => {
             <Route exact path="/Cart" element={<Cart />} />
             <Route exact path="/CheckOut" element={<CheckOut />} />
 
-
           </Route>
+
 
           {/* Authentication Routes */}
           <Route exact path="/Login" element={<Login />} />
