@@ -12,9 +12,9 @@ import { toast } from "react-toastify";
 import *as Yup from "yup"
 
 //Firebase
-import { confirmPasswordReset, updatePassword } from "firebase/auth"
-import { auth } from "../../Config/FirebaseConfig"
-import { updateDoc } from "firebase/firestore";
+import { confirmPasswordReset, updatePassword, verifyPasswordResetCode } from "firebase/auth"
+import { auth, database } from "../../Config/FirebaseConfig"
+import { doc, updateDoc, } from "firebase/firestore";
 
 
 const ForgotPassword = () => {
@@ -39,30 +39,104 @@ const ForgotPassword = () => {
 
     })
 
+    // Getting User Information from the Email
     const location = useLocation();
     const oobCode = new URLSearchParams(location.search).get('oobCode')
 
-    //Handling Login Submit
+    //Getting Data from the Localstorage to update into the Firebase Firestore
+    let passwordResetuserId = window?.localStorage?.getItem("userId");
+
+    const userPasswordUpdateRef = doc(database, "users", passwordResetuserId);
+
+    //Handling Login Submit Function
     const handleLoginSubmit = async (values, onSubmitProps) => {
-        toast("Password Changed Succesfully ", {
-            position: "top-right",
-            autoClose: 2300,
-        });
+
         setIsDisabled(true);
-        // console.log(values);
 
         //Showing Loader
         setIsLoading(true);
 
+        //=========This Code can be use in Future
+
+        //Verify Either Code is Valid 
+
+        // verifyPasswordResetCode(oobCode).then((email) => {
+        //     console.log('this email require password reset', email)
+
+        //     //Firebase Password Change Function  
+        //     confirmPasswordReset(auth, oobCode, values.newPassword).then((values) => {
+        //         // updatePassword(auth?.currentUser, values?.newPassword).then((values) => {
+
+        //         toast("Password Changed Successfully ", {
+        //             position: "top-right",
+        //             autoClose: 2300,
+        //         });
+
+        //         //Also Updating the Password in the Database
+
+        //         let passwordResetEmail = window.localStorage.getItem("useremail");
+
+        //         const userPasswordUpdateRef = doc(database, "users", passwordResetEmail.toString());
+
+        //         updateDoc(userPasswordUpdateRef, values.newPassword).then((values) => {
+        //             console.log('data updated', values)
+        //         }).catch((err) => {
+        //             console.log(err, 'cannot updated the doc')
+        //         })
+
+
+        //         setTimeout(() => {
+        //             setIsDisabled(false);
+        //             onSubmitProps.setSubmitting(false);
+        //             onSubmitProps.resetForm();
+        //             //Hiding the Loader
+        //             setIsLoading(false);
+        //             navigate("/Login");
+        //         }, 3000);
+
+        //     }).catch((err) => {
+        //         console.log(err)
+        //         setIsDisabled(false);
+        //         setIsLoading(false)
+
+        //         toast.error("An Error While Changing Password ", {
+        //             position: "top-right",
+        //             autoClose: 2300,
+        //         });
+        //     })
+
+        // }).catch((error) => {
+
+        //     console.log(error)
+        //     setIsDisabled(false);
+        //     setIsLoading(false)
+        //     toast.error("Password Cannot Changed Invalid Verificaion Email", {
+        //         position: "top-right",
+        //         autoClose: 2300,
+        //     });
+        // })
+
 
         //Firebase Password Change Function  
-        confirmPasswordReset(auth, oobCode, newPassword).then((values) => {
-            // updatePassword(auth?.currentUser, values?.newPassword).then((values) => {
+
+        //Confirm Password Reset Function
+        confirmPasswordReset(auth, oobCode, values.newPassword).then((values) => {
 
             toast("Password Changed Successfully ", {
                 position: "top-right",
                 autoClose: 2300,
             });
+
+            console.log(values.newPassword)
+
+            //Updating the Password in the Database
+
+            updateDoc(userPasswordUpdateRef, { password: values.newPassword }).then((values) => {
+                console.log('data updated', values)
+            }).catch((err) => {
+                console.log(err, 'cannot updated the doc')
+            })
+
 
             setTimeout(() => {
                 setIsDisabled(false);
@@ -73,19 +147,23 @@ const ForgotPassword = () => {
                 navigate("/Login");
             }, 3000);
 
-        }).catch((err) => {
+            //Removing data from the Localstorage
+            window.localStorage.removeItem("userId")
 
-            toast.error("An Error While Changing Password ", {
+
+        }).catch((err) => {
+            console.log(err)
+            setIsDisabled(false)
+            setIsLoading(false)
+            toast.error("An Error While Changing Password Please Reset Again ", {
                 position: "top-right",
                 autoClose: 2300,
             });
         })
-
-
-
-
-
     };
+
+
+
 
     return (
         <div className="w-full min-h-screen flex justify-center items-center bg-primary_dark_green py-10">

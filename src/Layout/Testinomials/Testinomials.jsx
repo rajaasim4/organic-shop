@@ -23,6 +23,7 @@ const Testinomials = () => {
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={4}
+                    speed={1100}
                     autoplay={{
                         delay: 2500,
                         disableOnInteraction: false,

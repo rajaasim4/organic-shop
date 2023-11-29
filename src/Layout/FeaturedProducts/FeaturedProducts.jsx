@@ -30,7 +30,8 @@ const FeaturedProducts = () => {
                     <Swiper
                         slidesPerView={3}
                         spaceBetween={30}
-                        // centeredSlides={true}
+                        centeredSlides={true}
+                        speed={800}
                         pagination={{
                             clickable: true,
                         }}
@@ -72,7 +73,7 @@ const FeaturedProducts = () => {
                                 <SwiperSlide key={item.id} className=" text-center flex justify-center items-center">
                                     <div className="flex justify-center items-center">
 
-                                        <ProductCard {...item} />
+                                        <ProductCard {...item} bg="bg-gray-50" />
                                     </div>
 
                                 </SwiperSlide>

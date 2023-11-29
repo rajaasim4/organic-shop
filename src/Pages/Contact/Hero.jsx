@@ -20,7 +20,7 @@ const Hero = () => {
                                 <input type="text" className="bg-gray-200 py-3 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your Email*" />
                             </div>
                             <div className="">
-                                <textarea name="" id="" cols="30" rows="4" className="bg-gray-200 py-7 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your review*"></textarea>
+                                <textarea name="" id="" cols="30" rows="4" className="bg-gray-200 py-7 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your message*"></textarea>
 
                             </div>
                             <button className="rounded-xl text-white w-32 h-12 mt-4 ml-auto block bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300">

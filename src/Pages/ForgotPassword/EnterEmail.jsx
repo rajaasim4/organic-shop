@@ -59,11 +59,11 @@ const EnterEmail = () => {
 
         if (isValid) {
 
-            console.log(data)
+            console.log('all get data is here', data)
             //Checking Entered Email Exist or not
             const isEmailExit = data.find((item) => item.email === email)
-            console.log(email)
-            console.log(isEmailExit)
+
+
             if (isEmailExit === undefined) {
                 toast.error("Provided Email Doesnt exist ", {
                     position: "top-right",
@@ -76,7 +76,8 @@ const EnterEmail = () => {
                 sendPasswordResetEmail(auth, email, {
                     url: "http://localhost:5173/Forgot/Password"
                 }).then((value) => {
-                    window.localStorage.setItem("useremail", email)
+
+                    window.localStorage.setItem("userId", isEmailExit.id)
                 }).catch((err) => {
 
                     toast.error("An Error Occured ", {

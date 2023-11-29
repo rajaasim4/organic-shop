@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
-//Routes
+//Components For User
 import Home from "../Home/Home";
 import NavBar from "../Components/NavBar/NavBar";
 import Footer from "../Components/Footer/Footer";
@@ -20,6 +20,11 @@ import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import ScrollTopButton from "../Components/ScrollTopButton/ScrollTopButton";
 import ScrollTop from "../Hooks/ScrollTop"
 
+//Components for the Admin
+import Dashboard from "../Pages/Dashboard/Dashboard";
+
+
+
 //Toast Notificaion
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +34,7 @@ const Router = () => {
   const location = useLocation();
   // const showFooter = ['/About', '/Contact', '/Shop', '/Shop/*', '/Home', '/Cart', '/', '/CheckOut',].includes(location.pathname);
 
-  const hideFooterOnPaths = ['/Login', '/SignUp', '/Forgot', /* add more paths as needed */];
+  const hideFooterOnPaths = ['/Login', '/SignUp', '/Forgot', '/Dashboard', /* add more paths as needed */];
   const showFooter = !hideFooterOnPaths.some(path => location.pathname.startsWith(path));
 
 
@@ -56,6 +61,13 @@ const Router = () => {
             <Route exact path="/Shop/:productname" element={<SingleProduct />} />
             <Route exact path="/Cart" element={<Cart />} />
             <Route exact path="/CheckOut" element={<CheckOut />} />
+
+          </Route>
+
+          {/* Routes for the Admin */}
+
+          <Route>
+            <Route path="/Dashboard" element={<Dashboard />} />
 
           </Route>
 
