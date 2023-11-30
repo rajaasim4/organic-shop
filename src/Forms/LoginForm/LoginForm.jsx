@@ -14,13 +14,12 @@ import { toast } from "react-toastify";
 
 
 // Firebase for Log In the User
-import { app } from "../../Config/FirebaseConfig"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app, auth } from "../../Config/FirebaseConfig"
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginForm = () => {
 
-    //Firebase Function to Check User Log In
-    const auth = getAuth();
+
 
 
     const [isloading, setIsLoading] = useState(false);
@@ -38,10 +37,7 @@ const LoginForm = () => {
 
         signInWithEmailAndPassword(auth, values.email, values.password).then((user) => {
 
-            toast("You have Successfully Loggedin ", {
-                position: "top-right",
-                autoClose: 2300,
-            });
+
 
             //Showing Loader
             setIsLoading(true);
@@ -50,6 +46,10 @@ const LoginForm = () => {
             setTimeout(() => {
                 setIsDisabled(false);
                 onSubmitProps.setSubmitting(false);
+                toast("You have Successfully Loggedin ", {
+                    position: "top-right",
+                    autoClose: 2300,
+                });
                 onSubmitProps.resetForm();
                 //Hiding the Loader
                 setIsLoading(false);

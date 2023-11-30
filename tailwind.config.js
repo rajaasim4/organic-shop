@@ -18,6 +18,7 @@ export default {
       },
       width: {
         95: "95%",
+        80: "80%",
       },
       colors: {
         primary_green: "#22c157",

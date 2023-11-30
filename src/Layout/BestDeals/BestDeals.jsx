@@ -26,7 +26,7 @@ const BestDeals = () => {
                 <motion.h1
                     {...fadeInFromLeft()}
                     className="text-5xl font-light text-center my-8">Today’s Best Deals</motion.h1>
-                <div className="flex mt-16 items-center md:flex-col">
+                <div className="flex mt-16 items-center md:flex-col md:gap-y-8">
                     <motion.div className="w-1/2 bg-best_deals_bg bg-cover bg-left p-10 h-[570px] rounded-2xl flex items-end md:w-full"
 
                         {...fadeInFromLeft(0.2)}

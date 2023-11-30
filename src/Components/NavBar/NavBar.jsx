@@ -90,9 +90,11 @@ const NavBar = () => {
       <nav>
         {/* ===========Navbar Top Section =============== */}
         <div className="w-full h-14 bg-shipping_bg flex justify-center items-center">
-          <h4 className="text-white text-lg font-normal sm:text-base">
+          <motion.h4
+            {...fadeInFromLeft()}
+            className="text-white text-lg font-normal sm:text-base">
             Free Shipping From $50 Purchase Now
-          </h4>
+          </motion.h4>
         </div>
 
         <div className="min-h-[175px]  bg-nav_bg flex items-center gap-y-6 slg:min-h-[230px] slg:items-start slg:pt-9 slg:py-3 slg:pb-14 relative ">
@@ -109,16 +111,16 @@ const NavBar = () => {
 
             {/* Search Category Component */}
 
-            <motion.div className="w-5/12 slg:absolute slg:bottom-14 slg:w-9/12 slg:left-1/2 slg:-translate-x-1/2 slg:z-40"
+            <motion.div className="w-5/12 slg:absolute slg:bottom-14 slg:w-11/12 slg:mx-auto  slg:z-20 "
               {...fadeInFromLeft(0.3)}
             >
               <div className="bg-primary_bg h-14 rounded-xl  flex justify-between">
                 <input
                   type="text"
-                  className="w-1/2 pl-4 h-full bg-transparent text-white placeholder:text-white outline-none sm:hidden"
+                  className="w-1/2 pl-4 h-full bg-transparent text-white placeholder:text-white outline-none "
                   placeholder="Search..."
                 />
-                <div className="w-1/2 sm:w-full px-4 border-l-[1px] relative">
+                <div className="w-1/2 sm:w-full px-4 border-l-[1px] relative sm:hidden">
 
                   <SearchCategory />
 
@@ -189,7 +191,7 @@ const NavBar = () => {
 
             >
               {show &&
-                <span className="absolute top-4 right-4 text-2xl hidden md:block" onClick={() => setShow(false)}> <IoCloseSharp /></span>
+                <span className="absolute top-4 right-4 cursor-pointer text-2xl hidden md:block" onClick={() => setShow(false)}> <IoCloseSharp /></span>
               }
 
               <ul className="flex w-full justify-evenly  md:h-3/5 md:flex-col md:w-6/12 md:items-center ">

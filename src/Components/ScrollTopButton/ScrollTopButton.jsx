@@ -36,7 +36,7 @@ const ScrollTopButton = () => {
     })
 
     return (
-        <div className="fixed bottom-5 right-5 z-40">
+        <div className="fixed bottom-5 right-5 z-40 sm:z-20">
             {showButton &&
                 <motion.button
                     {...fadeInFromLeft()}

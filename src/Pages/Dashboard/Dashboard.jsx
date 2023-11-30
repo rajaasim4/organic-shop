@@ -1,10 +1,9 @@
-import DashboardNavbar from "../../Components/DashboardNavbar/DashboardNavbar"
+
 import DashboardSideBar from "../../Components/DashboardSideBar/DashboardSideBar"
 
 const Dashboard = () => {
     return (
         <>
-            <DashboardNavbar />
             <div className="flex">
                 <DashboardSideBar />
                 <div className="">

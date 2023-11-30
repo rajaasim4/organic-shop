@@ -4,6 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_ApiKey,

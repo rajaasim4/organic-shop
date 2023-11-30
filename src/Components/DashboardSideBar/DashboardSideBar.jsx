@@ -83,7 +83,7 @@ const DashboardSideBar = () => {
 
                         </li>
                         <li className="text-xl font-semibold w-11/12 pl-2 rounded-lg">
-                            <Link className="flex items-center gap-x-2  hover:text-white hover:bg-btn_bg duration-300 py-2 pl-1 rounded-lg">
+                            <Link to="/Dashboard/Review" className="flex items-center gap-x-2  hover:text-white hover:bg-btn_bg duration-300 py-2 pl-1 rounded-lg">
                                 <span className="text-2xl">
                                     <MdOutlineReviews />
                                 </span>

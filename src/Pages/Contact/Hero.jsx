@@ -2,6 +2,7 @@ import HeadingBtn from "../../Components/HeadingBtn/HeadingBtn"
 import Helmet from "../../Components/Helmet/Helmet"
 import { motion } from "framer-motion"
 import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation"
+import ContactPageForm from "../../Forms/ContactPageForm/ContactPageForm"
 
 const Hero = () => {
     return (
@@ -10,23 +11,11 @@ const Hero = () => {
                 <div className="w-1/2 flex flex-col items-start md:w-full sm:items-center">
                     <HeadingBtn title="Please Get in Touch" />
 
-                    <h1 className="text-5xl font-light text-center my-8 sm:text-4xl">Contact US</h1>
-                    <motion.div className="w-full"
+                    <h1 className="text-5xl font-light text-center my-8 sm:text-4xl ">Contact US</h1>
+                    <motion.div className="w-full px-2 sm:px-4"
                         {...fadeInFromLeft(0.5)}
                     >
-                        <form action="">
-                            <div className="flex gap-x-5 mb-4 sm:flex-col sm:gap-y-4">
-                                <input type="text" className="bg-gray-200 py-3 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your Name*" />
-                                <input type="text" className="bg-gray-200 py-3 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your Email*" />
-                            </div>
-                            <div className="">
-                                <textarea name="" id="" cols="30" rows="4" className="bg-gray-200 py-7 w-full outline-none pl-5 rounded-lg placeholder:text-black" placeholder="Enter your message*"></textarea>
-
-                            </div>
-                            <button className="rounded-xl text-white w-32 h-12 mt-4 ml-auto block bg-btn_bg cursor-pointer sm:mr-auto hover:bg-slate-800 duration-300">
-                                Submit
-                            </button>
-                        </form>
+                        <ContactPageForm />
                     </motion.div>
                 </div>
                 <motion.div className="w-1/2 flex justify-center  items-center  md:w-[360px] xsm:w-full"

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 //Components For User
@@ -23,18 +22,20 @@ import ScrollTop from "../Hooks/ScrollTop"
 //Components for the Admin
 import Dashboard from "../Pages/Dashboard/Dashboard";
 
-
-
 //Toast Notificaion
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
+//Protected Route
+import ProtectedRoute from "./ProtectedRoute";
+import Review from "../Pages/Review/Review";
+import DashboardNavbar from "../Components/DashboardNavbar/DashboardNavbar";
 const Router = () => {
 
   // ========Showing Footer for the Specific Page=========
   const location = useLocation();
-  // const showFooter = ['/About', '/Contact', '/Shop', '/Shop/*', '/Home', '/Cart', '/', '/CheckOut',].includes(location.pathname);
 
-  const hideFooterOnPaths = ['/Login', '/SignUp', '/Forgot', '/Dashboard', /* add more paths as needed */];
+  const hideFooterOnPaths = ['/Login', '/SignUp', '/Forgot', '/Dashboard',];
   const showFooter = !hideFooterOnPaths.some(path => location.pathname.startsWith(path));
 
 
@@ -49,9 +50,11 @@ const Router = () => {
 
         <Routes >
 
-          {/* Simple Routes For User */}
 
           <Route element={<NavBar />}>
+
+            {/* Simple Routes For User */}
+
 
             <Route exact path="/" element={<Home />} />
             <Route exact path="/Home" element={<Home />} />
@@ -66,10 +69,28 @@ const Router = () => {
 
           {/* Routes for the Admin */}
 
-          <Route>
-            <Route path="/Dashboard" element={<Dashboard />} />
+          {/* <Route element={<DashboardNavbar />}>
+            <Route index path="/Dashboard" element={<Dashboard />} />
+            {/* <Route path="/Dashboard" element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } /> *
+            <Route exact path="/Review" element={<Review />} />
 
-          </Route>
+          </Route> */}
+          <Route
+            path="/Dashboard/*"
+            element={
+              <>
+                <DashboardNavbar />
+                <Routes>
+                  <Route index element={<Dashboard />} />
+                  <Route path="/Review" element={<Review />} />
+                </Routes>
+              </>
+            }
+          />
 
 
           {/* Authentication Routes */}

@@ -23,6 +23,7 @@ import { auth } from "../../Config/FirebaseConfig"
 
 import { fadeInFromLeft } from "../../utils/Helpers/Animation/FadeFromLeftAnimation";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 
 const DashboardNavbar = () => {
@@ -42,10 +43,12 @@ const DashboardNavbar = () => {
 
             <div className=" flex justify-between w-95 mx-auto items-center">
                 <div className="flex items-center gap-x-7 ">
-                    <motion.img src={Logo} alt="Logo" className="w-40 object-contain h-full md:w-32"
-                        {...fadeInFromLeft()}
-                        whileHover={{ scale: 1.1 }} />
+                    <Link to={"/Dashboard"}>
+                        <motion.img src={Logo} alt="Logo" className="w-40 object-contain h-full md:w-32"
+                            {...fadeInFromLeft()}
+                            whileHover={{ scale: 1.1 }} />
 
+                    </Link>
                     <div className="flex items-center bg-white px-2 rounded-3xl pl-4 sm:hidden">
                         <span className="text-2xl">
                             <IoSearch />
@@ -56,7 +59,7 @@ const DashboardNavbar = () => {
                 </div>
 
                 <div className="relative" ref={ref} >
-                    <div className="flex items-center gap-x-3 cursor-pointer bg-white pr-2 rounded-full" role="button" onClick={() => setShowloginDopdown(!showloginDropdown)}>
+                    <div className="flex items-center gap-x-3 cursor-pointer bg-white pr-2 rounded-full " role="button" onClick={() => setShowloginDopdown(!showloginDropdown)}>
 
                         <button className="w-11 h-11 rounded-full bg-red-300 flex justify-center items-center overflow-hidden " >
                             <img src={profileImg} alt="" />

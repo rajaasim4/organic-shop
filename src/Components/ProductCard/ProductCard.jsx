@@ -24,7 +24,7 @@ const ProductCard = (props) => {
             {/* bg-[#fffcfc] */}
             {/* bg-[#f0f0f0] */}
             <div className="w-full h-[323px]  duration-200  rounded-2xl relative flex justify-center items-center mx-auto ">
-                <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  w-9/12 h-[75%] rounded-full bg-primary_dark_green  duration-300"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  w-9/12 h-[75%] rounded-full bg-primary_dark_green  duration-300 sm:w-full sm:h-full sm:rounded-xl"></div>
 
                 <img src={imgSrc} className="w-9/12 object-contain rounded-lg z-10" alt="Product Image" />
                 <button className="absolute bottom-3 right-3 h-10 w-10 rounded-lg bg-gradient_bg  place-items-center opacity-0 group-hover:opacity-100 grid duration-500 "
