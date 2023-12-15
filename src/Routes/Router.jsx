@@ -17,54 +17,55 @@ import EnterEmail from "../Pages/ForgotPassword/EnterEmail";
 import ForgotEmailConfirmation from "../Pages/ForgotPassword/ForgotEmailConfirmation";
 import ForgotPassword from "../Pages/ForgotPassword/ForgotPassword";
 import ScrollTopButton from "../Components/ScrollTopButton/ScrollTopButton";
-import ScrollTop from "../Hooks/ScrollTop"
+import ScrollTop from "../Hooks/ScrollTop";
 
 //Components for the Admin
 import Dashboard from "../Pages/Dashboard/Dashboard";
 
 //Toast Notificaion
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 //Protected Route
 import ProtectedRoute from "./ProtectedRoute";
 import Review from "../Pages/Review/Review";
 import DashboardNavbar from "../Components/DashboardNavbar/DashboardNavbar";
+import Users from "../Pages/Users/Users";
+import Auth from "../utils/Constants/Auth/Auth";
 const Router = () => {
-
   // ========Showing Footer for the Specific Page=========
   const location = useLocation();
 
-  const hideFooterOnPaths = ['/Login', '/SignUp', '/Forgot', '/Dashboard',];
-  const showFooter = !hideFooterOnPaths.some(path => location.pathname.startsWith(path));
-
-
+  const hideFooterOnPaths = ["/Login", "/SignUp", "/Forgot", "/Dashboard"];
+  const showFooter = !hideFooterOnPaths.some((path) =>
+    location.pathname.startsWith(path)
+  );
+  // const { data } = Auth();
 
   return (
     <>
       <div className="bg-[#FBFBFB]">
-
         <ToastContainer />
         <ScrollTopButton />
         <ScrollTop />
+        <Auth />
 
-        <Routes >
-
-
+        <Routes>
           <Route element={<NavBar />}>
-
             {/* Simple Routes For User */}
-
 
             <Route exact path="/" element={<Home />} />
             <Route exact path="/Home" element={<Home />} />
             <Route exact path="/About" element={<About />} />
             <Route exact path="/Contact" element={<Contact />} />
             <Route exact path="/Shop" element={<Shop />} />
-            <Route exact path="/Shop/:productname" element={<SingleProduct />} />
+            <Route
+              exact
+              path="/Shop/:productname"
+              element={<SingleProduct />}
+            />
             <Route exact path="/Cart" element={<Cart />} />
             <Route exact path="/CheckOut" element={<CheckOut />} />
-
           </Route>
 
           {/* Routes for the Admin */}
@@ -87,11 +88,11 @@ const Router = () => {
                 <Routes>
                   <Route index element={<Dashboard />} />
                   <Route path="/Review" element={<Review />} />
+                  <Route path="/Users" element={<Users />} />
                 </Routes>
               </>
             }
           />
-
 
           {/* Authentication Routes */}
           <Route exact path="/Login" element={<Login />} />
@@ -99,17 +100,19 @@ const Router = () => {
 
           {/* Forgot Password Routes */}
           <Route exact path="/Forgot/EnterEmail" element={<EnterEmail />} />
-          <Route exact path="/Forgot/EmailConfimationSent" element={<ForgotEmailConfirmation />} />
+          <Route
+            exact
+            path="/Forgot/EmailConfimationSent"
+            element={<ForgotEmailConfirmation />}
+          />
           <Route exact path="/Forgot/Password" element={<ForgotPassword />} />
 
           {/* 404 Error Page */}
           <Route exact path="*" element={<Error />} />
-
         </Routes>
 
         {/* Show footer only on specific pages */}
         {showFooter && <Footer />}
-
       </div>
     </>
   );
