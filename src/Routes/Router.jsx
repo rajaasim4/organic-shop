@@ -32,6 +32,8 @@ import Review from "../Pages/Review/Review";
 import DashboardNavbar from "../Components/DashboardNavbar/DashboardNavbar";
 import Users from "../Pages/Users/Users";
 import Auth from "../utils/Constants/Auth/Auth";
+import ViewItem from "../Pages/ViewItem/ViewItem";
+import AddProducts from "../Pages/AddProducts/AddProducts";
 const Router = () => {
   // ========Showing Footer for the Specific Page=========
   const location = useLocation();
@@ -89,6 +91,8 @@ const Router = () => {
                   <Route index element={<Dashboard />} />
                   <Route path="/Review" element={<Review />} />
                   <Route path="/Users" element={<Users />} />
+                  <Route path="/ViewItem" element={<ViewItem />} />
+                  <Route path="/AddProducts" element={<AddProducts />} />
                 </Routes>
               </>
             }
