@@ -1,109 +1,112 @@
-import ShopAside from "../../Layout/ShopAside/ShopAside"
-import Helmet from "../../Components/Helmet/Helmet"
-import Brands from "../../Layout/Brands/Brands"
-import ProductCard from "../../Components/ProductCard/ProductCard"
-import { useEffect, useRef, useState } from "react"
-import useClickOutsideDetector from "../../Hooks/useClickOutsideDetector"
+import ShopAside from "../../Layout/ShopAside/ShopAside";
+import Helmet from "../../Components/Helmet/Helmet";
+import Brands from "../../Layout/Brands/Brands";
+import ProductCard from "../../Components/ProductCard/ProductCard";
+import { useEffect, useRef, useState } from "react";
+import useClickOutsideDetector from "../../Hooks/useClickOutsideDetector";
 //Products Data
-import Product from "../../Data/Product"
-import SkeletonLoader from "../../utils/Helpers/Loaders/SkeletonLoader"
+import Product from "../../Data/Product";
+import SkeletonLoader from "../../utils/Helpers/Loaders/SkeletonLoader";
+import SortBy from "../../Components/SortBy/SortBy";
 
 const Shop = () => {
-    const [showSortFilter, setShowSortFilter] = useState(false)
+  const [data, setData] = useState(Product);
+  const [showSortFilter, setShowSortFilter] = useState(false);
 
-    const [selectSortValue, setSelectSortValue] = useState("Default");
+  const [selectSortValue, setSelectSortValue] = useState("Default");
 
-    const [showSkeletonLoader, setShowSkeletonLoader] = useState(true);
+  const [showSkeletonLoader, setShowSkeletonLoader] = useState(true);
 
-    const handleSelectSortValue = (e) => {
-        setSelectSortValue(e.target.value);
-        setShowSortFilter((prev) => !prev);
+  //Handling the Sorting
+  const handleSelectSortValue = (e) => {
+    setSelectSortValue(e.target.value);
+    setShowSortFilter((prev) => !prev);
+  };
+
+  //Hiding the Sort Filter by Clicking Outside
+
+  let sortRef = useRef();
+
+  useClickOutsideDetector(sortRef, () => {
+    setShowSortFilter(false);
+  });
+
+  const dummySkeletonLoader = [1, 2, 3, 4, 5, 6];
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowSkeletonLoader(false);
+    }, 4300);
+  });
+
+  const [searchProduct, setSearchProduct] = useState("");
+
+  //Handling the Searching
+
+  console.log(searchProduct);
+
+  const handleSearch = () => {
+    const searchedProducts = Product.filter((product) =>
+      product.name.toLowerCase().includes(searchProduct.toLowerCase())
+    );
+    setData(searchedProducts);
+  };
+
+  useEffect(() => {
+    if (searchProduct === "") {
+      setData(Product);
     }
+  }, [searchProduct]);
 
-    //Hiding the Sort Filter by Clicking Outside
+  return (
+    <>
+      <div className="max-w-[1700px] mx-auto">
+        <Helmet>
+          <div className="flex gap-x-9">
+            <div className="">
+              <ShopAside
+                handleSearch={handleSearch}
+                searchProduct={searchProduct}
+                setSearchProduct={setSearchProduct}
+              />
+            </div>
+            <div className="w-full ">
+              {/* Handling Sorting of Products */}
+              <SortBy />
+              {showSkeletonLoader ? (
+                <>
+                  {/* Showing Skeleton Loader */}
 
-    let sortRef = useRef();
-
-    useClickOutsideDetector(sortRef, () => {
-        setShowSortFilter(false)
-    })
-
-    const dummySkeletonLoader = [1, 2, 3, 4, 5, 6];
-
-
-    useEffect(() => {
-        setTimeout(() => {
-            setShowSkeletonLoader(false);
-        }, 4300)
-
-    })
-
-
-    return (
-        <>
-            <div className="max-w-[1700px] mx-auto">
-
-                <Helmet>
-                    <div className="flex gap-x-9">
-
-                        <div className="">
-                            <ShopAside />
-                        </div>
-                        <div className="w-full ">
-
-                            {/* Handling Sorting of Products */}
-
-                            <div className="min-h-[60px] mb-8  w-full flex justify-end items-center relative" ref={sortRef}>
-                                <div className={`${showSortFilter ? "h-64" : "h-12"}  duration-300 overflow-hidden   w-40  absolute right-3 top-2 rounded-lg z-20`}>
-                                    <button className="bg-primary_dark_green w-full h-12 mb-2 rounded-lg bg-gradient_bg text-white" onClick={() => setShowSortFilter((prev) => !prev)}>Sort By:{selectSortValue} </button>
-                                    <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"Default"} onClick={handleSelectSortValue} >Default </button>
-                                    <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"Low Price"} onClick={handleSelectSortValue}> Low Price</button>
-                                    <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"High Price"} onClick={handleSelectSortValue}> High Price</button>
-                                    <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5" value={"Ascending"} onClick={handleSelectSortValue}> Ascending </button>
-                                    <button className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5 " value={"Descending"} onClick={handleSelectSortValue}>Descending </button>
-                                </div>
-                            </div>
-
-                            {showSkeletonLoader ?
-                                <>
-
-                                    {/* Showing Skeleton Loader */}
-
-                                    < div className="flex gap-x-5 gap-y-8 flex-wrap">
-                                        {dummySkeletonLoader.map((item, Index) => {
-                                            return (
-                                                <SkeletonLoader key={Index} />
-
-                                            )
-                                        })}
-
-                                    </div>
-                                </>
-                                :
-                                <>
-                                    {/* Showing All Items */}
-
-                                    <div className="flex gap-x-5 gap-y-8 flex-wrap">
-                                        {Product.map((item) => {
-                                            return (
-
-                                                <ProductCard key={item.id} {...item} />
-                                            )
-                                        })}
-
-                                    </div>
-
-                                </>
-                            }
-
-                        </div>
+                  <div className="flex gap-x-5 gap-y-8 flex-wrap">
+                    {dummySkeletonLoader.map((item, Index) => {
+                      return <SkeletonLoader key={Index} />;
+                    })}
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Showing All Items or No data found */}
+                  {data.length === 0 ? (
+                    <h2 className="text-5xl  text-center text-primary_green">
+                      No data found
+                    </h2>
+                  ) : (
+                    <div className="flex gap-x-5 gap-y-8 flex-wrap">
+                      {data.map((item) => (
+                        <ProductCard key={item.id} {...item} />
+                      ))}
                     </div>
-                </Helmet >
-                <div className="h-24"></div>
-            </div >
-            <Brands />
-        </>
-    )
-}
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </Helmet>
+        <div className="h-24"></div>
+      </div>
+      <Brands />
+    </>
+  );
+};
 
-export default Shop
+export default Shop;
