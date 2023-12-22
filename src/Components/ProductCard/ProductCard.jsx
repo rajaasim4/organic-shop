@@ -36,16 +36,16 @@ const ProductCard = (props) => {
           title="Add to Cart"
           onClick={handleAddToCart}
         >
-          <OvalLoader
+          {/* <OvalLoader
             width={30}
             height={30}
             strokeWidth={3}
             primaryColor="white"
             secondaryColor="#22c157"
-          />
-          {/* <span className="text-white text-2xl">
+          /> */}
+          <span className="text-white text-2xl">
             <BsCart3 />
-          </span> */}
+          </span>
         </button>
       </div>
       <div className=" flex flex-col items-center justify-evenly gap-y-2 mt-2 p-3">
