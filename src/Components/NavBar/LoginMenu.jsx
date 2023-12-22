@@ -8,7 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 //Images
-import profimeImg from "../../assets/Images/profile.jpeg";
+import profimeImg from "../../assets/Images/Profile.jpeg";
 
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../Config/FirebaseConfig";
