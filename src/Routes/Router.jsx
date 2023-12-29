@@ -47,7 +47,7 @@ const Router = () => {
   return (
     <>
       <div className="bg-[#FBFBFB]">
-        <ToastContainer />
+        <ToastContainer limit={1} />
         <ScrollTopButton />
         <ScrollTop />
         <Auth />

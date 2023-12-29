@@ -12,15 +12,53 @@ import SortBy from "../../Components/SortBy/SortBy";
 const Shop = () => {
   const [data, setData] = useState(Product);
   const [showSortFilter, setShowSortFilter] = useState(false);
-
   const [selectSortValue, setSelectSortValue] = useState("Default");
-
   const [showSkeletonLoader, setShowSkeletonLoader] = useState(true);
+  const [selectCategory, setSelectCategory] = useState("All");
 
-  //Handling the Sorting
+  const handleSorting = (sortValue) => {
+    let sortedData = null;
+    console.log(sortValue);
+
+    switch (sortValue) {
+      case "Default":
+        setData(Product);
+        break;
+
+      case "Low Price":
+        sortedData = data.toSorted((a, b) => a.price - b.price);
+        setData(sortedData);
+        break;
+
+      case "High Price":
+        sortedData = data.toSorted((a, b) => b.price - a.price);
+        setData(sortedData);
+        break;
+
+      case "Ascending":
+        setData(Product);
+        break;
+
+      case "Descending":
+        sortedData = data.toSorted((a, b) => b.name.localeCompare(a.name));
+        setData(sortedData);
+        break;
+
+      default:
+        setData(Product);
+        break;
+    }
+  };
+
+  //Handling the Product Selection Sorting
   const handleSelectSortValue = (e) => {
-    setSelectSortValue(e.target.value);
+    const value = e.target.value;
+
+    setSelectSortValue(value);
     setShowSortFilter((prev) => !prev);
+
+    //Calling the Sorting Function
+    handleSorting(value);
   };
 
   //Hiding the Sort Filter by Clicking Outside
@@ -31,19 +69,29 @@ const Shop = () => {
     setShowSortFilter(false);
   });
 
+  //Checking for the Page Refresh
+
+  let isPageRefreshed = useRef(!sessionStorage.getItem("pageLoaded"));
+
+  useEffect(() => {
+    sessionStorage.setItem("pageLoaded", true);
+  }, []);
+
   const dummySkeletonLoader = [1, 2, 3, 4, 5, 6];
 
   useEffect(() => {
-    setTimeout(() => {
+    if (isPageRefreshed.current) {
+      setTimeout(() => {
+        setShowSkeletonLoader(false);
+      }, 4300);
+    } else {
       setShowSkeletonLoader(false);
-    }, 4300);
-  });
+    }
+  }, []);
 
   const [searchProduct, setSearchProduct] = useState("");
 
   //Handling the Searching
-
-  console.log(searchProduct);
 
   const handleSearch = () => {
     const searchedProducts = Product.filter((product) =>
@@ -52,11 +100,31 @@ const Shop = () => {
     setData(searchedProducts);
   };
 
+  //if the Search feild is empty then show Data after 1400ms
   useEffect(() => {
+    let time = null;
     if (searchProduct === "") {
-      setData(Product);
+      time = setTimeout(() => {
+        setData(Product);
+      }, 1400);
+    } else {
+      clearTimeout(time);
     }
   }, [searchProduct]);
+
+  //Filtering data based on category
+
+  const handleCategoryFilter = (category) => {
+    console.log(category);
+    if (category === "View All") {
+      setData(Product);
+    } else {
+      let categoryFilteredData = Product.filter(
+        (item) => item.category === category
+      );
+      setData(categoryFilteredData);
+    }
+  };
 
   return (
     <>
@@ -65,14 +133,23 @@ const Shop = () => {
           <div className="flex gap-x-9">
             <div className="">
               <ShopAside
+                selectCategory={selectCategory}
+                setSelectCategory={setSelectCategory}
                 handleSearch={handleSearch}
-                searchProduct={searchProduct}
-                setSearchProduct={setSearchProduct}
+                handleCategoryFilter={handleCategoryFilter}
               />
             </div>
             <div className="w-full ">
               {/* Handling Sorting of Products */}
-              <SortBy />
+              <SortBy
+                selectSortValue={selectSortValue}
+                setSelectSortValue={setSelectSortValue}
+                handleSelectSortValue={handleSelectSortValue}
+                showSortFilter={showSortFilter}
+                setShowSortFilter={setShowSortFilter}
+              />
+
+              {/* Skeleton Loader */}
               {showSkeletonLoader ? (
                 <>
                   {/* Showing Skeleton Loader */}
@@ -92,8 +169,8 @@ const Shop = () => {
                     </h2>
                   ) : (
                     <div className="flex gap-x-5 gap-y-8 flex-wrap">
-                      {data.map((item) => (
-                        <ProductCard key={item.id} {...item} />
+                      {data.map((item, Index) => (
+                        <ProductCard key={Index} {...item} />
                       ))}
                     </div>
                   )}

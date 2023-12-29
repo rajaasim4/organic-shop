@@ -1,16 +1,22 @@
 import React, { useState, useRef } from "react";
 import useClickOutsideDetector from "../../Hooks/useClickOutsideDetector";
 
-const SortBy = () => {
-  const [showSortFilter, setShowSortFilter] = useState(false);
+const SortBy = ({
+  handleSelectSortValue,
+  showSortFilter,
+  setShowSortFilter,
+  selectSortValue,
+  setSelectSortValue,
+}) => {
+  // const [showSortFilter, setShowSortFilter] = useState(false);
 
-  const [selectSortValue, setSelectSortValue] = useState("Default");
+  // const [selectSortValue, setSelectSortValue] = useState("Default");
 
   //Handling the Sorting
-  const handleSelectSortValue = (e) => {
-    setSelectSortValue(e.target.value);
-    setShowSortFilter((prev) => !prev);
-  };
+  // const handleSelectSortValue = (e) => {
+  //   setSelectSortValue(e.target.value);
+  //   setShowSortFilter((prev) => !prev);
+  // };
 
   //Hiding the Sort Filter by Clicking Outside
 
@@ -41,7 +47,7 @@ const SortBy = () => {
           value={"Default"}
           onClick={handleSelectSortValue}
         >
-          Default{" "}
+          Default
         </button>
         <button
           className="hover:bg-primary_dark_green hover:text-white duration-300 w-full h-10 bg-white text-left pl-5"

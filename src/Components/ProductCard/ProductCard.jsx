@@ -4,6 +4,7 @@ import StarRating from "../StarRating/StarRating";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/Reducers/CartSlice";
 import { OvalLoader } from "../../utils/Helpers/Loaders/Loaders";
+import { toast } from "react-toastify";
 const ProductCard = (props) => {
   const dispatch = useDispatch();
 
@@ -15,6 +16,12 @@ const ProductCard = (props) => {
     dispatch(
       addToCart({ id, name, category, price, imgSrc, rating, quantity: 1 })
     );
+
+    toast.success("Item Added Successfully", {
+      position: "top-right",
+      autoClose: 2300,
+      id: 1,
+    });
   };
 
   return (
