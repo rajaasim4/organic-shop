@@ -8,6 +8,7 @@ import useClickOutsideDetector from "../../Hooks/useClickOutsideDetector";
 import Product from "../../Data/Product";
 import SkeletonLoader from "../../utils/Helpers/Loaders/SkeletonLoader";
 import SortBy from "../../Components/SortBy/SortBy";
+import PageTransition from "../../utils/Helpers/Animation/PageTransition";
 
 const Shop = () => {
   const [data, setData] = useState(Product);
@@ -128,7 +129,7 @@ const Shop = () => {
 
   return (
     <>
-      <div className="max-w-[1700px] mx-auto">
+      <PageTransition>
         <Helmet>
           <div className="flex gap-x-9">
             <div className="">
@@ -180,7 +181,7 @@ const Shop = () => {
           </div>
         </Helmet>
         <div className="h-24"></div>
-      </div>
+      </PageTransition>
       <Brands />
     </>
   );

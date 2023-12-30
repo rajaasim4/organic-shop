@@ -1,17 +1,18 @@
-import Hero from "./Hero"
-import Brands from "../../Layout/Brands/Brands"
-import Map from "./Map"
+import Hero from "./Hero";
+import Brands from "../../Layout/Brands/Brands";
+import Map from "./Map";
+import PageTransition from "../../utils/Helpers/Animation/PageTransition";
 
 const Contact = () => {
-    return (
-        <>
-            <div className="max-w-[1700px] mx-auto">
-                <Map />
-                <Hero />
-            </div>
-            <Brands />
-        </>
-    )
-}
+  return (
+    <>
+      <PageTransition>
+        <Map />
+        <Hero />
+      </PageTransition>
+      <Brands />
+    </>
+  );
+};
 
-export default Contact
+export default Contact;

@@ -1,4 +1,3 @@
-
 import BestDeals from "../Layout/BestDeals/BestDeals";
 import Brands from "../Layout/Brands/Brands";
 import Hero from "../Layout/Hero/Hero";
@@ -7,12 +6,13 @@ import Sale from "../Layout/Sale/Sale";
 import Shipping from "../Layout/Shipping/Shipping";
 import Testinomials from "../Layout/Testinomials/Testinomials";
 import FeaturedProducts from "../Layout/FeaturedProducts/FeaturedProducts";
+import { motion } from "framer-motion";
+import PageTransition from "../utils/Helpers/Animation/PageTransition";
 
 const Home = () => {
-
   return (
     <>
-      <div className="max-w-[1700px] mx-auto">
+      <PageTransition>
         <Hero />
         <Shipping />
         <NoPlastic />
@@ -20,7 +20,7 @@ const Home = () => {
         <FeaturedProducts />
         <Sale />
         <Testinomials />
-      </div>
+      </PageTransition>
       <Brands />
     </>
   );

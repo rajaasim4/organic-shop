@@ -1,18 +1,19 @@
-import Brands from "../../Layout/Brands/Brands"
-import OurTeam from "./OurTeam"
-import Hero from "./Hero"
+import Brands from "../../Layout/Brands/Brands";
+import OurTeam from "./OurTeam";
+import Hero from "./Hero";
+import PageTransition from "../../utils/Helpers/Animation/PageTransition";
 
 const About = () => {
-    return (
-        <>
-            <div className="max-w-[1700px] mx-auto">
+  return (
+    <>
+      <PageTransition>
+        <Hero />
+        <OurTeam />
+      </PageTransition>
 
-                <Hero />
-                <OurTeam />
-            </div>
-            <Brands />
-        </>
-    )
-}
+      <Brands />
+    </>
+  );
+};
 
-export default About
+export default About;

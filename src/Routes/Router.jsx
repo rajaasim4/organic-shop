@@ -34,6 +34,7 @@ import Users from "../Pages/Users/Users";
 import Auth from "../utils/Constants/Auth/Auth";
 import ViewItem from "../Pages/ViewItem/ViewItem";
 import AddProducts from "../Pages/AddProducts/AddProducts";
+import { AnimatePresence } from "framer-motion";
 const Router = () => {
   // ========Showing Footer for the Specific Page=========
   const location = useLocation();
@@ -42,37 +43,37 @@ const Router = () => {
   const showFooter = !hideFooterOnPaths.some((path) =>
     location.pathname.startsWith(path)
   );
-  // const { data } = Auth();
 
   return (
     <>
-      <div className="bg-[#FBFBFB]">
-        <ToastContainer limit={1} />
-        <ScrollTopButton />
-        <ScrollTop />
-        <Auth />
+      <AnimatePresence mode="wait">
+        <div className="bg-[#FBFBFB]">
+          <ToastContainer limit={1} />
+          <ScrollTopButton />
+          <ScrollTop />
+          <Auth />
 
-        <Routes>
-          <Route element={<NavBar />}>
-            {/* Simple Routes For User */}
+          <Routes location={location} key={location.pathname}>
+            <Route element={<NavBar />}>
+              {/* Simple Routes For User */}
 
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/Home" element={<Home />} />
-            <Route exact path="/About" element={<About />} />
-            <Route exact path="/Contact" element={<Contact />} />
-            <Route exact path="/Shop" element={<Shop />} />
-            <Route
-              exact
-              path="/Shop/:productname"
-              element={<SingleProduct />}
-            />
-            <Route exact path="/Cart" element={<Cart />} />
-            <Route exact path="/CheckOut" element={<CheckOut />} />
-          </Route>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/Home" element={<Home />} />
+              <Route exact path="/About" element={<About />} />
+              <Route exact path="/Contact" element={<Contact />} />
+              <Route exact path="/Shop" element={<Shop />} />
+              <Route
+                exact
+                path="/Shop/:productname"
+                element={<SingleProduct />}
+              />
+              <Route exact path="/Cart" element={<Cart />} />
+              <Route exact path="/CheckOut" element={<CheckOut />} />
+            </Route>
 
-          {/* Routes for the Admin */}
+            {/* Routes for the Admin */}
 
-          {/* <Route element={<DashboardNavbar />}>
+            {/* <Route element={<DashboardNavbar />}>
             <Route index path="/Dashboard" element={<Dashboard />} />
             {/* <Route path="/Dashboard" element={
               <ProtectedRoute>
@@ -82,42 +83,43 @@ const Router = () => {
             <Route exact path="/Review" element={<Review />} />
 
           </Route> */}
-          <Route
-            path="/Dashboard/*"
-            element={
-              <>
-                <DashboardNavbar />
-                <Routes>
-                  <Route index element={<Dashboard />} />
-                  <Route path="/Review" element={<Review />} />
-                  <Route path="/Users" element={<Users />} />
-                  <Route path="/ViewItem" element={<ViewItem />} />
-                  <Route path="/AddProducts" element={<AddProducts />} />
-                </Routes>
-              </>
-            }
-          />
+            <Route
+              path="/Dashboard/*"
+              element={
+                <>
+                  <DashboardNavbar />
+                  <Routes>
+                    <Route index element={<Dashboard />} />
+                    <Route path="/Review" element={<Review />} />
+                    <Route path="/Users" element={<Users />} />
+                    <Route path="/ViewItem" element={<ViewItem />} />
+                    <Route path="/AddProducts" element={<AddProducts />} />
+                  </Routes>
+                </>
+              }
+            />
 
-          {/* Authentication Routes */}
-          <Route exact path="/Login" element={<Login />} />
-          <Route exact path="/SignUp" element={<SignUp />} />
+            {/* Authentication Routes */}
+            <Route exact path="/Login" element={<Login />} />
+            <Route exact path="/SignUp" element={<SignUp />} />
 
-          {/* Forgot Password Routes */}
-          <Route exact path="/Forgot/EnterEmail" element={<EnterEmail />} />
-          <Route
-            exact
-            path="/Forgot/EmailConfimationSent"
-            element={<ForgotEmailConfirmation />}
-          />
-          <Route exact path="/Forgot/Password" element={<ForgotPassword />} />
+            {/* Forgot Password Routes */}
+            <Route exact path="/Forgot/EnterEmail" element={<EnterEmail />} />
+            <Route
+              exact
+              path="/Forgot/EmailConfimationSent"
+              element={<ForgotEmailConfirmation />}
+            />
+            <Route exact path="/Forgot/Password" element={<ForgotPassword />} />
 
-          {/* 404 Error Page */}
-          <Route exact path="*" element={<Error />} />
-        </Routes>
+            {/* 404 Error Page */}
+            <Route exact path="*" element={<Error />} />
+          </Routes>
 
-        {/* Show footer only on specific pages */}
-        {showFooter && <Footer />}
-      </div>
+          {/* Show footer only on specific pages */}
+          {showFooter && <Footer />}
+        </div>
+      </AnimatePresence>
     </>
   );
 };

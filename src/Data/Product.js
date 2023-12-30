@@ -474,8 +474,8 @@ const Product = [
   {
     id: 60,
     name: "Yellow Water Melon",
-    category: "Meat",
-    // category: "Vegetables",
+    // category: "Meat",
+    category: "Vegetables",
     rating: 3,
     price: 12.27,
     imgSrc: "/Product Images/YellowWaterMelon.png",
